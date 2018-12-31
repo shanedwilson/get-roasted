@@ -3,6 +3,8 @@
     "name" : "",
     "region" : "",
     "imgUrl" : "",
-    "description" : ""
+    "uid" : "",
+    "description" : "",
+    "onHand" : 0
   }
 }

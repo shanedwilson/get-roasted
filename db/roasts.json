@@ -13,5 +13,6 @@
     "firstTemp" : "",
     "secondTime" : "",
     "secondTemp" : "",
+    "roastLevel" : ""
   }
 }
