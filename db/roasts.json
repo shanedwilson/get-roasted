@@ -1,0 +1,17 @@
+{
+  "roast0" : {
+    "name" : "",
+    "region" : "",
+    "uid" : "",
+    "notes" : "",
+    "rating" : 0,
+    "temp" : "",
+    "humidity" : "",
+    "date" : "",
+    "length" : "",
+    "firstTime" : "",
+    "firstTemp" : "",
+    "secondTime" : "",
+    "secondTemp" : "",
+  }
+}
