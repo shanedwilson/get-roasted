@@ -1,7 +1,7 @@
 {
   "beanOnHand0" : {
-    "beanId" : "",
-    "uid" : "",
-    "onHand" : 0
+    "beanId" : "bean0",
+    "uid" : "12345",
+    "onHand" : 3
   }
 }

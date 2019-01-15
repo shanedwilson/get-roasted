@@ -1,18 +1,18 @@
 {
   "roast0" : {
-    "name" : "",
-    "region" : "",
+    "name" : "Costa Rica Don Mayo El Llano",
+    "region" : "Costa Rica",
     "uid" : "",
-    "notes" : "",
+    "notes" : "manual mode. preheat 1:45. full power until 1st. half power thereafer.",
     "rating" : 0,
-    "temp" : "",
-    "humidity" : "",
-    "date" : "",
-    "length" : "",
-    "firstTime" : "",
-    "firstTemp" : "",
-    "secondTime" : "",
-    "secondTemp" : "",
-    "roastLevel" : ""
+    "temp" : 43,
+    "humidity" : 56,
+    "date" : "1/15/19",
+    "length" : "13:25",
+    "firstTime" : "9:30",
+    "firstTemp" : "300",
+    "secondTime" : "12:30",
+    "secondTemp" : "275",
+    "roastLevel" : "Full City Plus"
   }
 }
