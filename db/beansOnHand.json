@@ -1,10 +1,7 @@
 {
-  "bean0" : {
-    "name" : "",
-    "region" : "",
-    "imgUrl" : "",
+  "beanOnHand0" : {
+    "beanId" : "",
     "uid" : "",
-    "description" : "",
     "onHand" : 0
   }
 }
