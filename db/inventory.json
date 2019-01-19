@@ -1,7 +1,8 @@
 {
-  "beanOnHand0" : {
+  "inventory0" : {
     "beanId" : "bean0",
     "uid" : "12345",
-    "onHand" : 3
+    "pounds" : 0,
+    "ounces" : 0
   }
 }
