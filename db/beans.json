@@ -1,0 +1,14 @@
+{
+  "bean0" : {
+    "name" : "Guatemala Finca Cabrejo Yellow Bourbon",
+    "region" : "Guatemala",
+    "imgUrl" : "https://sweet-marias-live-sweetmarias.netdna-ssl.com/media/catalog/product/cache/image/1338x576/beff4985b56e3afdbeabfc89641a4582/g/u/guatemala-antigua-finca-cabrejo-coffee-2.jpg",
+    "description" : "This Yellow Bourbon lot is all about balance and cleanliness, brown sugar and bittersweet roast tone underscore the cup, with candied nut, raisin and baking spice top notes to a subtler degree. City+ to Full City+. Good for espresso."
+  },
+  "bean1" : {
+    "name" : "Costa Rica Don Mayo El Llano",
+    "region" : "Costa Rica",
+    "imgUrl" : "https://sweet-marias-live-sweetmarias.netdna-ssl.com/media/catalog/product/cache/image/1338x576/beff4985b56e3afdbeabfc89641a4582/c/o/costa-rica-don-mayo-tarrazu-6.jpg",
+    "description" : "El Llano is a bittersweet brew, and finds balanced flavors of toffee and baking cocoa in middle roasts, as well as a subtle green apple note that adds structure. City+ to Full City+. Good for espresso."
+  }
+}

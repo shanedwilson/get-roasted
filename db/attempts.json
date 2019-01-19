@@ -1,0 +1,19 @@
+{
+  "attempt0" : {
+    "uid" : "AIzaSyCrokFX3ZtVgCi_AToiYnAK0FPuD7pbUSc",  
+    "roastId" : "roast0",  
+    "notes" : "manual mode. preheat 1:45. full power until 1st. half power thereafer.",
+    "rating" : 0,
+    "temp" : 43,
+    "humidity" : 56,
+    "city" : "Nashville",
+    "state" : "TN",
+    "date" : "1/15/19",
+    "length" : "13:25",
+    "firstTime" : "9:30",
+    "firstTemp" : "300",
+    "secondTime" : "12:30",
+    "secondTemp" : "275",
+    "roastLevel" : "Full City Plus"
+  }
+}
