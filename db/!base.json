@@ -2,10 +2,13 @@
   "beans" : {
     "shane" : "wilson"
   },
-  "beansOnHand" : {
+  "inventory" : {
     "bourbon day" : "my couch"
   },
   "roasts" : {
     "yo" : "momma"
-  }
+  },
+  "attempts" : {
+    "number" : "one"
+  }  
 }
