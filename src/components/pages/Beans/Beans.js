@@ -34,7 +34,7 @@ class Beans extends React.Component {
 
     return (
   
-        <div className="Beans">
+        <div className="beans">
           <h1 className="text-center">BEANS!!!</h1>
           <div className="row justify-content-center">
             {beanCards}
