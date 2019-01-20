@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import beanShape from '../../helpers/propz/beanShape';
-import authRequests from '../../helpers/data/authRequests';
 
 import './BeanCard.scss';
 
@@ -15,10 +14,9 @@ class BeanCard extends React.Component {
   render() {
     const {
       bean,
-    } = this.props;  
-
-    const uid = authRequests.getCurrentUid();
-    const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
+      uid,
+      ownerUid,
+    } = this.props;
 
     const makeButtons = () => {
       if (uid === ownerUid) {
