@@ -80,17 +80,19 @@ class App extends React.Component {
         <BrowserRouter>
           <React.Fragment>
             <MyNavbar isAuthed={ authed } logoutClickEvent={logoutClickEvent} />
-            <div className='row'>
-              <Switch>
-                <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
-                <PrivateRoute path='/' exact component={Beans} authed={this.state.authed} />
-                <PrivateRoute path='/beans' component={Beans} authed={this.state.authed} />
-                <PrivateRoute path='/roasts' component={Roasts} authed={this.state.authed} />
-                <PrivateRoute path='/inventory' component={Inventory} authed={this.state.authed} />
-                <PrivateRoute exact path='/attempts/:id/add' component={AddEditAttempts} authed={this.state.authed} />
-                <PrivateRoute exact path='/attempts/:id/edit' component={AddEditAttempts} authed={this.state.authed} />    
-                <PrivateRoute exact path='/attempts/:id' component={Attempts} authed={this.state.authed} />
-              </Switch>
+            <div className="container">
+              <div className='row'>
+                <Switch>
+                  <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
+                  <PrivateRoute path='/' exact component={Beans} authed={this.state.authed} />
+                  <PrivateRoute path='/beans' component={Beans} authed={this.state.authed} />
+                  <PrivateRoute path='/roasts' component={Roasts} authed={this.state.authed} />
+                  <PrivateRoute path='/inventory' component={Inventory} authed={this.state.authed} />
+                  <PrivateRoute exact path='/attempts/:id/add' component={AddEditAttempts} authed={this.state.authed} />
+                  <PrivateRoute exact path='/attempts/:id/edit' component={AddEditAttempts} authed={this.state.authed} />    
+                  <PrivateRoute exact path='/attempts/:id' component={Attempts} authed={this.state.authed} />
+                </Switch>
+              </div>
             </div>
           </React.Fragment>
         </BrowserRouter>
