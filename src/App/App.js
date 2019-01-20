@@ -1,24 +1,35 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import Auth from '../components/pages/Auth/Auth';
-import MyNavbar from '../components/MyNavbar/MyNavbar';
 import {
   BrowserRouter,
   Route,
   Redirect,
   Switch,
 } from 'react-router-dom';
-// import weatherRequests from '../helpers/data/weatherRequests';
+import Auth from '../components/pages/Auth/Auth';
+import MyNavbar from '../components/MyNavbar/MyNavbar';
+import Beans from '../components/pages/Beans/Beans';
+import Roasts from '../components/pages/Roasts/Roasts';
+import Inventory from '../components/pages/Inventory/Inventory';
+import Attempts from '../components/pages/Attempts/Attempts';
+import AddEditAttempts from '../components/pages/AddEditAttempts/AddEditAttempts';
 import authRequests from '../helpers/data/authRequests';
 import connection from '../helpers/data/connection';
 
 import './App.scss';
 
-const PublicRoute = ({component: Component, authed, ...rest}) => {
+const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
-    ? (<Component {...props} />)
-    : (<Redirect to={{ pathname: '/beans', state: { from: props.location} }}/>));
+    ? (<Component { ...props } />)
+    : (<Redirect to={{ pathname: '/beans', state: { from: props.location } }}/>));
+  return <Route {...rest} render={props => routeChecker(props)} />;
+};
+
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = props => (authed === true
+    ? (<Component { ...props } />)
+    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }}/>));
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
@@ -27,18 +38,6 @@ class App extends React.Component {
     authed: false,
     pendingUser: true,
   }  
-
-  // getWeather = (position) => {
-  //   const lat = position.coords.latitude;
-  //   const lon = position.coords.longitude;
-  //   weatherRequests.getCurrentWeather(lat, lon)
-  //     .then((weather) => {
-  //       console.log('weather data: ', weather)
-  //     })
-  //     .catch((err) => {
-  //       console.error('error with weather GET', err);
-  //     });  
-  // }  
 
   componentDidMount() {
     connection();
@@ -77,21 +76,24 @@ class App extends React.Component {
       return null;
     }      
     return (
-      <div className="App text-center">
-        <MyNavbar isAuthed={ authed } logoutClickEvent={logoutClickEvent} />
-        <Auth />
-        {/* <BrowserRouter>
+      <div className="App">
+        <BrowserRouter>
           <React.Fragment>
             <MyNavbar isAuthed={ authed } logoutClickEvent={logoutClickEvent} />
-            <div className="container">
-              <div className='row'>
-                <Switch>
-                  <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
-                </Switch> 
-              </div>
-            </div>                           
+            <div className='row'>
+              <Switch>
+                <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
+                <PrivateRoute path='/' exact component={Beans} authed={this.state.authed} />
+                <PrivateRoute path='/beans' component={Beans} authed={this.state.authed} />
+                <PrivateRoute path='/roasts' component={Roasts} authed={this.state.authed} />
+                <PrivateRoute path='/inventory' component={Inventory} authed={this.state.authed} />
+                <PrivateRoute exact path='/attempts/:id/add' component={AddEditAttempts} authed={this.state.authed} />
+                <PrivateRoute exact path='/attempts/:id/edit' component={AddEditAttempts} authed={this.state.authed} />    
+                <PrivateRoute exact path='/attempts/:id' component={Attempts} authed={this.state.authed} />
+              </Switch>
+            </div>
           </React.Fragment>
-        </BrowserRouter> */}
+        </BrowserRouter>
       </div>
     );
   }

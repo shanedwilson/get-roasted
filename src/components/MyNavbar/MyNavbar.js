@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -34,13 +35,13 @@ class MyNavbar extends React.Component {
         return (
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink>Beans</NavLink>
+            <NavLink tag={RRNavLink} to="/beans">Beans</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>Roasts</NavLink>
+            <NavLink tag={RRNavLink} to="/roasts">Roasts</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>Inventory</NavLink>
+            <NavLink tag={RRNavLink} to="/inventory">Inventory</NavLink>
           </NavItem>
           <NavItem>
             <NavLink onClick={logoutClickEvent}>Logout</NavLink>
