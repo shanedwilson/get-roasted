@@ -1,7 +1,7 @@
 import React from 'react';
-import inventoryRequests from '../../../helpers/data/inventoryRequests'
+import InventoryCard from '../../InventoryCard/InventoryCard';
 import authRequests from '../../../helpers/data/authRequests';
-import beanRequests from '../../../helpers/data/beanRequests';
+import smashDataRequests from '../../../helpers/data/smashDataRequests';
 
 
 import './Inventory.scss';
@@ -9,42 +9,40 @@ import './Inventory.scss';
 class Inventory extends React.Component {
   state = {
     inventory: [],
-    beanIds: [],
   }
 
   getInventory = () => {
-    beanRequests.getBeansByArrayOfIds(this.state.beanIds)
+  const uid = authRequests.getCurrentUid();
+   smashDataRequests.getAllInventoryWithBeanInfo(uid)
     .then((inventory) => {
       this.setState({ inventory })
     })
     .catch((error) => {
       console.error('error with inventory GET', error);
-    })
+    })    
   }
 
-  getBeanIds = () => {
-    const uid = authRequests.getCurrentUid();
-    inventoryRequests.getBeanIdsForInventory(uid)
-    .then((beanIds) => {
-      this.setState({ beanIds });
-    })
-    .then(() => {
-      this.getInventory();
-    })
-    .catch((error) => {
-      console.error('error with inventory bean ids GET', error);
-    })
-  };
-
   componentDidMount() {
-    this.getBeanIds();
+    this.getInventory();
   }
 
   render() {
+    const { inventory } = this.state;
+
+    const inventoryCards = inventory.map(item => (
+      <InventoryCard 
+        key={item.id}
+        item={item}
+      />
+    ));    
+
 
     return (
       <div className="inventory mx-auto">
-        <h1>INVENTORY!!!</h1>
+        <h1 className="text-center">INVENTORY!!!</h1>
+        <div className="row justify-content-center">
+          {inventoryCards}
+        </div>
       </div>
     )
   }
