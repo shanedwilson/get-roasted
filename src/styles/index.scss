@@ -1,7 +1,10 @@
 @import "./_variables.scss";
 
+@import url("https://fonts.googleapis.com/css?family=Bungee|Open+Sans");
+
 
 body {
-  background-color: $backgroundColor !important,;
+  background-color: $backgroundColor !important;
+  font-family: 'open sans';
 }
 
