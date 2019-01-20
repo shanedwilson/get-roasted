@@ -12,6 +12,8 @@ import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Beans from '../components/pages/Beans/Beans';
 import Roasts from '../components/pages/Roasts/Roasts';
 import Inventory from '../components/pages/Inventory/Inventory';
+import Attempts from '../components/pages/Attempts/Attempts';
+import AddEditAttempts from '../components/pages/AddEditAttempts/AddEditAttempts';
 import authRequests from '../helpers/data/authRequests';
 import connection from '../helpers/data/connection';
 
@@ -85,6 +87,9 @@ class App extends React.Component {
                 <PrivateRoute path='/beans' component={Beans} authed={this.state.authed} />
                 <PrivateRoute path='/roasts' component={Roasts} authed={this.state.authed} />
                 <PrivateRoute path='/inventory' component={Inventory} authed={this.state.authed} />
+                <PrivateRoute exact path='/attempts/:id/add' component={AddEditAttempts} authed={this.state.authed} />
+                <PrivateRoute exact path='/attempts/:id/edit' component={AddEditAttempts} authed={this.state.authed} />    
+                <PrivateRoute exact path='/attempts/:id' component={Attempts} authed={this.state.authed} />
               </Switch>
             </div>
           </React.Fragment>
