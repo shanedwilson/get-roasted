@@ -2,13 +2,15 @@ import React from 'react';
 import InventoryCard from '../../InventoryCard/InventoryCard';
 import authRequests from '../../../helpers/data/authRequests';
 import smashDataRequests from '../../../helpers/data/smashDataRequests';
-
+import beanRequests from '../../../helpers/data/beanRequests';
+import AddEditInventory from '../../AddEditInventory/AddEditInventory';
 
 import './Inventory.scss';
 
 class Inventory extends React.Component {
   state = {
     inventory: [],
+    beans: [],
   }
 
   getInventory = () => {
@@ -22,12 +24,20 @@ class Inventory extends React.Component {
     })    
   }
 
+  getAllBeans = () => {
+    beanRequests.getAllBeans()
+    .then((beans) => {
+      this.setState({ beans });
+    })
+  }
+
   componentDidMount() {
     this.getInventory();
+    this.getAllBeans();
   }
 
   render() {
-    const { inventory } = this.state;
+    const { inventory, beans } = this.state;
 
     const inventoryCards = inventory.map(item => (
       <InventoryCard 
@@ -40,6 +50,7 @@ class Inventory extends React.Component {
     return (
       <div className="inventory mx-auto">
         <h1 className="text-center">INVENTORY!!!</h1>
+        <div><AddEditInventory beans={beans} /></div>
         <div className="row justify-content-center">
           {inventoryCards}
         </div>
