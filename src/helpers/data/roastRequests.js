@@ -3,8 +3,8 @@ import apiKeys from '../apiKeys';
 
 const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getAllRoasts = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/roasts.json?orderBy="uid"&equalTo="${uid}"`)
+const getAllRoasts = () => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/roasts.json`)
     .then((results) => {
       const roastsObject = results.data;
       const roastsArray = [];

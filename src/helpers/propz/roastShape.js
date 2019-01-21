@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 
-const RoastShape = PropTypes.shape({
+const roastShape = PropTypes.shape({
   beanId: PropTypes.string.isRequired,
   uid: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  roastName: PropTypes.string.isRequired,
 });
 
 const roastOptionalShape = PropTypes.oneOfType([
   PropTypes.shape({
     nope: PropTypes.string.isRequired,
   }),
-  RoastShape,
+  roastShape,
 ]);
 
-export default { RoastShape, roastOptionalShape };
+export default { roastShape, roastOptionalShape };
   

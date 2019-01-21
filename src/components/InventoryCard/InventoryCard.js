@@ -31,7 +31,7 @@ class InventoryCard extends React.Component {
           </span>
           <span className="col-1">
             <button className="btn btn-default" onClick={this.deleteEvent}>
-              Attempt
+              Roast
               <i className="fas fa-plus-circle ml-2"></i>
             </button>
           </span>

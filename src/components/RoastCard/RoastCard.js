@@ -14,9 +14,12 @@ class RoastCard extends React.Component {
   render() {
     const {
       roastSmash,
+      uid,
+      ownerUid,
     } = this.props;
 
     const makeButtons = () => {
+      if (uid === ownerUid) {
         return (
         <div className="mx-auto">
           <span className="col">
@@ -35,8 +38,18 @@ class RoastCard extends React.Component {
             </button>
           </span>
         </div>
-      );
-    }   
+        );
+      }
+      return  (
+        <div className="mx-auto">
+          <span className="col">
+            <button className="btn btn-default" onClick={this.deleteEvent}>
+              <i className="fas fa-plus-circle"></i>
+            </button>
+          </span>
+        </div>
+          )
+    };  
 
     return(
       <div className="card col-5 m-3">

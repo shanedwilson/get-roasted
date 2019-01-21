@@ -12,7 +12,6 @@ const getAllInventoryWithBeanInfo = (uid) => new Promise((resolve, reject) => {
         .then((beans) => {
           const newBeans = beans.map(bean => Object.assign({ ...items.find(x => x.beanId === bean.id), ...bean }));
           newBeans.forEach((bean) => {
-            console.log('bean', bean);
             if ("uid" in bean ) {
               beanInventory.push(bean);
             }
@@ -23,10 +22,10 @@ const getAllInventoryWithBeanInfo = (uid) => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-const getRoastsWithBeanInfo =(uid) => new Promise((resolve, reject) => {
+const getRoastsWithBeanInfo =() => new Promise((resolve, reject) => {
   let roasts = [];
   let roastsSmash = [];
-  roastRequests.getAllRoasts(uid)
+  roastRequests.getAllRoasts()
     .then((rsts) => {
       roasts = rsts;
       beanRequests.getAllBeans()
@@ -37,7 +36,6 @@ const getRoastsWithBeanInfo =(uid) => new Promise((resolve, reject) => {
               roastsSmash.push(roastBean);
             }
           })
-          console.log(roastsSmash);
           resolve(roastsSmash);
         });
     })

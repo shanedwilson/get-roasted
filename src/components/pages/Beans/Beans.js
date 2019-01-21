@@ -44,7 +44,7 @@ class Beans extends React.Component {
           <div className="row">
             <div className="col mt-5">
               <p className="text-center">Here you'll find a selection of beans from around the world. 
-              Click the '+' button on any bean you'd like to roast.</p>
+              Click the '+' button on any bean you'd like to add to your inventory.</p>
             </div>    
             <div className='form-container col'>
               <AddEditBean />
@@ -56,7 +56,7 @@ class Beans extends React.Component {
           <div className="row">
             <div className="col mt-5">
               <p className="text-center">Here you'll find a selection of beans from around the world. 
-              Click the '+' button on any bean you'd like to roast.</p>
+              Click the '+' button on any bean you'd like to add to your inventory.</p>
             </div>    
           </div>        
       )
