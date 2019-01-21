@@ -23,19 +23,20 @@ const getAllInventoryWithBeanInfo = (uid) => new Promise((resolve, reject) => {
 });
 
 const getRoastsWithBeanInfo =() => new Promise((resolve, reject) => {
-  let roasts = [];
+  let beans = [];
   let roastsSmash = [];
-  roastRequests.getAllRoasts()
-    .then((rsts) => {
-      roasts = rsts;
-      beanRequests.getAllBeans()
-        .then((beans) => {
-          const roastBeans = beans.map(bean => Object.assign({ ...roasts.find(x => x.beanId === bean.id), ...bean }));
+    beanRequests.getAllBeans()
+    .then((bns) => {
+      beans = bns;
+      roastRequests.getAllRoasts()
+        .then((roasts) => {
+          const roastBeans = roasts.map(roast => Object.assign({ ...beans.find(x => x.id === roast.beanId), ...roast }));
           roastBeans.forEach((roastBean) => {
             if ("roastName" in roastBean ) {
               roastsSmash.push(roastBean);
             }
           })
+          console.log(roastsSmash);
           resolve(roastsSmash);
         });
     })

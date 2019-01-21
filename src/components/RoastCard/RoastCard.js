@@ -6,9 +6,16 @@ import './RoastCard.scss';
 
 class RoastCard extends React.Component {
     static propTypes = {
-    roast: roastShape.roastShape,
+    roastSmash: roastShape.roastShape,
     deleteSingleRoast: PropTypes.func,
     passBeanToRoast: PropTypes.func,
+    onSelect: PropTypes.func,
+  }
+
+  roastClick = (e) => {
+    e.stopPropagation();
+    const { roastSmash, onSelect } = this.props;
+    onSelect(roastSmash.id);
   }
 
   render() {
@@ -56,7 +63,7 @@ class RoastCard extends React.Component {
         <div className="card-header">
           <h5 className="card-title text-center">{roastSmash.roastName}</h5>
         </div>
-        <div className="card-body">
+        <div className="card-body" onClick={this.roastClick}>
           <p className="card-text text-center">{roastSmash.name}</p>
         </div>
         {makeButtons()}

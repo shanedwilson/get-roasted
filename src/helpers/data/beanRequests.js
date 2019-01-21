@@ -40,4 +40,16 @@ const getBeansByArrayOfIds = (beanIdsArray) => new Promise((resolve, reject) => 
     });
 });
 
-export default { getAllBeans, getBeansByArrayOfIds };
+const getSingleBean = beanId => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/beans/${beanId}.json`)
+    .then((result) => {
+      const singleBean = result.data;
+      singleBean.id = beanId;
+      resolve(singleBean);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
+export default { getAllBeans, getBeansByArrayOfIds, getSingleBean };
