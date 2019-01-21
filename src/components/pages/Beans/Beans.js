@@ -22,6 +22,13 @@ class Beans extends React.Component {
 
   componentDidMount() {
     this.getBeans();
+  }
+
+  deleteSingleBean = (beanId) => {
+    beanRequests.deleteBean(beanId)
+      .then(() => {
+        this.getBeans();
+      });
   }  
 
   render() {
@@ -35,6 +42,7 @@ class Beans extends React.Component {
         bean={bean}
         uid={uid}
         ownerUid={ownerUid}
+        deleteSingleBean={this.deleteSingleBean}
       />
     ));
 

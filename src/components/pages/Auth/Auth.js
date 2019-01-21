@@ -18,7 +18,7 @@ class Auth extends React.Component {
   render() {
     return (
       <div className="Auth mx-auto">
-        <div className="text-center logo-container">
+        <div className="text-center logo-container mt-5">
           <div className="roasted-logo">
             <img src={mainLogo} alt="main logo" />        
           </div>

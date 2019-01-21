@@ -52,4 +52,12 @@ const getSingleBean = beanId => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAllBeans, getBeansByArrayOfIds, getSingleBean };
+const deleteBean = beanId => axios.delete(`${firebaseUrl}/beans/${beanId}.json`);
+
+
+export default {
+  getAllBeans,
+  getBeansByArrayOfIds,
+  getSingleBean,
+  deleteBean,
+   };

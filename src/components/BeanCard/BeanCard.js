@@ -11,6 +11,12 @@ class BeanCard extends React.Component {
     passBeanToEdit: PropTypes.func,
   }
 
+  deleteEvent = (e) => {
+    e.preventDefault();
+    const { deleteSingleBean, bean } = this.props;
+    deleteSingleBean(bean.id);
+  }  
+
   render() {
     const {
       bean,
@@ -33,7 +39,7 @@ class BeanCard extends React.Component {
             </button>
           </span>
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn btn-default">
               <i className="fas fa-plus-circle"></i>
             </button>
           </span>
