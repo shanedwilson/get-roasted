@@ -2,11 +2,11 @@
   "roast0" : {
     "beanId" : "bean0",
     "uid" : "EYSoFrK8TzeUwtPdw7UwAP9KjVb2",
-    "name" : "St. Izzy's Roast 1"
+    "roastName" : "St. Izzy's Roast 1"
   },
     "roast1" : {
     "beanId" : "bean1",
     "uid" : "EYSoFrK8TzeUwtPdw7UwAP9KjVb2",
-    "name" : "St. Izzy's Roast 2"
+    "roastName" : "St. Izzy's Roast 2"
   }
 }

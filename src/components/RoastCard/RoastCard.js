@@ -1,51 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import inventoryShape from '../../helpers/propz/inventoryShape';
+import roastShape from '../../helpers/propz/roastShape';
 
-import './InventoryCard.scss';
+import './RoastCard.scss';
 
-class InventoryCard extends React.Component {
+class RoastCard extends React.Component {
     static propTypes = {
-    inventoryItem: inventoryShape.inventoryShape,
-    deleteSingleBean: PropTypes.func,
-    passBeanToEdit: PropTypes.func,
+    roast: roastShape.roastShape,
+    deleteSingleRoast: PropTypes.func,
+    passBeanToRoast: PropTypes.func,
   }
 
   render() {
     const {
-      item,
+      roastSmash,
     } = this.props;
 
     const makeButtons = () => {
         return (
         <div className="mx-auto">
-          <span className="col-1">
+          <span className="col">
             <button className="btn btn-default" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
-          <span className="col-1">
+          <span className="col">
             <button className="btn btn-default" onClick={this.deleteEvent}>
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
-          <span className="col-1">
+          <span className="col">
             <button className="btn btn-default" onClick={this.deleteEvent}>
-              Attempt
-              <i className="fas fa-plus-circle ml-2"></i>
+              <i className="fas fa-plus-circle"></i>
             </button>
           </span>
         </div>
-        );
-      }
-    
+      );
+    }   
+
     return(
       <div className="card col-5 m-3">
         <div className="card-header">
-          <h5 className="card-title text-center">{item.name}</h5>
+          <h5 className="card-title text-center">{roastSmash.roastName}</h5>
         </div>
         <div className="card-body">
-          <p className="card-text text-center">{item.pounds} lbs {item.ounces} oz</p>
+          <p className="card-text text-center">{roastSmash.name}</p>
         </div>
         {makeButtons()}
       </div>
@@ -53,4 +52,4 @@ class InventoryCard extends React.Component {
   }
 }
 
-export default InventoryCard;
+export default RoastCard;

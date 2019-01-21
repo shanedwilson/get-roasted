@@ -1,19 +1,20 @@
 import React from 'react';
-import roastRequests from '../../../helpers/data/roastRequests'
+import RoastCard from '../../RoastCard/RoastCard';
+import smashDataRequests from '../../../helpers/data/smashDataRequests';
 import authRequests from '../../../helpers/data/authRequests';
 
 import './Roasts.scss';
 
 class Roasts extends React.Component {
   state = {
-    beans: [],
+    roastsSmash: [],
   }
 
   getRoasts = () => {
     const uid = authRequests.getCurrentUid();
-    roastRequests.getAllRoasts(uid)
-    .then((roasts) => {
-      this.setState({ roasts });
+    smashDataRequests.getRoastsWithBeanInfo(uid)
+    .then((roastsSmash) => {
+      this.setState({ roastsSmash });
     })
   };
 
@@ -27,12 +28,21 @@ class Roasts extends React.Component {
   }   
 
   render() {
-    console.log(this.state.roasts);
+   const { roastsSmash } = this.state;
+
+    const roastCards = roastsSmash.map(roastSmash => (
+      <RoastCard 
+        key={roastSmash.id}
+        roastSmash={roastSmash}
+      />
+    ));     
 
     return (
       <div className="Roasts mx-auto">
-        <h1>ROASTS!!!</h1>
-        <button className="btn btn-success" id="12345" onClick={this.changeView}>Go To Attempts</button>
+        <h1 className="text-center">ROASTS!!!</h1>
+        <div className="row justify-content-center">
+          {roastCards}
+        </div>        
       </div>
     )
   }
