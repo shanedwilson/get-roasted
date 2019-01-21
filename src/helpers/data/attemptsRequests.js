@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys';
 
 const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getAllAttempts = (uid) => new Promise((resolve, reject) => {
+const getAllAttempts = (uid, firebaseId) => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/attempts.json?orderBy="uid"&equalTo="${uid}"`)
     .then((results) => {
       const attemptsObject = results.data;
@@ -11,7 +11,9 @@ const getAllAttempts = (uid) => new Promise((resolve, reject) => {
       if (attemptsObject !== null) {
         Object.keys(attemptsObject).forEach((attemptId) => {
           attemptsObject[attemptId].id = attemptId;
-          attemptsArray.push(attemptsObject[attemptId]);
+            if ( attemptsObject[attemptId].roastId === `${firebaseId}` ) {
+              attemptsArray.push(attemptsObject[attemptId]);
+            }          
         });
       }
       resolve(attemptsArray);

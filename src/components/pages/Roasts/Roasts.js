@@ -36,7 +36,11 @@ class Roasts extends React.Component {
   componentDidMount() {
     this.getRoasts();
     this.getAllBeans();
-  }   
+  }
+
+  attemptsView = (roastId) => {
+    this.props.history.push(`/attempts/${roastId}`);
+  }
 
   render() {
     const { roastsSmash, beans } = this.state;
@@ -49,6 +53,7 @@ class Roasts extends React.Component {
         roastSmash={roastSmash}
         uid={uid}
         ownerUid={ownerUid}
+        onSelect={this.attemptsView}
       />
     ));     
 
