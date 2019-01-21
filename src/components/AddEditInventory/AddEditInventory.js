@@ -10,15 +10,15 @@ class AddEditInventory extends React.Component {
     } = this.props;
 
   const dropdownItems = beans.map(bean => (
-    <option value={bean.id}>{bean.name}</option>
+    <option key={bean.id} value={bean.id}>{bean.name}</option>
   ));
 
     return (
       <div>
         <form className="row form-container border border-dark rounded mt-5 mx-auto col-6" onSubmit={this.formSubmit}>
           <div className="form mt-2 col-11">
-            <select class="custom-select mb-2">
-              <option selected>Select Bean</option>
+            <select className="custom-select mb-2">
+              <option defaultValue>Select Bean</option>
               {dropdownItems}
             </select>
             <div className="col-auto form-lines p-0">

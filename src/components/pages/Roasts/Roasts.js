@@ -1,21 +1,32 @@
 import React from 'react';
-import roastRequests from '../../../helpers/data/roastRequests'
+import RoastCard from '../../RoastCard/RoastCard';
+import AddEditRoast from '../../AddEditRoast/AddEditRoast';
+import smashDataRequests from '../../../helpers/data/smashDataRequests';
 import authRequests from '../../../helpers/data/authRequests';
+import beanRequests from '../../../helpers/data/beanRequests';
 
 import './Roasts.scss';
 
 class Roasts extends React.Component {
   state = {
+    roastsSmash: [],
     beans: [],
   }
 
   getRoasts = () => {
     const uid = authRequests.getCurrentUid();
-    roastRequests.getAllRoasts(uid)
-    .then((roasts) => {
-      this.setState({ roasts });
+    smashDataRequests.getRoastsWithBeanInfo(uid)
+    .then((roastsSmash) => {
+      this.setState({ roastsSmash });
     })
   };
+
+  getAllBeans = () => {
+    beanRequests.getAllBeans()
+    .then((beans) => {
+      this.setState({ beans });
+    })
+  }  
 
   changeView = (e) => {
     const roastId = e.target.id;
@@ -24,15 +35,30 @@ class Roasts extends React.Component {
 
   componentDidMount() {
     this.getRoasts();
+    this.getAllBeans();
   }   
 
   render() {
-    console.log(this.state.roasts);
+    const { roastsSmash, beans } = this.state;
+    const uid = authRequests.getCurrentUid();
+    const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
+
+    const roastCards = roastsSmash.map(roastSmash => (
+      <RoastCard 
+        key={roastSmash.id}
+        roastSmash={roastSmash}
+        uid={uid}
+        ownerUid={ownerUid}
+      />
+    ));     
 
     return (
       <div className="Roasts mx-auto">
-        <h1>ROASTS!!!</h1>
-        <button className="btn btn-success" id="12345" onClick={this.changeView}>Go To Attempts</button>
+        <h1 className="text-center">ROASTS!!!</h1>
+        <div><AddEditRoast beans={beans} /></div>
+        <div className="row justify-content-center">
+          {roastCards}
+        </div>        
       </div>
     )
   }

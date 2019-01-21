@@ -31,7 +31,7 @@ class InventoryCard extends React.Component {
           </span>
           <span className="col-1">
             <button className="btn btn-default" onClick={this.deleteEvent}>
-              Attempt
+              Roast
               <i className="fas fa-plus-circle ml-2"></i>
             </button>
           </span>
@@ -40,11 +40,11 @@ class InventoryCard extends React.Component {
       }
     
     return(
-     <div className="card col-5 m-3">
-          <div className="card-header">
+      <div className="card col-5 m-3">
+        <div className="card-header">
           <h5 className="card-title text-center">{item.name}</h5>
-          </div>
-          <div className="card-body">
+        </div>
+        <div className="card-body">
           <p className="card-text text-center">{item.pounds} lbs {item.ounces} oz</p>
         </div>
         {makeButtons()}
