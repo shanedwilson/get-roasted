@@ -34,16 +34,16 @@ class MyNavbar extends React.Component {
       if (isAuthed) {
         return (
         <Nav className="ml-auto" navbar>
-          <NavItem>
+          <NavItem className="nav-item">
             <NavLink tag={RRNavLink} to="/beans">Beans</NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="nav-item">
             <NavLink tag={RRNavLink} to="/roasts">Roasts</NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="nav-item">
             <NavLink tag={RRNavLink} to="/inventory">Inventory</NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="nav-item">
             <NavLink onClick={logoutClickEvent}>Logout</NavLink>
           </NavItem>
         </Nav>

@@ -4,5 +4,17 @@
     "uid" : "EYSoFrK8TzeUwtPdw7UwAP9KjVb2",
     "pounds" : 5,
     "ounces" : 0
-  }
+  },
+  "inventory1" : {
+    "beanId" : "bean2",
+    "uid" : "EYSoFrK8TzeUwtPdw7UwAP9KjVb2",
+    "pounds" : 3,
+    "ounces" : 8
+  },
+  "inventory2" : {
+    "beanId" : "bean2",
+    "uid" : "12345",
+    "pounds" : 5,
+    "ounces" : 0
+  }  
 }
