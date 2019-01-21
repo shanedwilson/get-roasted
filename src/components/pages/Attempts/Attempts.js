@@ -1,6 +1,7 @@
 import React from 'react';
-import attemptsRequests from '../../../helpers/data/attemptsRequests'
-import weatherRequests from '../../../helpers/data/weatherRequests'
+import AttemptCard from '../../AttemptCard/AttemptCard';
+import attemptsRequests from '../../../helpers/data/attemptsRequests';
+import weatherRequests from '../../../helpers/data/weatherRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import roastRequests from '../../../helpers/data/roastRequests';
 import beanRequests from '../../../helpers/data/beanRequests';
@@ -84,19 +85,30 @@ class Attempts extends React.Component {
       bean,
     } = this.state
 
+    const { attempts } = this.state;
+    const uid = authRequests.getCurrentUid();
+    const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
+
+    const attemptCards = attempts.map(attempt => (
+      <AttemptCard 
+        key={attempt.id}
+        attempt={attempt}
+        uid={uid}
+      />
+    ));         
+
     return (
       <div className="Attempts mx-auto">
-        <h1>ATTEMPTS!!!</h1>
-        <button className="btn btn-success" id="13579" onClick={this.addView}>Go To Attempts Add</button>
-        <button className="btn btn-primary" id="246810" onClick={this.editView}>Go To Attempts Edit</button>
-        <div className="card col-10 m-3">
+        <h1 className="text-center">ATTEMPTS!!!</h1>
+        <div className="card col-10 m-3 mx-auto">
           <div className="card-header">
             <h5 className="card-title text-center">{roast.roastName}</h5>
           </div>
           <div className="card-body">
           <p className="card-text text-center">{bean.name}</p>
           </div>
-        </div>        
+        </div>
+        <div>{attemptCards}</div>
       </div>
     )
   }
