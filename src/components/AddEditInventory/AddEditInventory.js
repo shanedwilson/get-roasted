@@ -15,7 +15,7 @@ class AddEditInventory extends React.Component {
 
     return (
       <div>
-        <form className="row form-container border border-dark rounded mt-5 mx-auto col-8" onSubmit={this.formSubmit}>
+        <form className="row form-container border border-dark rounded mt-5 mx-auto col-6" onSubmit={this.formSubmit}>
           <div className="form mt-2 col-11">
             <select class="custom-select mb-2">
               <option selected>Select Bean</option>
