@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import roastShape from '../../helpers/propz/roastShape';
 
 import './AttemptCard.scss';
 
@@ -12,7 +10,6 @@ class AttemptCard extends React.Component {
   render() {
     const {
       attempt,
-      uid,
     } = this.props;
 
     const makeButtons = () => {
@@ -26,11 +23,6 @@ class AttemptCard extends React.Component {
           <span className="col">
             <button className="btn btn-default" onClick={this.deleteEvent}>
               <i className="fas fa-trash-alt"></i>
-            </button>
-          </span>
-          <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
-              <i className="fas fa-plus-circle"></i>
             </button>
           </span>
         </div>

@@ -87,7 +87,6 @@ class Attempts extends React.Component {
 
     const { attempts } = this.state;
     const uid = authRequests.getCurrentUid();
-    const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
 
     const attemptCards = attempts.map(attempt => (
       <AttemptCard 
@@ -107,8 +106,15 @@ class Attempts extends React.Component {
           <div className="card-body">
           <p className="card-text text-center">{bean.name}</p>
           </div>
+          <div className="mx-auto">
+            <span className="col">
+              <button className="btn btn-default ml-3" onClick={this.deleteEvent}>
+                Add Attempt   <i className="fas fa-plus-circle"></i>
+              </button>
+            </span>
+          </div>          
         </div>
-        <div>{attemptCards}</div>
+        <div className="mx-auto">{attemptCards}</div>
       </div>
     )
   }

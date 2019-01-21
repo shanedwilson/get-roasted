@@ -36,7 +36,6 @@ const getRoastsWithBeanInfo =() => new Promise((resolve, reject) => {
               roastsSmash.push(roastBean);
             }
           })
-          console.log(roastsSmash);
           resolve(roastsSmash);
         });
     })
