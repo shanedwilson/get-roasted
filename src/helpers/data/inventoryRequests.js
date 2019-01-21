@@ -38,4 +38,11 @@ const getAllInventory = (uid) => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAllInventory, getBeanIdsForInventory };
+const deleteItem = itemId => axios.delete(`${firebaseUrl}/inventory/${itemId}.json`);
+
+
+export default {
+  getAllInventory,
+  getBeanIdsForInventory,
+  deleteItem,
+   };

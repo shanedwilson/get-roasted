@@ -10,7 +10,7 @@ const getAllInventoryWithBeanInfo = (uid) => new Promise((resolve, reject) => {
       items = inventory;
       beanRequests.getAllBeans()
         .then((beans) => {
-          const newBeans = beans.map(bean => Object.assign({ ...items.find(x => x.beanId === bean.id), ...bean }));
+          const newBeans = beans.map(bean => Object.assign({ ...bean, ...items.find(x => x.beanId === bean.id), }));
           newBeans.forEach((bean) => {
             if ("uid" in bean ) {
               beanInventory.push(bean);
