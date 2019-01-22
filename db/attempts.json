@@ -15,5 +15,56 @@
     "secondTime" : "12:30",
     "secondTemp" : "275",
     "roastLevel" : "Full City Plus"
-  }
+  },
+  "attempt1" : {
+    "uid" : "EYSoFrK8TzeUwtPdw7UwAP9KjVb2",  
+    "roastId" : "roast1",  
+    "notes" : "manual mode. preheat 1:45. full power until 1st. half power thereafer.",
+    "rating" : 0,
+    "temp" : 21,
+    "humidity" : 56,
+    "city" : "Nashville",
+    "state" : "TN",
+    "date" : "1/21/19",
+    "length" : "13:25",
+    "firstTime" : "9:30",
+    "firstTemp" : "300",
+    "secondTime" : "12:30",
+    "secondTemp" : "275",
+    "roastLevel" : "Full City Plus"
+  },
+  "attempt2" : {
+    "uid" : "12345",  
+    "roastId" : "roast0",  
+    "notes" : "manual mode. preheat 1:45. full power until 1st. half power thereafer.",
+    "rating" : 0,
+    "temp" : 43,
+    "humidity" : 56,
+    "city" : "Nashville",
+    "state" : "TN",
+    "date" : "1/15/19",
+    "length" : "13:25",
+    "firstTime" : "9:30",
+    "firstTemp" : "300",
+    "secondTime" : "12:30",
+    "secondTemp" : "275",
+    "roastLevel" : "Full City Plus"
+  },
+  "attempt3" : {
+    "uid" : "EYSoFrK8TzeUwtPdw7UwAP9KjVb2",  
+    "roastId" : "roast0",  
+    "notes" : "manual mode. preheat 1:45. full power until 1st. half power thereafer.",
+    "rating" : 0,
+    "temp" : 30,
+    "humidity" : 60,
+    "city" : "Nashville",
+    "state" : "TN",
+    "date" : "1/22/19",
+    "length" : "13:25",
+    "firstTime" : "9:30",
+    "firstTemp" : "300",
+    "secondTime" : "12:30",
+    "secondTemp" : "275",
+    "roastLevel" : "Full City Plus"
+  }  
 }

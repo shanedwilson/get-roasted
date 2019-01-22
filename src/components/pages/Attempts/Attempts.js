@@ -77,7 +77,14 @@ class Attempts extends React.Component {
     this.getAttempts();
     navigator.geolocation.getCurrentPosition(this.getWeather);
     this.getRoast();
-  }  
+  }
+
+  deleteSingleAttempt = (attemptId) => {
+    attemptsRequests.deleteAttempt(attemptId)
+      .then(() => {
+        this.getAttempts();
+      });
+  }   
 
   render() {
     const {
@@ -93,13 +100,14 @@ class Attempts extends React.Component {
         key={attempt.id}
         attempt={attempt}
         uid={uid}
+        deleteSingleAttempt={this.deleteSingleAttempt}
       />
     ));         
 
     return (
       <div className="Attempts mx-auto">
         <h1 className="text-center">ATTEMPTS!!!</h1>
-        <div className="card col-10 m-3 mx-auto">
+        <div className="card col-6 m-3 mx-auto">
           <div className="card-header">
             <h5 className="card-title text-center">{roast.roastName}</h5>
           </div>
@@ -114,7 +122,7 @@ class Attempts extends React.Component {
             </span>
           </div>          
         </div>
-        <div className="mx-auto">{attemptCards}</div>
+        <div className="justify-content-center row">{attemptCards}</div>
       </div>
     )
   }
