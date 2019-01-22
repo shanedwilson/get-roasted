@@ -41,9 +41,10 @@ class Beans extends React.Component {
   formSubmitEvent = (newBean) => {
     const { isEditing, editId } = this.state;
     if (isEditing) {
-      beanRequests.putRequest(editId, newBean)
+      beanRequests.updateBean(editId, newBean)
         .then(() => {
           this.getBeans();
+          this.setState({ isEditing : false })
         });
     } else {
       beanRequests.createBean(newBean)
