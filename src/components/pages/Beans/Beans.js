@@ -11,7 +11,7 @@ class Beans extends React.Component {
   state = {
     beans: [],
     uid: '',
-    isEditing: true,
+    isEditing: false,
   }
 
   getBeans = () => {
@@ -34,7 +34,22 @@ class Beans extends React.Component {
       .then(() => {
         this.getBeans();
       });
-  }  
+  }
+
+  formSubmitEvent = (newBean) => {
+    const { isEditing, editId } = this.state;
+    if (isEditing) {
+      beanRequests.putRequest(editId, newBean)
+        .then(() => {
+          this.getBeans();
+        });
+    } else {
+      beanRequests.createBean(newBean)
+        .then(() => {
+          this.getBeans();
+        });
+    }
+  }    
 
   render() {
     const { beans, isEditing } = this.state;
@@ -61,7 +76,10 @@ class Beans extends React.Component {
               Click the '+' button on any bean you'd like to add to your inventory.</p>
             </div>    
             <div className='form-container col'>
-              <AddEditBean isEditing={isEditing} />
+              <AddEditBean
+                isEditing={isEditing}
+                onSubmit={this.formSubmitEvent}
+              />
             </div>
           </div>        
         );
