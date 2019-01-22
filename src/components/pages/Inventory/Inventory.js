@@ -3,6 +3,7 @@ import InventoryCard from '../../InventoryCard/InventoryCard';
 import authRequests from '../../../helpers/data/authRequests';
 import smashDataRequests from '../../../helpers/data/smashDataRequests';
 import beanRequests from '../../../helpers/data/beanRequests';
+import inventoryRequests from '../../../helpers/data/inventoryRequests';
 import AddEditInventory from '../../AddEditInventory/AddEditInventory';
 
 import './Inventory.scss';
@@ -36,6 +37,13 @@ class Inventory extends React.Component {
     this.getAllBeans();
   }
 
+  deleteSingleItem = (itemId) => {
+    inventoryRequests.deleteItem(itemId)
+      .then(() => {
+        this.getInventory();
+      });
+  }   
+
   render() {
     const { inventory, beans } = this.state;
 
@@ -43,6 +51,7 @@ class Inventory extends React.Component {
       <InventoryCard 
         key={item.id}
         item={item}
+        deleteSingleItem={this.deleteSingleItem}
       />
     ));    
 

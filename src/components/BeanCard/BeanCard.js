@@ -9,6 +9,19 @@ class BeanCard extends React.Component {
     bean: beanShape.beanShape,
     deleteSingleBean: PropTypes.func,
     passBeanToEdit: PropTypes.func,
+    onSelect: PropTypes.func,
+  }
+
+  deleteEvent = (e) => {
+    e.preventDefault();
+    const { deleteSingleBean, bean } = this.props;
+    deleteSingleBean(bean.id);
+  }
+
+  inventoryView = (e) => {
+    e.stopPropagation();
+    const { bean, onSelect } = this.props;
+    onSelect(bean.id);
   }
 
   render() {
@@ -33,7 +46,7 @@ class BeanCard extends React.Component {
             </button>
           </span>
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn btn-default" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle"></i>
             </button>
           </span>

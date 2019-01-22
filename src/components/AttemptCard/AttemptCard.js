@@ -7,6 +7,12 @@ class AttemptCard extends React.Component {
 
   }
 
+  deleteEvent = (e) => {
+    e.preventDefault();
+    const { deleteSingleAttempt, attempt } = this.props;
+    deleteSingleAttempt(attempt.id);
+  }   
+
   render() {
     const {
       attempt,
@@ -30,7 +36,7 @@ class AttemptCard extends React.Component {
       }
 
     return(
-      <div className="card col-10 m-3">
+      <div className="card col-5 m-3">
         <div className="card-header">
           <h5 className="card-title text-center">{attempt.date}</h5>
         </div>

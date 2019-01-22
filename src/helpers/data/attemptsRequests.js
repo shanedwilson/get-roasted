@@ -23,4 +23,6 @@ const getAllAttempts = (uid, firebaseId) => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAllAttempts };
+const deleteAttempt = attemptId => axios.delete(`${firebaseUrl}/attempts/${attemptId}.json`);
+
+export default { getAllAttempts, deleteAttempt };

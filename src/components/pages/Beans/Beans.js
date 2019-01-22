@@ -22,6 +22,17 @@ class Beans extends React.Component {
 
   componentDidMount() {
     this.getBeans();
+  }
+
+  inventoryView = (beanId) => {
+    this.props.history.push(`/inventory/${beanId}`);
+  }  
+
+  deleteSingleBean = (beanId) => {
+    beanRequests.deleteBean(beanId)
+      .then(() => {
+        this.getBeans();
+      });
   }  
 
   render() {
@@ -35,6 +46,8 @@ class Beans extends React.Component {
         bean={bean}
         uid={uid}
         ownerUid={ownerUid}
+        deleteSingleBean={this.deleteSingleBean}
+        onSelect={this.inventoryView}
       />
     ));
 

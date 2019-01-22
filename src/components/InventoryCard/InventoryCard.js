@@ -7,9 +7,15 @@ import './InventoryCard.scss';
 class InventoryCard extends React.Component {
     static propTypes = {
     inventoryItem: inventoryShape.inventoryShape,
-    deleteSingleBean: PropTypes.func,
-    passBeanToEdit: PropTypes.func,
+    deleteSingleItem: PropTypes.func,
+    passItemToEdit: PropTypes.func,
   }
+
+  deleteEvent = (e) => {
+    e.preventDefault();
+    const { deleteSingleItem, item } = this.props;
+    deleteSingleItem(item.id);
+  }   
 
   render() {
     const {
@@ -30,7 +36,7 @@ class InventoryCard extends React.Component {
             </button>
           </span>
           <span className="col-1">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn btn-default">
               Roast
               <i className="fas fa-plus-circle ml-2"></i>
             </button>
