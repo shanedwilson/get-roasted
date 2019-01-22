@@ -11,6 +11,7 @@ class Beans extends React.Component {
   state = {
     beans: [],
     uid: '',
+    isEditing: true,
   }
 
   getBeans = () => {
@@ -36,7 +37,7 @@ class Beans extends React.Component {
   }  
 
   render() {
-    const { beans } = this.state;
+    const { beans, isEditing } = this.state;
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
 
@@ -60,7 +61,7 @@ class Beans extends React.Component {
               Click the '+' button on any bean you'd like to add to your inventory.</p>
             </div>    
             <div className='form-container col'>
-              <AddEditBean />
+              <AddEditBean isEditing={isEditing} />
             </div>
           </div>        
         );

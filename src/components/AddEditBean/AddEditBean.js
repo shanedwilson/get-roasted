@@ -1,14 +1,50 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './AddEditBean.scss';
 
+const defaultBean = {
+  name: '',
+  region: 0,
+  imgUrl: false,
+  description: '',
+};
+
 class AddEditBean extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func,
+    editId: PropTypes.string,
+    isEditing: PropTypes.bool.isRequired,
+  }
+
+  state = {
+    newBean: defaultBean,
+  }
 
   render() {
+    const {
+      isEditing
+    } = this.props
+
+    const makeHeadline = () => {
+      if (isEditing === false) {
+        return (
+        <div className="mx-auto">
+          <h3>Add Bean</h3>
+        </div>
+        )
+      }
+        return (
+        <div className="mx-auto">
+          <h3>Edit Bean</h3>
+        </div>
+        )
+    }
 
     return (
       <div>
         <form className="row form-container border border-dark rounded mt-5 mx-auto" onSubmit={this.formSubmit}>
+          {makeHeadline()}
           <div className="form col-11 mt-2">
             <div className="col-auto form-lines p-0">
               <label htmlFor="link" className="sr-only">Region</label>
