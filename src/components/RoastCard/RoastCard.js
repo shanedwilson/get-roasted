@@ -18,12 +18,20 @@ class RoastCard extends React.Component {
     onSelect(roastSmash.id);
   }
 
+  deleteEvent = (e) => {
+    e.preventDefault();
+    const { deleteSingleRoast, roastSmash } = this.props;
+    deleteSingleRoast(roastSmash.id);
+  } 
+
   render() {
     const {
       roastSmash,
       uid,
       ownerUid,
     } = this.props;
+
+    
 
     const makeButtons = () => {
       if (uid === ownerUid) {
@@ -40,7 +48,7 @@ class RoastCard extends React.Component {
             </button>
           </span>
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn btn-default">
               <i className="fas fa-plus-circle"></i>
             </button>
           </span>
@@ -50,7 +58,7 @@ class RoastCard extends React.Component {
       return  (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn btn-default">
               <i className="fas fa-plus-circle"></i>
             </button>
           </span>

@@ -33,4 +33,11 @@ const getSingleRoast = roastId => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAllRoasts, getSingleRoast };
+const deleteRoast = roastId => axios.delete(`${firebaseUrl}/roasts/${roastId}.json`);
+
+
+export default {
+  getAllRoasts,
+  getSingleRoast,
+  deleteRoast,
+  };

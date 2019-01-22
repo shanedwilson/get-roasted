@@ -54,7 +54,6 @@ const getSingleBean = beanId => new Promise((resolve, reject) => {
 
 const deleteBean = beanId => axios.delete(`${firebaseUrl}/beans/${beanId}.json`);
 
-
 export default {
   getAllBeans,
   getBeansByArrayOfIds,
