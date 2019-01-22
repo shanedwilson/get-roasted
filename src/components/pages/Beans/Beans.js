@@ -36,6 +36,8 @@ class Beans extends React.Component {
       });
   }
 
+  passBeanToEdit = beanId => this.setState({ isEditing: true, editId: beanId });
+
   formSubmitEvent = (newBean) => {
     const { isEditing, editId } = this.state;
     if (isEditing) {
@@ -52,7 +54,7 @@ class Beans extends React.Component {
   }    
 
   render() {
-    const { beans, isEditing } = this.state;
+    const { beans, isEditing, editId } = this.state;
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
 
@@ -63,6 +65,7 @@ class Beans extends React.Component {
         uid={uid}
         ownerUid={ownerUid}
         deleteSingleBean={this.deleteSingleBean}
+        passBeanToEdit={this.passBeanToEdit}
         onSelect={this.inventoryView}
       />
     ));
@@ -79,6 +82,7 @@ class Beans extends React.Component {
               <AddEditBean
                 isEditing={isEditing}
                 onSubmit={this.formSubmitEvent}
+                editId={editId}
               />
             </div>
           </div>        

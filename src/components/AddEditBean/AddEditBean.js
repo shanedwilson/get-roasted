@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import beanRequests from '../../helpers/data/beanRequests';
 
 import './AddEditBean.scss';
 
@@ -42,7 +43,20 @@ class AddEditBean extends React.Component {
     const myBean = { ...this.state.newBean };
     onSubmit(myBean);
     this.setState({ newBean: defaultBean });
-  }  
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isEditing, editId } = this.props;
+    if (prevProps !== this.props && isEditing) {
+      beanRequests.getSingleBean(editId)
+        .then((bean) => {
+          this.setState({ newBean: bean });
+        })
+        .catch((err) => {
+          console.error('error getting single bean', err);
+        });
+    }
+  }
 
   render() {
     const {
