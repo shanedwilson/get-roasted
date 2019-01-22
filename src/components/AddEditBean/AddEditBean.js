@@ -41,7 +41,7 @@ class AddEditBean extends React.Component {
     const { onSubmit } = this.props;
     const myBean = { ...this.state.newBean };
     onSubmit(myBean);
-    this.setState({ newBeab: defaultBean });
+    this.setState({ newBean: defaultBean });
   }  
 
   render() {
