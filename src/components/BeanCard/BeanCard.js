@@ -18,6 +18,12 @@ class BeanCard extends React.Component {
     deleteSingleBean(bean.id);
   }
 
+  editEvent = (e) => {
+    e.preventDefault();
+    const { passBeanToEdit, bean } = this.props;
+    passBeanToEdit(bean.id);
+  }
+
   inventoryView = (e) => {
     e.stopPropagation();
     const { bean, onSelect } = this.props;

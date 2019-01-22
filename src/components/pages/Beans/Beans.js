@@ -11,6 +11,7 @@ class Beans extends React.Component {
   state = {
     beans: [],
     uid: '',
+    isEditing: false,
   }
 
   getBeans = () => {
@@ -33,10 +34,28 @@ class Beans extends React.Component {
       .then(() => {
         this.getBeans();
       });
-  }  
+  }
+
+  passBeanToEdit = beanId => this.setState({ isEditing: true, editId: beanId });
+
+  formSubmitEvent = (newBean) => {
+    const { isEditing, editId } = this.state;
+    if (isEditing) {
+      beanRequests.updateBean(editId, newBean)
+        .then(() => {
+          this.getBeans();
+          this.setState({ isEditing : false })
+        });
+    } else {
+      beanRequests.createBean(newBean)
+        .then(() => {
+          this.getBeans();
+        });
+    }
+  }    
 
   render() {
-    const { beans } = this.state;
+    const { beans, isEditing, editId } = this.state;
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
 
@@ -47,6 +66,7 @@ class Beans extends React.Component {
         uid={uid}
         ownerUid={ownerUid}
         deleteSingleBean={this.deleteSingleBean}
+        passBeanToEdit={this.passBeanToEdit}
         onSelect={this.inventoryView}
       />
     ));
@@ -60,7 +80,11 @@ class Beans extends React.Component {
               Click the '+' button on any bean you'd like to add to your inventory.</p>
             </div>    
             <div className='form-container col'>
-              <AddEditBean />
+              <AddEditBean
+                isEditing={isEditing}
+                onSubmit={this.formSubmitEvent}
+                editId={editId}
+              />
             </div>
           </div>        
         );

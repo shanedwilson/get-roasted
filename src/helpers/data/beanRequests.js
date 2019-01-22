@@ -54,9 +54,15 @@ const getSingleBean = beanId => new Promise((resolve, reject) => {
 
 const deleteBean = beanId => axios.delete(`${firebaseUrl}/beans/${beanId}.json`);
 
+const createBean = beanObject => axios.post(`${firebaseUrl}/beans.json`, (beanObject));
+
+const updateBean = (beanId, beanObject) => axios.put(`${firebaseUrl}/beans/${beanId}.json`, (beanObject));
+
 export default {
   getAllBeans,
   getBeansByArrayOfIds,
   getSingleBean,
   deleteBean,
+  createBean,
+  updateBean,
    };
