@@ -15,21 +15,21 @@ class Inventory extends React.Component {
   }
 
   getInventory = () => {
-  const uid = authRequests.getCurrentUid();
-   smashDataRequests.getAllInventoryWithBeanInfo(uid)
-    .then((inventory) => {
-      this.setState({ inventory })
-    })
-    .catch((error) => {
-      console.error('error with inventory GET', error);
-    })    
+    const uid = authRequests.getCurrentUid();
+    smashDataRequests.getAllInventoryWithBeanInfo(uid)
+      .then((inventory) => {
+        this.setState({ inventory });
+      })
+      .catch((error) => {
+        console.error('error with inventory GET', error);
+      });
   }
 
   getAllBeans = () => {
     beanRequests.getAllBeans()
-    .then((beans) => {
-      this.setState({ beans });
-    })
+      .then((beans) => {
+        this.setState({ beans });
+      });
   }
 
   componentDidMount() {
@@ -42,18 +42,18 @@ class Inventory extends React.Component {
       .then(() => {
         this.getInventory();
       });
-  }   
+  }
 
   render() {
     const { inventory, beans } = this.state;
 
     const inventoryCards = inventory.map(item => (
-      <InventoryCard 
+      <InventoryCard
         key={item.id}
         item={item}
         deleteSingleItem={this.deleteSingleItem}
       />
-    ));    
+    ));
 
 
     return (
@@ -64,7 +64,7 @@ class Inventory extends React.Component {
           {inventoryCards}
         </div>
       </div>
-    )
+    );
   }
 }
 

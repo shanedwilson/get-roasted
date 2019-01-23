@@ -39,7 +39,7 @@ class MyNavbar extends React.Component {
           </NavItem>
           <NavItem className="nav-item">
             <NavLink tag={RRNavLink} to="/inventory">Inventory</NavLink>
-          </NavItem>          
+          </NavItem>
           <NavItem className="nav-item">
             <NavLink tag={RRNavLink} to="/roasts">Roasts</NavLink>
           </NavItem>
