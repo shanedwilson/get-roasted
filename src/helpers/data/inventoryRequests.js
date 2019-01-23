@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys';
 
 const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getBeanIdsForInventory = (uid) => new Promise((resolve, reject) => {
+const getBeanIdsForInventory = uid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/inventory.json?orderBy="uid"&equalTo="${uid}"`)
     .then((result) => {
       const inventoryBeansObject = result.data;
@@ -20,7 +20,7 @@ const getBeanIdsForInventory = (uid) => new Promise((resolve, reject) => {
     });
 });
 
-const getAllInventory = (uid) => new Promise((resolve, reject) => {
+const getAllInventory = uid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/inventory.json?orderBy="uid"&equalTo="${uid}"`)
     .then((results) => {
       const inventoryObject = results.data;
@@ -40,9 +40,14 @@ const getAllInventory = (uid) => new Promise((resolve, reject) => {
 
 const deleteItem = itemId => axios.delete(`${firebaseUrl}/inventory/${itemId}.json`);
 
+const createInventory = inventoryObject => axios.post(`${firebaseUrl}/inventory.json`, (inventoryObject));
+
+const updateInventory = (inventoryId, inventoryObject) => axios.put(`${firebaseUrl}/inventory/${inventoryId}.json`, (inventoryObject));
 
 export default {
   getAllInventory,
   getBeanIdsForInventory,
   deleteItem,
-   };
+  createInventory,
+  updateInventory,
+};

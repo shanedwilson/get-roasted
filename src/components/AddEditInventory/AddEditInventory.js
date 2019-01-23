@@ -1,17 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './AddEditInventory.scss';
 
+const defaultInventory = {
+  beanId: '',
+  uid: '',
+  pounds: '',
+  ounces: '',
+};
+
 class AddEditInventory extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func,
+    editId: PropTypes.string,
+    isEditing: PropTypes.bool.isRequired,
+    setSelect: PropTypes.func,
+    beanId: PropTypes.string,
+  }
 
   render() {
     const {
       beans,
     } = this.props;
 
-  const dropdownItems = beans.map(bean => (
+    const dropdownItems = beans.map(bean => (
     <option key={bean.id} value={bean.id}>{bean.name}</option>
-  ));
+    ));
 
     return (
       <div>
@@ -48,7 +63,7 @@ class AddEditInventory extends React.Component {
                   placeholder="0"
                 />
               </div>
-            </div>            
+            </div>
           </div>
            <button type="submit" className="btn add-btn btn-success my-5">
             <i className="fas fa-plus-circle" />
