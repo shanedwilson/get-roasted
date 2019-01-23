@@ -8,6 +8,7 @@ import AddEditInventory from '../../AddEditInventory/AddEditInventory';
 
 import './Inventory.scss';
 
+
 class Inventory extends React.Component {
   state = {
     inventory: [],
@@ -15,6 +16,11 @@ class Inventory extends React.Component {
     isEditing: false,
     editId: '',
     beanId: '',
+  }
+
+  setBeanId = () => {
+    const firebaseId = this.props.match.params.id;
+    this.setState({ beanId: firebaseId });
   }
 
   getInventory = () => {
@@ -36,6 +42,7 @@ class Inventory extends React.Component {
   }
 
   componentDidMount() {
+    this.setBeanId();
     this.getInventory();
     this.getAllBeans();
   }
