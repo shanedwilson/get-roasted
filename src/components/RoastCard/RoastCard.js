@@ -1,37 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import roastShape from '../../helpers/propz/roastShape';
+// import roastShape from '../../helpers/propz/roastShape';
 
 import './RoastCard.scss';
 
 class RoastCard extends React.Component {
     static propTypes = {
-    roastSmash: roastShape.roastShape,
-    deleteSingleRoast: PropTypes.func,
-    passBeanToRoast: PropTypes.func,
-    onSelect: PropTypes.func,
-  }
+      // roast: roastShape.roastShape,
+      deleteSingleRoast: PropTypes.func,
+      passBeanToRoast: PropTypes.func,
+      onSelect: PropTypes.func,
+    }
 
   roastClick = (e) => {
     e.stopPropagation();
-    const { roastSmash, onSelect } = this.props;
-    onSelect(roastSmash.id);
+    const { roast, onSelect } = this.props;
+    onSelect(roast.id);
   }
 
   deleteEvent = (e) => {
     e.preventDefault();
-    const { deleteSingleRoast, roastSmash } = this.props;
-    deleteSingleRoast(roastSmash.id);
-  } 
+    const { deleteSingleRoast, roast } = this.props;
+    deleteSingleRoast(roast.id);
+  }
+
+  editEvent = (e) => {
+    e.preventDefault();
+    const { passRoastToEdit, roast } = this.props;
+    passRoastToEdit(roast.id, roast.beanId);
+  }
 
   render() {
     const {
-      roastSmash,
+      roast,
       uid,
       ownerUid,
     } = this.props;
-
-    
 
     const makeButtons = () => {
       if (uid === ownerUid) {
@@ -55,7 +59,7 @@ class RoastCard extends React.Component {
         </div>
         );
       }
-      return  (
+      return (
         <div className="mx-auto">
           <span className="col">
             <button className="btn btn-default">
@@ -63,20 +67,20 @@ class RoastCard extends React.Component {
             </button>
           </span>
         </div>
-          )
-    };  
+      );
+    };
 
-    return(
+    return (
       <div className="card col-5 m-3">
         <div className="card-header">
-          <h5 className="card-title text-center">{roastSmash.roastName}</h5>
+          <h5 className="card-title text-center">{roast.roastName}</h5>
         </div>
         <div className="card-body" onClick={this.roastClick}>
-          <p className="card-text text-center">{roastSmash.name}</p>
+          <p className="card-text text-center">{roast.name}</p>
         </div>
         {makeButtons()}
       </div>
-    )
+    );
   }
 }
 

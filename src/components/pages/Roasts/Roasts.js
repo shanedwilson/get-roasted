@@ -10,24 +10,27 @@ import './Roasts.scss';
 
 class Roasts extends React.Component {
   state = {
-    roastsSmash: [],
+    roasts: [],
     beans: [],
+    isEditing: false,
+    editId: '',
+    beanId: '',
   }
 
   getRoasts = () => {
     const uid = authRequests.getCurrentUid();
     smashDataRequests.getRoastsWithBeanInfo(uid)
-    .then((roastsSmash) => {
-      this.setState({ roastsSmash });
-    })
+      .then((roasts) => {
+        this.setState({ roasts });
+      });
   };
 
   getAllBeans = () => {
     beanRequests.getAllBeans()
-    .then((beans) => {
-      this.setState({ beans });
-    })
-  }  
+      .then((beans) => {
+        this.setState({ beans });
+      });
+  }
 
   changeView = (e) => {
     const roastId = e.target.id;
@@ -44,37 +47,80 @@ class Roasts extends React.Component {
       .then(() => {
         this.getRoasts();
       });
-  } 
+  }
 
   attemptsView = (roastId) => {
     this.props.history.push(`/attempts/${roastId}`);
   }
 
+  passRoastToEdit = (roastId, beanId) => {
+    this.setState({ isEditing: true, editId: roastId, beanId });
+  }
+
+  setSelect = (selectedBean) => {
+    this.setState({ beanId: selectedBean });
+  }
+
+  formSubmitEvent = (newRoast) => {
+    const { isEditing, editId } = this.state;
+    if (isEditing) {
+      roastRequests.updateRoast(editId, newRoast)
+        .then(() => {
+          this.getRoasts();
+          this.setState({ isEditing: false });
+          this.setState({ beanId: '' });
+        });
+    } else {
+      roastRequests.createRoast(newRoast)
+        .then(() => {
+          this.getRoasts();
+          this.setState({ beanId: '' });
+        });
+    }
+  }
+
   render() {
-    const { roastsSmash, beans } = this.state;
+    const {
+      roasts,
+      beans,
+      isEditing,
+      editId,
+      beanId,
+    } = this.state;
+
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
 
-    const roastCards = roastsSmash.map(roastSmash => (
-      <RoastCard 
-        key={roastSmash.id}
-        roastSmash={roastSmash}
+    const roastCards = roasts.map(roast => (
+      <RoastCard
+        key={roast.id}
+        roast={roast}
         uid={uid}
         ownerUid={ownerUid}
+        beanId={beanId}
         onSelect={this.attemptsView}
         deleteSingleRoast={this.deleteSingleRoast}
+        passRoastToEdit={this.passRoastToEdit}
       />
-    ));     
+    ));
 
     return (
       <div className="Roasts mx-auto">
         <h1 className="text-center">ROASTS!!!</h1>
-        <div><AddEditRoast beans={beans} /></div>
+        <div><AddEditRoast
+        beans={beans}
+        isEditing={isEditing}
+        onSubmit={this.formSubmitEvent}
+        editId={editId}
+        beanId={beanId}
+        setSelect={this.setSelect}
+        />
+      </div>
         <div className="row justify-content-center">
           {roastCards}
-        </div>        
+        </div>
       </div>
-    )
+    );
   }
 }
 
