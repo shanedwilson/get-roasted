@@ -35,9 +35,15 @@ const getSingleRoast = roastId => new Promise((resolve, reject) => {
 
 const deleteRoast = roastId => axios.delete(`${firebaseUrl}/roasts/${roastId}.json`);
 
+const createRoast = roastObject => axios.post(`${firebaseUrl}/roasts.json`, (roastObject));
+
+const updateRoast = (roastId, roastObject) => axios.put(`${firebaseUrl}/roasts/${roastId}.json`, (roastObject));
+
 
 export default {
   getAllRoasts,
   getSingleRoast,
   deleteRoast,
-  };
+  createRoast,
+  updateRoast,
+};

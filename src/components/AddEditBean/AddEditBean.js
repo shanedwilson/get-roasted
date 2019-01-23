@@ -60,12 +60,12 @@ class AddEditBean extends React.Component {
 
   render() {
     const {
-      isEditing
-    } = this.props
+      isEditing,
+    } = this.props;
 
     const {
-      newBean
-    } = this.state
+      newBean,
+    } = this.state;
 
     const makeHeadline = () => {
       if (isEditing === false) {
@@ -73,14 +73,14 @@ class AddEditBean extends React.Component {
         <div className="mx-auto">
           <h3>Add Bean</h3>
         </div>
-        )
+        );
       }
-        return (
+      return (
         <div className="mx-auto">
           <h3>Edit Bean</h3>
         </div>
-        )
-    }
+      );
+    };
 
     return (
       <div>
@@ -102,7 +102,7 @@ class AddEditBean extends React.Component {
                   onChange={this.regionChange}
                 />
               </div>
-            </div>          
+            </div>
             <div className="col-auto form-lines p-0">
               <label htmlFor="name" className="sr-only">Name</label>
               <div className="input-group mb-2">
@@ -150,7 +150,7 @@ class AddEditBean extends React.Component {
                   onChange={this.imageChange}
                 />
               </div>
-            </div>  
+            </div>
           </div>
            <button type="submit" className="btn add-btn btn-success my-5" onClick={this.formSubmit}>
             <i className="fas fa-plus-circle" />

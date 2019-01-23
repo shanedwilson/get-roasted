@@ -14,4 +14,3 @@ const roastOptionalShape = PropTypes.oneOfType([
 ]);
 
 export default { roastShape, roastOptionalShape };
-  
