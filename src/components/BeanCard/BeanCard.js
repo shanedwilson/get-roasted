@@ -6,11 +6,11 @@ import './BeanCard.scss';
 
 class BeanCard extends React.Component {
     static propTypes = {
-    bean: beanShape.beanShape,
-    deleteSingleBean: PropTypes.func,
-    passBeanToEdit: PropTypes.func,
-    onSelect: PropTypes.func,
-  }
+      bean: beanShape.beanShape,
+      deleteSingleBean: PropTypes.func,
+      passBeanToEdit: PropTypes.func,
+      onSelect: PropTypes.func,
+    }
 
   deleteEvent = (e) => {
     e.preventDefault();
@@ -59,7 +59,7 @@ class BeanCard extends React.Component {
         </div>
         );
       }
-      return  (
+      return (
         <div className="mx-auto">
           <span className="col">
             <button className="btn btn-default" onClick={this.deleteEvent}>
@@ -67,10 +67,10 @@ class BeanCard extends React.Component {
             </button>
           </span>
         </div>
-          )
-    };    
-    
-    return(
+      );
+    };
+
+    return (
      <div className="card col-3 m-3">
         <img className="card-img-top mt-3" src={bean.imgUrl} alt={bean.name} />
         <div className="card-body">
@@ -79,7 +79,7 @@ class BeanCard extends React.Component {
         </div>
         {makeButtons()}
       </div>
-    )
+    );
   }
 }
 

@@ -50,7 +50,7 @@ class AddEditBean extends React.Component {
     if (prevProps !== this.props && isEditing) {
       beanRequests.getSingleBean(editId)
         .then((bean) => {
-          this.setState({ newBean: bean });
+          this.setState({ newBean: bean.data });
         })
         .catch((err) => {
           console.error('error getting single bean', err);

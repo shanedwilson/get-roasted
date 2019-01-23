@@ -108,12 +108,12 @@ class Roasts extends React.Component {
       <div className="Roasts mx-auto">
         <h1 className="text-center">ROASTS!!!</h1>
         <div><AddEditRoast
-        beans={beans}
-        isEditing={isEditing}
-        onSubmit={this.formSubmitEvent}
-        editId={editId}
-        beanId={beanId}
-        setSelect={this.setSelect}
+          beans={beans}
+          isEditing={isEditing}
+          onSubmit={this.formSubmitEvent}
+          editId={editId}
+          beanId={beanId}
+          setSelect={this.setSelect}
         />
       </div>
         <div className="row justify-content-center">

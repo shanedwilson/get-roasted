@@ -37,7 +37,7 @@ class App extends React.Component {
   state = {
     authed: false,
     pendingUser: true,
-  }  
+  }
 
   componentDidMount() {
     connection();
@@ -65,7 +65,7 @@ class App extends React.Component {
     const {
       authed,
       pendingUser,
-    } = this.state; 
+    } = this.state;
 
     const logoutClickEvent = () => {
       authRequests.logoutUser();
@@ -74,7 +74,7 @@ class App extends React.Component {
 
     if (pendingUser) {
       return null;
-    }      
+    }
     return (
       <div className="App">
         <BrowserRouter>
@@ -87,9 +87,10 @@ class App extends React.Component {
                   <PrivateRoute path='/' exact component={Beans} authed={this.state.authed} />
                   <PrivateRoute path='/beans' component={Beans} authed={this.state.authed} />
                   <PrivateRoute path='/roasts' component={Roasts} authed={this.state.authed} />
+                  <PrivateRoute exact path='/inventory' component={Inventory} authed={this.state.authed} />
                   <PrivateRoute path='/inventory/:id' component={Inventory} authed={this.state.authed} />
                   <PrivateRoute exact path='/attempts/:id/add' component={AddEditAttempts} authed={this.state.authed} />
-                  <PrivateRoute exact path='/attempts/:id/edit' component={AddEditAttempts} authed={this.state.authed} />    
+                  <PrivateRoute exact path='/attempts/:id/edit' component={AddEditAttempts} authed={this.state.authed} />
                   <PrivateRoute exact path='/attempts/:id' component={Attempts} authed={this.state.authed} />
                 </Switch>
               </div>
