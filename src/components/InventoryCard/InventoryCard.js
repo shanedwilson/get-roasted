@@ -6,24 +6,30 @@ import './InventoryCard.scss';
 
 class InventoryCard extends React.Component {
     static propTypes = {
-    inventoryItem: inventoryShape.inventoryShape,
-    deleteSingleItem: PropTypes.func,
-    passItemToEdit: PropTypes.func,
-  }
+      inventoryItem: inventoryShape.inventoryShape,
+      deleteSingleItem: PropTypes.func,
+      passItemToEdit: PropTypes.func,
+      onSelect: PropTypes.func,
+    }
 
   deleteEvent = (e) => {
     e.preventDefault();
     const { deleteSingleItem, item } = this.props;
     deleteSingleItem(item.id);
-  }   
+  }
+
+  editEvent = (e) => {
+    e.preventDefault();
+    const { passItemToEdit, item } = this.props;
+    passItemToEdit(item.id, item.beanId);
+  }
 
   render() {
     const {
       item,
     } = this.props;
 
-    const makeButtons = () => {
-        return (
+    const makeButtons = () => (
         <div className="mx-auto">
           <span className="col-1">
             <button className="btn btn-default" onClick={this.editEvent}>
@@ -42,10 +48,9 @@ class InventoryCard extends React.Component {
             </button>
           </span>
         </div>
-        );
-      }
-    
-    return(
+    );
+
+    return (
       <div className="card col-5 m-3">
         <div className="card-header">
           <h5 className="card-title text-center">{item.name}</h5>
@@ -55,7 +60,7 @@ class InventoryCard extends React.Component {
         </div>
         {makeButtons()}
       </div>
-    )
+    );
   }
 }
 

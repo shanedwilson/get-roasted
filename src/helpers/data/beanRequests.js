@@ -21,7 +21,7 @@ const getAllBeans = () => new Promise((resolve, reject) => {
     });
 });
 
-const getBeansByArrayOfIds = (beanIdsArray) => new Promise((resolve, reject) => {
+const getBeansByArrayOfIds = beanIdsArray => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/beans.json`)
     .then((result) => {
       const beansObject = result.data;
@@ -65,4 +65,4 @@ export default {
   deleteBean,
   createBean,
   updateBean,
-   };
+};

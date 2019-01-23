@@ -38,6 +38,18 @@ const getAllInventory = uid => new Promise((resolve, reject) => {
     });
 });
 
+const getSingleInventory = inventoryId => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/inventory/${inventoryId}.json`)
+    .then((result) => {
+      const singleInventory = result.data;
+      singleInventory.id = inventoryId;
+      resolve(singleInventory);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
 const deleteItem = itemId => axios.delete(`${firebaseUrl}/inventory/${itemId}.json`);
 
 const createInventory = inventoryObject => axios.post(`${firebaseUrl}/inventory.json`, (inventoryObject));
@@ -47,6 +59,7 @@ const updateInventory = (inventoryId, inventoryObject) => axios.put(`${firebaseU
 export default {
   getAllInventory,
   getBeanIdsForInventory,
+  getSingleInventory,
   deleteItem,
   createInventory,
   updateInventory,

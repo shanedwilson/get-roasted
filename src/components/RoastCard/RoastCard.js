@@ -8,7 +8,7 @@ class RoastCard extends React.Component {
     static propTypes = {
       // roast: roastShape.roastShape,
       deleteSingleRoast: PropTypes.func,
-      passBeanToRoast: PropTypes.func,
+      passRoastToEdit: PropTypes.func,
       onSelect: PropTypes.func,
     }
 
