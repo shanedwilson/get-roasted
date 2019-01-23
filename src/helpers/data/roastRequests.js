@@ -21,17 +21,7 @@ const getAllRoasts = () => new Promise((resolve, reject) => {
     });
 });
 
-const getSingleRoast = roastId => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/roasts/${roastId}.json`)
-    .then((result) => {
-      const singleRoast = result.data;
-      singleRoast.id = roastId;
-      resolve(singleRoast);
-    })
-    .catch((error) => {
-      reject(error);
-    });
-});
+const getSingleRoast = roastId => axios.get(`${firebaseUrl}/roasts/${roastId}.json`);
 
 const deleteRoast = roastId => axios.delete(`${firebaseUrl}/roasts/${roastId}.json`);
 

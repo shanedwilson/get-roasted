@@ -58,7 +58,7 @@ class AddEditInventory extends React.Component {
     if (prevProps !== this.props && isEditing) {
       inventoryRequests.getSingleInventory(editId)
         .then((item) => {
-          this.setState({ newInventory: item });
+          this.setState({ newInventory: item.data });
         })
         .catch((err) => {
           console.error('error getting single inventory item', err);

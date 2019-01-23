@@ -38,17 +38,7 @@ const getAllInventory = uid => new Promise((resolve, reject) => {
     });
 });
 
-const getSingleInventory = inventoryId => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/inventory/${inventoryId}.json`)
-    .then((result) => {
-      const singleInventory = result.data;
-      singleInventory.id = inventoryId;
-      resolve(singleInventory);
-    })
-    .catch((error) => {
-      reject(error);
-    });
-});
+const getSingleInventory = itemId => axios.get(`${firebaseUrl}/inventory/${itemId}.json`);
 
 const deleteItem = itemId => axios.delete(`${firebaseUrl}/inventory/${itemId}.json`);
 

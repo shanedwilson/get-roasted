@@ -27,9 +27,9 @@ const getBeansByArrayOfIds = beanIdsArray => new Promise((resolve, reject) => {
       const beansObject = result.data;
       const beansArray = [];
       if (beansObject !== null) {
-        Object.keys(beansObject).forEach((beanId) => {
-          beansObject[beanId].id = beanId;
-          beansArray.push(beansObject[beanId]);
+        Object.keys(beansObject).forEach((bean) => {
+          beansObject[bean].id = bean;
+          beansArray.push(beansObject[bean]);
         });
       }
       const selectedBeans = beansArray.filter(x => beanIdsArray.includes(x.id));
@@ -40,23 +40,13 @@ const getBeansByArrayOfIds = beanIdsArray => new Promise((resolve, reject) => {
     });
 });
 
-const getSingleBean = beanId => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/beans/${beanId}.json`)
-    .then((result) => {
-      const singleBean = result.data;
-      singleBean.id = beanId;
-      resolve(singleBean);
-    })
-    .catch((error) => {
-      reject(error);
-    });
-});
+const getSingleBean = beanId => axios.get(`${firebaseUrl}/beans/${beanId}.json`);
 
 const deleteBean = beanId => axios.delete(`${firebaseUrl}/beans/${beanId}.json`);
 
 const createBean = beanObject => axios.post(`${firebaseUrl}/beans.json`, (beanObject));
 
-const updateBean = (beanId, beanObject) => axios.put(`${firebaseUrl}/beans/${beanId}.json`, (beanObject));
+const updateBean = (beanId, beanObject) => axios.put(`${firebaseUrl}/beans/${beanId}.json`, beanObject);
 
 export default {
   getAllBeans,

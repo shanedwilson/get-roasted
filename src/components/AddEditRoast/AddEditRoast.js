@@ -55,7 +55,7 @@ class AddEditRoast extends React.Component {
     if (prevProps !== this.props && isEditing) {
       roastRequests.getSingleRoast(editId)
         .then((roast) => {
-          this.setState({ newRoast: roast });
+          this.setState({ newRoast: roast.data });
         })
         .catch((err) => {
           console.error('error getting single roast', err);
