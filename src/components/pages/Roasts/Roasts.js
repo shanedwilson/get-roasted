@@ -106,18 +106,19 @@ class Roasts extends React.Component {
     ));
 
     return (
-      <div className="Roasts mx-auto">
-        <h1 className="text-center">ROASTS!!!</h1>
-        <div><AddEditRoast
-          beans={beans}
-          isEditing={isEditing}
-          onSubmit={this.formSubmitEvent}
-          editId={editId}
-          beanId={beanId}
-          setSelect={this.setSelect}
+      <div className="Roasts mx-auto w-100">
+        <h1 className="text-center mt-5">ROASTS!!!</h1>
+        <div>
+          <AddEditRoast
+            beans={beans}
+            isEditing={isEditing}
+            onSubmit={this.formSubmitEvent}
+            editId={editId}
+            beanId={beanId}
+            setSelect={this.setSelect}
         />
       </div>
-        <div className="row justify-content-center">
+        <div className="rst-cards row justify-content-center">
           {roastCards}
         </div>
       </div>

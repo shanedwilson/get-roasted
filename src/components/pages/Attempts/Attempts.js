@@ -95,10 +95,10 @@ class Attempts extends React.Component {
     ));
 
     return (
-      <div className="Attempts mx-auto">
+      <div className="Attempts mx-auto w-100">
         <h1 className="text-center">ATTEMPTS!!!</h1>
-        <div className="col-12">
-          <div className="card col-12 m-3 mx-auto">
+        <div className="col-5 mx-auto">
+          <div className="card col m-3 mx-auto">
             <div className="card-header">
               <h5 className="card-title text-center">{roast.roastName}</h5>
             </div>

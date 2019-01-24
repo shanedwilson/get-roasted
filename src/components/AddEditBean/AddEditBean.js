@@ -70,14 +70,14 @@ class AddEditBean extends React.Component {
     const makeHeadline = () => {
       if (isEditing === false) {
         return (
-        <div className="mx-auto">
-          <h3>Add Bean</h3>
+        <div className="mx-auto mt-3">
+          <h5>Add Bean</h5>
         </div>
         );
       }
       return (
-        <div className="mx-auto">
-          <h3>Edit Bean</h3>
+        <div className="mx-auto mt-3">
+          <h5>Edit Bean</h5>
         </div>
       );
     };

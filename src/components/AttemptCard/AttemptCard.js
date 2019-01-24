@@ -46,7 +46,7 @@ class AttemptCard extends React.Component {
     );
 
     return (
-      <div className="card col-5 m-3">
+      <div className="card col-3 m-3">
         <div className="card-header">
           <h5 className="card-title text-center">{moment(attempt.date).format('MMM DD YYYY hh:mm a')}</h5>
         </div>

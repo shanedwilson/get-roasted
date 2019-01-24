@@ -51,11 +51,11 @@ class RoastCard extends React.Component {
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
-          <span className="col">
+          <div className="col">
             <button className="btn btn-default">
               <i className="fas fa-plus-circle" onClick={this.roastClick}>Attempts</i>
             </button>
-          </span>
+          </div>
         </div>
         );
       }
@@ -71,7 +71,7 @@ class RoastCard extends React.Component {
     };
 
     return (
-      <div className="card col-5 m-3">
+      <div className="card col-3 m-3">
         <div className="card-header">
           <h5 className="card-title text-center">{roast.roastName}</h5>
         </div>

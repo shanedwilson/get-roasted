@@ -51,11 +51,11 @@ class BeanCard extends React.Component {
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
-          <span className="col">
+          <div className="col">
             <button className="btn btn-default" onClick={this.inventoryView}>
-              <i className="fas fa-plus-circle"></i>
+              <i className="fas fa-plus-circle">Inventory</i>
             </button>
-          </span>
+          </div>
         </div>
         );
       }

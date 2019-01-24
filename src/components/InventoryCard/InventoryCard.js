@@ -36,28 +36,27 @@ class InventoryCard extends React.Component {
     } = this.props;
 
     const makeButtons = () => (
-        <div className="mx-auto">
-          <span className="col-1">
+        <div className="text-center">
+          <span className="col">
             <button className="btn btn-default" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
-          <span className="col-1">
+          <span className="col">
             <button className="btn btn-default" onClick={this.deleteEvent}>
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
-          <span className="col-1">
-            <button className="btn btn-default">
-              Roast
-              <i className="fas fa-plus-circle ml-2" onClick={this.inventoryView}></i>
+          <div className="col">
+            <button className="btn btn-default text-center">
+              <i className="fas fa-plus-circle ml-2" onClick={this.inventoryView}>Roast</i>
             </button>
-          </span>
+          </div>
         </div>
     );
 
     return (
-      <div className="card col-5 m-3">
+      <div className="card col-3 m-3">
         <div className="card-header">
           <h5 className="card-title text-center">{item.name}</h5>
         </div>
