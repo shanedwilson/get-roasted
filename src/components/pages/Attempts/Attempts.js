@@ -97,22 +97,26 @@ class Attempts extends React.Component {
     return (
       <div className="Attempts mx-auto">
         <h1 className="text-center">ATTEMPTS!!!</h1>
-        <div className="card col-6 m-3 mx-auto">
-          <div className="card-header">
-            <h5 className="card-title text-center">{roast.roastName}</h5>
-          </div>
-          <div className="card-body">
-          <p className="card-text text-center">{bean.name}</p>
-          </div>
-          <div className="mx-auto">
-            <span className="col">
-              <button className="btn btn-default ml-3" onClick={this.deleteEvent}>
-                Add Attempt   <i className="fas fa-plus-circle" onClick={this.addView}></i>
-              </button>
-            </span>
+        <div className="col-12">
+          <div className="card col-12 m-3 mx-auto">
+            <div className="card-header">
+              <h5 className="card-title text-center">{roast.roastName}</h5>
+            </div>
+            <div className="card-body">
+            <p className="card-text text-center">{bean.name}</p>
+            </div>
+            <div className="mx-auto">
+              <span className="col">
+                <button className="btn btn-default ml-3" onClick={this.deleteEvent}>
+                  Add Attempt   <i className="fas fa-plus-circle" onClick={this.addView}></i>
+                </button>
+              </span>
+            </div>
           </div>
         </div>
-        <div className="justify-content-center row">{attemptCards}</div>
+        <div>
+          <div className="justify-content-center row">{attemptCards}</div>
+        </div>
       </div>
     );
   }

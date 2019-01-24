@@ -24,6 +24,12 @@ class InventoryCard extends React.Component {
     passItemToEdit(item.id, item.beanId);
   }
 
+  inventoryView = (e) => {
+    e.stopPropagation();
+    const { item, onSelect } = this.props;
+    onSelect(item.beanId);
+  }
+
   render() {
     const {
       item,
@@ -44,7 +50,7 @@ class InventoryCard extends React.Component {
           <span className="col-1">
             <button className="btn btn-default">
               Roast
-              <i className="fas fa-plus-circle ml-2"></i>
+              <i className="fas fa-plus-circle ml-2" onClick={this.inventoryView}></i>
             </button>
           </span>
         </div>

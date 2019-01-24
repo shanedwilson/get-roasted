@@ -18,6 +18,10 @@ class Inventory extends React.Component {
     beanId: '',
   }
 
+  roastsView = (beanId) => {
+    this.props.history.push(`/roasts/${beanId}`);
+  }
+
   setBeanId = () => {
     const firebaseId = this.props.match.params.id;
     this.setState({ beanId: firebaseId });
@@ -96,6 +100,7 @@ class Inventory extends React.Component {
         beanId={beanId}
         passItemToEdit={this.passItemToEdit}
         deleteSingleItem={this.deleteSingleItem}
+        onSelect={this.roastsView}
       />
     ));
 

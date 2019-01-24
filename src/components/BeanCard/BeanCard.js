@@ -62,7 +62,7 @@ class BeanCard extends React.Component {
       return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn btn-default" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle"></i>
             </button>
           </span>

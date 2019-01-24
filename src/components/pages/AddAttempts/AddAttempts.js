@@ -28,7 +28,6 @@ const defaultAttempt = {
 class AddAttempts extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func,
-    editId: PropTypes.string,
     beanId: PropTypes.string,
   }
 

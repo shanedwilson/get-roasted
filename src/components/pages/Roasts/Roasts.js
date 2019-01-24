@@ -17,6 +17,11 @@ class Roasts extends React.Component {
     beanId: '',
   }
 
+  setBeanId = () => {
+    const firebaseId = this.props.match.params.id;
+    this.setState({ beanId: firebaseId });
+  }
+
   getRoasts = () => {
     const uid = authRequests.getCurrentUid();
     smashDataRequests.getRoastsWithBeanInfo(uid)
@@ -39,6 +44,7 @@ class Roasts extends React.Component {
   componentDidMount() {
     this.getRoasts();
     this.getAllBeans();
+    this.setBeanId();
   }
 
   deleteSingleRoast = (roastId) => {
