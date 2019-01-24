@@ -19,36 +19,37 @@ class Attempts extends React.Component {
 
   getBean = (beanId) => {
     beanRequests.getSingleBean(beanId)
-    .then((bean) => {
-      this.setState({ bean });
-    })
-    .catch((error) => {
-      console.error('error with single bean GET', error);
-    }); 
+      .then((bean) => {
+        console.log(bean.data);
+        this.setState({ bean: bean.data });
+      })
+      .catch((error) => {
+        console.error('error with single bean GET', error);
+      });
   }
 
   getRoast = () => {
     const firebaseId = this.props.match.params.id;
     roastRequests.getSingleRoast(firebaseId)
-    .then((roast) => {
-      this.setState({ roast })
-      this.getBean(roast.beanId);
-    })
-    .catch((error) => {
-      console.error('error with single roast GET', error);
-    });     
-  }  
+      .then((roast) => {
+        this.setState({ roast: roast.data });
+        this.getBean(roast.data.beanId);
+      })
+      .catch((error) => {
+        console.error('error with single roast GET', error);
+      });
+  }
 
   getAttempts = () => {
     const uid = authRequests.getCurrentUid();
     const firebaseId = this.props.match.params.id;
     attemptsRequests.getAllAttempts(uid, firebaseId)
-    .then((attempts) => {
-      this.setState({ attempts });
-    })
-    .catch((error) => {
-      console.error('error with attempts GET', error);
-    });     
+      .then((attempts) => {
+        this.setState({ attempts });
+      })
+      .catch((error) => {
+        console.error('error with attempts GET', error);
+      });
   };
 
   getWeather = (position) => {
@@ -56,22 +57,22 @@ class Attempts extends React.Component {
     const lon = position.coords.longitude;
     weatherRequests.getCurrentWeather(lat, lon)
       .then((weather) => {
-        this.setState({ weather })
+        this.setState({ weather });
       })
       .catch((error) => {
         console.error('error with weather GET', error);
       });
-  } 
+  }
 
   addView = (e) => {
     const attemptId = e.target.id;
     this.props.history.push(`/attempts/${attemptId}/add`);
-  }  
+  }
 
   editView = (e) => {
     const attemptId = e.target.id;
     this.props.history.push(`/attempts/${attemptId}/edit`);
-  } 
+  }
 
   componentDidMount() {
     this.getAttempts();
@@ -84,25 +85,25 @@ class Attempts extends React.Component {
       .then(() => {
         this.getAttempts();
       });
-  }   
+  }
 
   render() {
     const {
       roast,
       bean,
-    } = this.state
+    } = this.state;
 
     const { attempts } = this.state;
     const uid = authRequests.getCurrentUid();
 
     const attemptCards = attempts.map(attempt => (
-      <AttemptCard 
+      <AttemptCard
         key={attempt.id}
         attempt={attempt}
         uid={uid}
         deleteSingleAttempt={this.deleteSingleAttempt}
       />
-    ));         
+    ));
 
     return (
       <div className="Attempts mx-auto">
@@ -120,11 +121,11 @@ class Attempts extends React.Component {
                 Add Attempt   <i className="fas fa-plus-circle"></i>
               </button>
             </span>
-          </div>          
+          </div>
         </div>
         <div className="justify-content-center row">{attemptCards}</div>
       </div>
-    )
+    );
   }
 }
 

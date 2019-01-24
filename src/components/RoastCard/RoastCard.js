@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import roastShape from '../../helpers/propz/roastShape';
+import roastShape from '../../helpers/propz/roastShape';
 
 import './RoastCard.scss';
 
 class RoastCard extends React.Component {
     static propTypes = {
-      // roast: roastShape.roastShape,
+      roast: roastShape.roastShape,
       deleteSingleRoast: PropTypes.func,
       passRoastToEdit: PropTypes.func,
       onSelect: PropTypes.func,
@@ -53,7 +53,7 @@ class RoastCard extends React.Component {
           </span>
           <span className="col">
             <button className="btn btn-default">
-              <i className="fas fa-plus-circle"></i>
+              <i className="fas fa-plus-circle" onClick={this.roastClick}>Attempts</i>
             </button>
           </span>
         </div>
@@ -63,7 +63,7 @@ class RoastCard extends React.Component {
         <div className="mx-auto">
           <span className="col">
             <button className="btn btn-default">
-              <i className="fas fa-plus-circle"></i>
+              <i className="fas fa-plus-circle" onClick={this.roastClick}>Attempts</i>
             </button>
           </span>
         </div>
@@ -75,7 +75,7 @@ class RoastCard extends React.Component {
         <div className="card-header">
           <h5 className="card-title text-center">{roast.roastName}</h5>
         </div>
-        <div className="card-body" onClick={this.roastClick}>
+        <div className="card-body">
           <p className="card-text text-center">{roast.name}</p>
         </div>
         {makeButtons()}
