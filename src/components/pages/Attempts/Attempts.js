@@ -1,7 +1,6 @@
 import React from 'react';
 import AttemptCard from '../../AttemptCard/AttemptCard';
 import attemptsRequests from '../../../helpers/data/attemptsRequests';
-import weatherRequests from '../../../helpers/data/weatherRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import roastRequests from '../../../helpers/data/roastRequests';
 import beanRequests from '../../../helpers/data/beanRequests';
@@ -15,12 +14,12 @@ class Attempts extends React.Component {
     weather: [],
     roast: [],
     bean: [],
+    isEditing: false,
   }
 
   getBean = (beanId) => {
     beanRequests.getSingleBean(beanId)
       .then((bean) => {
-        console.log(bean.data);
         this.setState({ bean: bean.data });
       })
       .catch((error) => {
@@ -52,31 +51,18 @@ class Attempts extends React.Component {
       });
   };
 
-  getWeather = (position) => {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    weatherRequests.getCurrentWeather(lat, lon)
-      .then((weather) => {
-        this.setState({ weather });
-      })
-      .catch((error) => {
-        console.error('error with weather GET', error);
-      });
-  }
+  // editView = (e) => {
+  //   const attemptId = e.target.id;
+  //   this.props.history.push(`/attempts/${attemptId}/add`);
+  // }
 
-  addView = (e) => {
-    const attemptId = e.target.id;
-    this.props.history.push(`/attempts/${attemptId}/add`);
-  }
-
-  editView = (e) => {
-    const attemptId = e.target.id;
-    this.props.history.push(`/attempts/${attemptId}/edit`);
+  addView = () => {
+    const firebaseId = this.props.match.params.id;
+    this.props.history.push(`/attempts/${firebaseId}/add`);
   }
 
   componentDidMount() {
     this.getAttempts();
-    navigator.geolocation.getCurrentPosition(this.getWeather);
     this.getRoast();
   }
 
@@ -91,6 +77,7 @@ class Attempts extends React.Component {
     const {
       roast,
       bean,
+      isEditing,
     } = this.state;
 
     const { attempts } = this.state;
@@ -102,6 +89,8 @@ class Attempts extends React.Component {
         attempt={attempt}
         uid={uid}
         deleteSingleAttempt={this.deleteSingleAttempt}
+        onSelect={this.editView}
+        isEditing={isEditing}
       />
     ));
 
@@ -118,7 +107,7 @@ class Attempts extends React.Component {
           <div className="mx-auto">
             <span className="col">
               <button className="btn btn-default ml-3" onClick={this.deleteEvent}>
-                Add Attempt   <i className="fas fa-plus-circle"></i>
+                Add Attempt   <i className="fas fa-plus-circle" onClick={this.addView}></i>
               </button>
             </span>
           </div>

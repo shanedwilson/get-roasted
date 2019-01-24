@@ -32,8 +32,7 @@ class Roasts extends React.Component {
       });
   }
 
-  changeView = (e) => {
-    const roastId = e.target.id;
+  changeView = (roastId) => {
     this.props.history.push(`/attempts/${roastId}`);
   }
 
@@ -47,10 +46,6 @@ class Roasts extends React.Component {
       .then(() => {
         this.getRoasts();
       });
-  }
-
-  attemptsView = (roastId) => {
-    this.props.history.push(`/attempts/${roastId}`);
   }
 
   passRoastToEdit = (roastId, beanId) => {
@@ -98,7 +93,7 @@ class Roasts extends React.Component {
         uid={uid}
         ownerUid={ownerUid}
         beanId={beanId}
-        onSelect={this.attemptsView}
+        onSelect={this.changeView}
         deleteSingleRoast={this.deleteSingleRoast}
         passRoastToEdit={this.passRoastToEdit}
       />

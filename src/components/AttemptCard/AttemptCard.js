@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import attemptShape from '../../helpers/propz/atttemptShape';
 
 import './AttemptCard.scss';
@@ -16,6 +17,12 @@ class AttemptCard extends React.Component {
     e.preventDefault();
     const { deleteSingleAttempt, attempt } = this.props;
     deleteSingleAttempt(attempt.id);
+  }
+
+  addEditView = (e) => {
+    e.stopPropagation();
+    const { attempt, onSelect } = this.props;
+    onSelect(attempt.id);
   }
 
   render() {
@@ -41,18 +48,18 @@ class AttemptCard extends React.Component {
     return (
       <div className="card col-5 m-3">
         <div className="card-header">
-          <h5 className="card-title text-center">{attempt.date}</h5>
+          <h5 className="card-title text-center">{moment(attempt.date).format('MMM DD YYYY hh:mm a')}</h5>
         </div>
         <div className="card-body" onClick={this.roastClick}>
           <p className="card-text text-center">{attempt.city}, {attempt.state}</p>
           <p className="card-text text-center">
-            {attempt.temp}°, {attempt.humidity}% humidity
+            {attempt.temp} °F, {attempt.humidity}% relative humidity
           </p>
           <p className="card-text text-center">1st Crack:
-             {attempt.firstTime}, {attempt.firstTemp}°
+             {attempt.firstTime}, {attempt.firstTemp} °F
           </p>
           <p className="card-text text-center">2nd Crack:
-             {attempt.secondTime}, {attempt.secondTemp}°
+             {attempt.secondTime}, {attempt.secondTemp} °F
           </p>
           <p className="card-text text-center">Notes: {attempt.notes}</p>
           <p className="card-text text-center">Rating: {attempt.rating}</p>

@@ -4,7 +4,7 @@ import authRequests from '../../../helpers/data/authRequests';
 import attemptsRequests from '../../../helpers/data/attemptsRequests';
 
 
-import './AddEditAttempts.scss';
+import './EditAttempts.scss';
 
 const defaultAttempt = {
   uid: '',
@@ -24,7 +24,7 @@ const defaultAttempt = {
   roastLevel: '',
 };
 
-class AddEditAttempts extends React.Component {
+class EditAttempts extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func,
     editId: PropTypes.string,
@@ -107,7 +107,7 @@ class AddEditAttempts extends React.Component {
       );
     };
     return (
-      <div className="AddEditAttempts mx-auto">
+      <div className="EditAttempts mx-auto">
         <h1>ADD/EDIT ATTEMPTS!!!</h1>
         <form className="row form-container border border-dark rounded mt-5 mx-auto col-6" onSubmit={this.formSubmit}>
           {makeHeadline()}
@@ -234,4 +234,4 @@ class AddEditAttempts extends React.Component {
   }
 }
 
-export default AddEditAttempts;
+export default EditAttempts;
