@@ -14,7 +14,6 @@ class Attempts extends React.Component {
     weather: [],
     roast: [],
     bean: [],
-    isEditing: false,
   }
 
   getBean = (beanId) => {
@@ -51,14 +50,13 @@ class Attempts extends React.Component {
       });
   };
 
-  // editView = (e) => {
-  //   const attemptId = e.target.id;
-  //   this.props.history.push(`/attempts/${attemptId}/add`);
-  // }
+  editView = (attemptId) => {
+    this.props.history.push(`/attempts/${attemptId}/edit`);
+  }
 
   addView = () => {
-    const firebaseId = this.props.match.params.id;
-    this.props.history.push(`/attempts/${firebaseId}/add`);
+    const roastId = this.props.match.params.id;
+    this.props.history.push(`/attempts/${roastId}/add`);
   }
 
   componentDidMount() {
@@ -77,7 +75,6 @@ class Attempts extends React.Component {
     const {
       roast,
       bean,
-      isEditing,
     } = this.state;
 
     const { attempts } = this.state;
@@ -90,7 +87,6 @@ class Attempts extends React.Component {
         uid={uid}
         deleteSingleAttempt={this.deleteSingleAttempt}
         onSelect={this.editView}
-        isEditing={isEditing}
       />
     ));
 

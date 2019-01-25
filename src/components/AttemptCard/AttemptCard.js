@@ -19,7 +19,7 @@ class AttemptCard extends React.Component {
     deleteSingleAttempt(attempt.id);
   }
 
-  addEditView = (e) => {
+  editEvent = (e) => {
     e.stopPropagation();
     const { attempt, onSelect } = this.props;
     onSelect(attempt.id);
@@ -50,7 +50,7 @@ class AttemptCard extends React.Component {
         <div className="card-header">
           <h5 className="card-title text-center">{moment(attempt.date).format('MMM DD YYYY hh:mm a')}</h5>
         </div>
-        <div className="card-body" onClick={this.roastClick}>
+        <div className="card-body">
           <p className="card-text text-center">{attempt.city}, {attempt.state}</p>
           <p className="card-text text-center">
             {attempt.temp} °F, {attempt.humidity}% relative humidity

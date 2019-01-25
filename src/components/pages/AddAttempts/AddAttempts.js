@@ -78,11 +78,11 @@ class AddAttempts extends React.Component {
   roastLevelChange = e => this.formFieldStringState('roastLevel', e);
 
   addAttempt = (newAttempt) => {
-    const roastId = this.props.match.params.id;
+    const attemptId = this.props.match.params.id;
     attemptsRequests.createAttempt(newAttempt)
       .then(() => {
         this.setState({ newAttempt: defaultAttempt });
-        this.props.history.push(`/attempts/${roastId}`);
+        this.props.history.push(`/attempts/${attemptId}`);
       });
   }
 
