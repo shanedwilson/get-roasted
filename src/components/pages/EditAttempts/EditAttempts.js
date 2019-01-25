@@ -63,11 +63,11 @@ class EditAttempts extends React.Component {
 
   editAttempt = (newAttempt) => {
     const attemptId = this.props.match.params.id;
-    const roastId = newAttempt.roastId;
+    const currentRoast = newAttempt.roastId;
     attemptsRequests.updateAttempt(attemptId, newAttempt)
       .then(() => {
         this.setState({ newAttempt: defaultAttempt });
-        this.props.history.push(`/attempts/${roastId}`);
+        this.props.history.push(`/attempts/${currentRoast}`);
       });
   }
 
@@ -94,8 +94,8 @@ class EditAttempts extends React.Component {
     } = this.state;
 
     return (
-      <div className="EditAttempts mx-auto">
-        <h1>EDIT ATTEMPTS!!!</h1>
+      <div className="EditAttempts mx-auto w-100">
+        <h1 className="text-center">EDIT ATTEMPTS!!!</h1>
         <form className="row form-container border border-dark rounded mt-5 mx-auto col-12" onSubmit={this.formSubmit}>
           <div className="form mt-2 col-11">
             <div className="col-auto form-lines p-0">
@@ -227,7 +227,7 @@ class EditAttempts extends React.Component {
               </div>
             </div>
           </div>
-           <button type="submit" className="btn add-btn btn-success my-5">
+           <button type="submit" className="btn add-btn btn-success my-auto mx-auto">
             <i className="fas fa-plus-circle" />
           </button>
         </form>

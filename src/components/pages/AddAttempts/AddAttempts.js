@@ -114,7 +114,7 @@ class AddAttempts extends React.Component {
     } = this.state;
 
     return (
-      <div className="AddAttempts mx-auto">
+      <div className="AddAttempts mx-auto w-100">
         <h1 className="text-center">ADD ATTEMPTS!!!</h1>
         <form className="row form-container border border-dark rounded mt-5 mx-auto col-12" onSubmit={this.formSubmit}>
           <div className="form mt-2 col-11">
@@ -247,7 +247,7 @@ class AddAttempts extends React.Component {
               </div>
             </div>
           </div>
-           <button type="submit" className="btn add-btn btn-success my-5 col w-25">
+           <button type="submit" className="btn add-btn btn-success my-auto mx-auto">
             <i className="fas fa-plus-circle" />
           </button>
         </form>
