@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchField from 'react-search-field';
 import InventoryCard from '../../InventoryCard/InventoryCard';
 import authRequests from '../../../helpers/data/authRequests';
 import smashDataRequests from '../../../helpers/data/smashDataRequests';
@@ -13,6 +14,7 @@ class Inventory extends React.Component {
   state = {
     inventory: [],
     beans: [],
+    filteredInventory: [],
     isEditing: false,
     editId: '',
     beanId: '',
@@ -32,6 +34,7 @@ class Inventory extends React.Component {
     smashDataRequests.getAllInventoryWithBeanInfo(uid)
       .then((inventory) => {
         this.setState({ inventory });
+        this.setState({ filteredInventory: inventory });
       })
       .catch((error) => {
         console.error('error with inventory GET', error);
@@ -43,6 +46,22 @@ class Inventory extends React.Component {
       .then((beans) => {
         this.setState({ beans });
       });
+  }
+
+  onChange = (value, event) => {
+    const { inventory } = this.state;
+    const filteredInventory = [];
+    event.preventDefault();
+    if (!value) {
+      this.setState({ filteredInventory: inventory });
+    } else {
+      inventory.forEach((item) => {
+        if (item.region.toLowerCase().includes(value.toLowerCase()) || item.name.toLowerCase().includes(value.toLowerCase())) {
+          filteredInventory.push(item);
+        }
+        this.setState({ filteredInventory });
+      });
+    }
   }
 
   componentDidMount() {
@@ -86,14 +105,14 @@ class Inventory extends React.Component {
 
   render() {
     const {
-      inventory,
+      filteredInventory,
       beans,
       isEditing,
       editId,
       beanId,
     } = this.state;
 
-    const inventoryCards = inventory.map(item => (
+    const inventoryCards = filteredInventory.map(item => (
       <InventoryCard
         key={item.id}
         item={item}
@@ -108,6 +127,12 @@ class Inventory extends React.Component {
     return (
       <div className="inventory mx-auto mt-5 w-100">
         <h1 className="text-center">INVENTORY!!!</h1>
+          <SearchField
+            placeholder="Search Inventory..."
+            onChange={ this.onChange }
+            searchText=""
+            classNames="test-class w-100"
+          />
         <div>
           <AddEditInventory
             beans={beans}
