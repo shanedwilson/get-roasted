@@ -18,6 +18,10 @@ class Inventory extends React.Component {
     beanId: '',
   }
 
+  roastsView = (beanId) => {
+    this.props.history.push(`/roasts/${beanId}`);
+  }
+
   setBeanId = () => {
     const firebaseId = this.props.match.params.id;
     this.setState({ beanId: firebaseId });
@@ -96,22 +100,25 @@ class Inventory extends React.Component {
         beanId={beanId}
         passItemToEdit={this.passItemToEdit}
         deleteSingleItem={this.deleteSingleItem}
+        onSelect={this.roastsView}
       />
     ));
 
 
     return (
-      <div className="inventory mx-auto">
+      <div className="inventory mx-auto mt-5 w-100">
         <h1 className="text-center">INVENTORY!!!</h1>
-        <div><AddEditInventory
-          beans={beans}
-          isEditing={isEditing}
-          editId={editId}
-          beanId={beanId}
-          onSubmit={this.formSubmitEvent}
-          setSelect={this.setSelect}
-        /></div>
-        <div className="row justify-content-center">
+        <div>
+          <AddEditInventory
+            beans={beans}
+            isEditing={isEditing}
+            editId={editId}
+            beanId={beanId}
+            onSubmit={this.formSubmitEvent}
+            setSelect={this.setSelect}
+          />
+        </div>
+        <div className="inv-cards row justify-content-center">
           {inventoryCards}
         </div>
       </div>

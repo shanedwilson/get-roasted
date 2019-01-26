@@ -77,14 +77,14 @@ class AddEditRoast extends React.Component {
     const makeHeadline = () => {
       if (isEditing === false) {
         return (
-        <div className="mx-auto">
-          <h3>Add Roast</h3>
+        <div className="mx-auto mt-3">
+          <h5>Add Roast</h5>
         </div>
         );
       }
       return (
-        <div className="mx-auto">
-          <h3>Edit Roast</h3>
+        <div className="mx-auto mt-3">
+          <h5>Edit Roast</h5>
         </div>
       );
     };
@@ -95,7 +95,7 @@ class AddEditRoast extends React.Component {
 
     return (
       <div>
-        <form className="row form-container border border-dark rounded mt-5 mx-auto col-10" onSubmit={this.formSubmit}>
+        <form className="row form-container border border-dark rounded mt-5 mx-auto col-6" onSubmit={this.formSubmit}>
           {makeHeadline()}
           <div className="form mt-3 col-11">
             <select className="custom-select mb-2" onChange={this.beanSelect} value={beanId}>

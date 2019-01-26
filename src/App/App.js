@@ -13,7 +13,8 @@ import Beans from '../components/pages/Beans/Beans';
 import Roasts from '../components/pages/Roasts/Roasts';
 import Inventory from '../components/pages/Inventory/Inventory';
 import Attempts from '../components/pages/Attempts/Attempts';
-import AddEditAttempts from '../components/pages/AddEditAttempts/AddEditAttempts';
+import AddAttempts from '../components/pages/AddAttempts/AddAttempts';
+import EditAttempts from '../components/pages/EditAttempts/EditAttempts';
 import authRequests from '../helpers/data/authRequests';
 import connection from '../helpers/data/connection';
 
@@ -86,11 +87,12 @@ class App extends React.Component {
                   <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
                   <PrivateRoute path='/' exact component={Beans} authed={this.state.authed} />
                   <PrivateRoute path='/beans' component={Beans} authed={this.state.authed} />
-                  <PrivateRoute path='/roasts' component={Roasts} authed={this.state.authed} />
+                  <PrivateRoute path='/roasts/:id' component={Roasts} authed={this.state.authed} />
+                  <PrivateRoute exact path='/roasts' component={Roasts} authed={this.state.authed} />
                   <PrivateRoute exact path='/inventory' component={Inventory} authed={this.state.authed} />
                   <PrivateRoute path='/inventory/:id' component={Inventory} authed={this.state.authed} />
-                  <PrivateRoute exact path='/attempts/:id/add' component={AddEditAttempts} authed={this.state.authed} />
-                  <PrivateRoute exact path='/attempts/:id/edit' component={AddEditAttempts} authed={this.state.authed} />
+                  <PrivateRoute exact path='/attempts/:id/add' component={AddAttempts} authed={this.state.authed} />
+                  <PrivateRoute exact path='/attempts/:id/edit' component={EditAttempts} authed={this.state.authed} />
                   <PrivateRoute exact path='/attempts/:id' component={Attempts} authed={this.state.authed} />
                 </Switch>
               </div>

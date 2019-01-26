@@ -80,14 +80,14 @@ class AddEditInventory extends React.Component {
     const makeHeadline = () => {
       if (isEditing === false) {
         return (
-        <div className="mx-auto">
-          <h3>Add Inventory Item</h3>
+        <div className="mx-auto mt-3">
+          <h5>Add Inventory Item</h5>
         </div>
         );
       }
       return (
-        <div className="mx-auto">
-          <h3>Edit Inventory Item</h3>
+        <div className="mx-auto mt-3">
+          <h5>Edit Inventory Item</h5>
         </div>
       );
     };

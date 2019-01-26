@@ -17,6 +17,11 @@ class Roasts extends React.Component {
     beanId: '',
   }
 
+  setBeanId = () => {
+    const firebaseId = this.props.match.params.id;
+    this.setState({ beanId: firebaseId });
+  }
+
   getRoasts = () => {
     const uid = authRequests.getCurrentUid();
     smashDataRequests.getRoastsWithBeanInfo(uid)
@@ -32,14 +37,14 @@ class Roasts extends React.Component {
       });
   }
 
-  changeView = (e) => {
-    const roastId = e.target.id;
+  changeView = (roastId) => {
     this.props.history.push(`/attempts/${roastId}`);
   }
 
   componentDidMount() {
     this.getRoasts();
     this.getAllBeans();
+    this.setBeanId();
   }
 
   deleteSingleRoast = (roastId) => {
@@ -47,10 +52,6 @@ class Roasts extends React.Component {
       .then(() => {
         this.getRoasts();
       });
-  }
-
-  attemptsView = (roastId) => {
-    this.props.history.push(`/attempts/${roastId}`);
   }
 
   passRoastToEdit = (roastId, beanId) => {
@@ -98,25 +99,26 @@ class Roasts extends React.Component {
         uid={uid}
         ownerUid={ownerUid}
         beanId={beanId}
-        onSelect={this.attemptsView}
+        onSelect={this.changeView}
         deleteSingleRoast={this.deleteSingleRoast}
         passRoastToEdit={this.passRoastToEdit}
       />
     ));
 
     return (
-      <div className="Roasts mx-auto">
-        <h1 className="text-center">ROASTS!!!</h1>
-        <div><AddEditRoast
-          beans={beans}
-          isEditing={isEditing}
-          onSubmit={this.formSubmitEvent}
-          editId={editId}
-          beanId={beanId}
-          setSelect={this.setSelect}
+      <div className="Roasts mx-auto w-100">
+        <h1 className="text-center mt-5">ROASTS!!!</h1>
+        <div>
+          <AddEditRoast
+            beans={beans}
+            isEditing={isEditing}
+            onSubmit={this.formSubmitEvent}
+            editId={editId}
+            beanId={beanId}
+            setSelect={this.setSelect}
         />
       </div>
-        <div className="row justify-content-center">
+        <div className="rst-cards row justify-content-center">
           {roastCards}
         </div>
       </div>

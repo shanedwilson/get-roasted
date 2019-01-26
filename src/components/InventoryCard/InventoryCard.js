@@ -24,39 +24,48 @@ class InventoryCard extends React.Component {
     passItemToEdit(item.id, item.beanId);
   }
 
+  inventoryView = (e) => {
+    e.stopPropagation();
+    const { item, onSelect } = this.props;
+    onSelect(item.beanId);
+  }
+
   render() {
     const {
       item,
     } = this.props;
 
     const makeButtons = () => (
-        <div className="mx-auto">
-          <span className="col-1">
+        <div className="text-center">
+          <span className="col">
             <button className="btn btn-default" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
-          <span className="col-1">
+          <span className="col">
             <button className="btn btn-default" onClick={this.deleteEvent}>
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
-          <span className="col-1">
-            <button className="btn btn-default">
-              Roast
-              <i className="fas fa-plus-circle ml-2"></i>
+          <div className="col">
+            <button className="btn btn-default text-center">
+              <i className="fas fa-plus-circle ml-2" onClick={this.inventoryView}>    Roast</i>
             </button>
-          </span>
+          </div>
         </div>
     );
 
     return (
-      <div className="card col-5 m-3">
-        <div className="card-header">
-          <h5 className="card-title text-center">{item.name}</h5>
+      <div className="card col-3 m-3">
+        <div className="card-header text-center">
+          {item.name}
         </div>
-        <div className="card-body">
-          <p className="card-text text-center">{item.pounds} lbs {item.ounces} oz</p>
+        <div className="card-body  text-center">
+          <h6>{item.region}</h6>
+          <p className="card-text">{item.description}</p>
+          <div>
+            <p className="card-text font-weight-bold lead">{item.pounds} lbs {item.ounces} oz</p>
+          </div>
         </div>
         {makeButtons()}
       </div>
