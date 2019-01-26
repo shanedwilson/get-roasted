@@ -25,7 +25,6 @@ class Beans extends React.Component {
   };
 
   onChange = (value, event) => {
-    console.log(value);
     const { beans } = this.state;
     const filteredBeans = [];
     event.preventDefault();
@@ -36,7 +35,6 @@ class Beans extends React.Component {
         if (bean.region.toLowerCase().includes(value.toLowerCase()) || bean.name.toLowerCase().includes(value.toLowerCase())) {
           filteredBeans.push(bean);
         }
-        console.log(filteredBeans);
         this.setState({ filteredBeans });
       });
     }
