@@ -120,13 +120,13 @@ class Beans extends React.Component {
 
     return (
 
-        <div className="beans">
+        <div className="beans mt-5">
           <h1 className="text-center">BEANS!!!</h1>
           <SearchField
             placeholder="Search Beans..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-100"
+            classNames="test-class w-50 mx-auto"
           />
           {makeForm()}
           <div className="row justify-content-center">
