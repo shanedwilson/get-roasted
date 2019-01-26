@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchField from 'react-search-field';
 import BeanCard from '../../BeanCard/BeanCard';
 import AddEditBean from '../../AddEditBean/AddEditBean';
 import authRequests from '../../../helpers/data/authRequests';
@@ -10,6 +11,7 @@ import './Beans.scss';
 class Beans extends React.Component {
   state = {
     beans: [],
+    filteredBeans: [],
     uid: '',
     isEditing: false,
   }
@@ -18,8 +20,27 @@ class Beans extends React.Component {
     beanRequests.getAllBeans()
       .then((beans) => {
         this.setState({ beans });
+        this.setState({ filteredBeans: beans });
       });
   };
+
+  onChange = (value, event) => {
+    console.log(value);
+    const { beans } = this.state;
+    const filteredBeans = [];
+    event.preventDefault();
+    if (!value) {
+      this.setState({ filteredBeans: beans });
+    } else {
+      beans.forEach((bean) => {
+        if (bean.region.toLowerCase().includes(value.toLowerCase()) || bean.name.toLowerCase().includes(value.toLowerCase())) {
+          filteredBeans.push(bean);
+        }
+        console.log(filteredBeans);
+        this.setState({ filteredBeans });
+      });
+    }
+  }
 
   componentDidMount() {
     this.getBeans();
@@ -55,11 +76,11 @@ class Beans extends React.Component {
   }
 
   render() {
-    const { beans, isEditing, editId } = this.state;
+    const { filteredBeans, isEditing, editId } = this.state;
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
 
-    const beanCards = beans.map(bean => (
+    const beanCards = filteredBeans.map(bean => (
       <BeanCard
         key={bean.id}
         bean={bean}
@@ -103,6 +124,12 @@ class Beans extends React.Component {
 
         <div className="beans">
           <h1 className="text-center">BEANS!!!</h1>
+          <SearchField
+            placeholder="Search Beans..."
+            onChange={ this.onChange }
+            searchText=""
+            classNames="test-class w-100"
+          />
           {makeForm()}
           <div className="row justify-content-center">
             {beanCards}
