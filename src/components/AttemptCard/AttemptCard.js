@@ -62,7 +62,7 @@ class AttemptCard extends React.Component {
              {attempt.secondTime}, {attempt.secondTemp} °F
           </p>
           <p className="card-text text-center">Notes: {attempt.notes}</p>
-          <p className="card-text text-center">Rating: {attempt.rating}</p>
+          <p className="card-text text-center lead">Rating: {attempt.rating}</p>
       </div>
         {makeButtons()}
       </div>

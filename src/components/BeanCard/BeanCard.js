@@ -53,7 +53,7 @@ class BeanCard extends React.Component {
           </span>
           <div className="col">
             <button className="btn btn-default" onClick={this.inventoryView}>
-              <i className="fas fa-plus-circle">Inventory</i>
+              <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </div>
         </div>
@@ -62,8 +62,8 @@ class BeanCard extends React.Component {
       return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default" onClick={this.inventoryView}>
-              <i className="fas fa-plus-circle"></i>
+            <button className="btn btn-default mr-3" onClick={this.inventoryView}>
+              <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </span>
         </div>
@@ -72,6 +72,9 @@ class BeanCard extends React.Component {
 
     return (
      <div className="card col-3 m-3">
+        <div className="card-header text-center">
+          {bean.region}
+        </div>
         <img className="card-img-top mt-3" src={bean.imgUrl} alt={bean.name} />
         <div className="card-body">
           <h5 className="card-title text-center">{bean.name}</h5>

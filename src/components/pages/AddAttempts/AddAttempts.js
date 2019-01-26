@@ -114,9 +114,9 @@ class AddAttempts extends React.Component {
     } = this.state;
 
     return (
-      <div className="AddAttempts mx-auto w-100">
-        <h1 className="text-center">ADD ATTEMPTS!!!</h1>
-        <form className="row form-container border border-dark rounded mt-5 mx-auto col-12" onSubmit={this.formSubmit}>
+      <div className="AddAttempts mx-auto mb-5 w-100">
+        <h1 className="text-center mt-5">ADD ATTEMPTS!!!</h1>
+        <form className="row form-container border border-dark rounded mt-5 mx-auto my-auto col-12" onSubmit={this.formSubmit}>
           <div className="form mt-2 col-11">
             <div className="col-auto form-lines p-0">
               <label htmlFor="name" className="sr-only">Length</label>

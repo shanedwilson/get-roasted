@@ -49,7 +49,7 @@ class InventoryCard extends React.Component {
           </span>
           <div className="col">
             <button className="btn btn-default text-center">
-              <i className="fas fa-plus-circle ml-2" onClick={this.inventoryView}>Roast</i>
+              <i className="fas fa-plus-circle ml-2" onClick={this.inventoryView}>    Roast</i>
             </button>
           </div>
         </div>
@@ -57,11 +57,15 @@ class InventoryCard extends React.Component {
 
     return (
       <div className="card col-3 m-3">
-        <div className="card-header">
-          <h5 className="card-title text-center">{item.name}</h5>
+        <div className="card-header text-center">
+          {item.name}
         </div>
-        <div className="card-body">
-          <p className="card-text text-center">{item.pounds} lbs {item.ounces} oz</p>
+        <div className="card-body  text-center">
+          <h6>{item.region}</h6>
+          <p className="card-text">{item.description}</p>
+          <div>
+            <p className="card-text font-weight-bold lead">{item.pounds} lbs {item.ounces} oz</p>
+          </div>
         </div>
         {makeButtons()}
       </div>
