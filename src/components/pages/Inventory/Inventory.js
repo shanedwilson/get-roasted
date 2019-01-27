@@ -128,7 +128,7 @@ class Inventory extends React.Component {
       <div className="inventory mx-auto mt-5 w-100">
         <h1 className="text-center">INVENTORY!!!</h1>
           <SearchField
-            placeholder="Search Inventory..."
+            placeholder="Search Inventory By Region or Name..."
             onChange={ this.onChange }
             searchText=""
             classNames="test-class w-100"

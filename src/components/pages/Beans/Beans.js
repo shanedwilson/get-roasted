@@ -123,7 +123,7 @@ class Beans extends React.Component {
         <div className="beans mt-5">
           <h1 className="text-center">BEANS!!!</h1>
           <SearchField
-            placeholder="Search Beans..."
+            placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
             classNames="test-class w-50 mx-auto"

@@ -52,7 +52,9 @@ class Roasts extends React.Component {
       this.setState({ filteredRoasts: roasts });
     } else {
       roasts.forEach((roast) => {
-        if (roast.name.toLowerCase().includes(value.toLowerCase()) || roast.roastName.toLowerCase().includes(value.toLowerCase())) {
+        if (roast.name.toLowerCase().includes(value.toLowerCase())
+        || roast.roastName.toLowerCase().includes(value.toLowerCase())
+        || roast.region.toLowerCase().includes(value.toLowerCase())) {
           filteredRoasts.push(roast);
         }
         this.setState({ filteredRoasts });
@@ -128,7 +130,7 @@ class Roasts extends React.Component {
       <div className="Roasts mx-auto">
         <h1 className="text-center mt-5">ROASTS!!!</h1>
           <SearchField
-            placeholder="Search Roasts..."
+            placeholder="Search Roasts By Region, Roast Name or Bean Name..."
             onChange={ this.onChange }
             searchText=""
             classNames="test-class w-100"

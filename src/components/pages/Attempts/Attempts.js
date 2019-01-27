@@ -115,7 +115,7 @@ class Attempts extends React.Component {
       <div className="Attempts mx-auto w-100">
         <h1 className="text-center">ATTEMPTS!!!</h1>
           <SearchField
-            placeholder="Search By Attempt Date..."
+            placeholder="Search Attempt By Date..."
             onChange={ this.onChange }
             searchText=""
             classNames="test-class w-100"
