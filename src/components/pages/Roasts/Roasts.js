@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchField from 'react-search-field';
 import RoastCard from '../../RoastCard/RoastCard';
 import AddEditRoast from '../../AddEditRoast/AddEditRoast';
 import smashDataRequests from '../../../helpers/data/smashDataRequests';
@@ -12,6 +13,7 @@ class Roasts extends React.Component {
   state = {
     roasts: [],
     beans: [],
+    filteredRoasts: [],
     isEditing: false,
     editId: '',
     beanId: '',
@@ -27,6 +29,7 @@ class Roasts extends React.Component {
     smashDataRequests.getRoastsWithBeanInfo(uid)
       .then((roasts) => {
         this.setState({ roasts });
+        this.setState({ filteredRoasts: roasts });
       });
   };
 
@@ -39,6 +42,24 @@ class Roasts extends React.Component {
 
   changeView = (roastId) => {
     this.props.history.push(`/attempts/${roastId}`);
+  }
+
+  onChange = (value, event) => {
+    const { roasts } = this.state;
+    const filteredRoasts = [];
+    event.preventDefault();
+    if (!value) {
+      this.setState({ filteredRoasts: roasts });
+    } else {
+      roasts.forEach((roast) => {
+        if (roast.name.toLowerCase().includes(value.toLowerCase())
+        || roast.roastName.toLowerCase().includes(value.toLowerCase())
+        || roast.region.toLowerCase().includes(value.toLowerCase())) {
+          filteredRoasts.push(roast);
+        }
+        this.setState({ filteredRoasts });
+      });
+    }
   }
 
   componentDidMount() {
@@ -82,7 +103,7 @@ class Roasts extends React.Component {
 
   render() {
     const {
-      roasts,
+      filteredRoasts,
       beans,
       isEditing,
       editId,
@@ -92,7 +113,7 @@ class Roasts extends React.Component {
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
 
-    const roastCards = roasts.map(roast => (
+    const roastCards = filteredRoasts.map(roast => (
       <RoastCard
         key={roast.id}
         roast={roast}
@@ -106,8 +127,14 @@ class Roasts extends React.Component {
     ));
 
     return (
-      <div className="Roasts mx-auto w-100">
+      <div className="Roasts mx-auto">
         <h1 className="text-center mt-5">ROASTS!!!</h1>
+          <SearchField
+            placeholder="Search Roasts By Region, Roast Name or Bean Name..."
+            onChange={ this.onChange }
+            searchText=""
+            classNames="test-class w-100"
+          />
         <div>
           <AddEditRoast
             beans={beans}

@@ -2,7 +2,11 @@
   h1{
     font-family: 'bungee';
   }
-  p {
+  p, .search-field {
     font-family: 'open sans';
+  }
+
+  .search-field {
+    border: solid pink;
   }
 }

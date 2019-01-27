@@ -53,7 +53,7 @@ class RoastCard extends React.Component {
           </span>
           <div className="col">
             <button className="btn btn-default">
-              <i className="fas fa-plus-circle" onClick={this.roastClick}>Attempts</i>
+              <i className="fas fa-plus-circle" onClick={this.roastClick}>    Attempts</i>
             </button>
           </div>
         </div>
@@ -63,7 +63,7 @@ class RoastCard extends React.Component {
         <div className="mx-auto">
           <span className="col">
             <button className="btn btn-default">
-              <i className="fas fa-plus-circle" onClick={this.roastClick}>Attempts</i>
+              <i className="fas fa-plus-circle" onClick={this.roastClick}>    Attempts</i>
             </button>
           </span>
         </div>
@@ -76,6 +76,7 @@ class RoastCard extends React.Component {
           <h5 className="card-title text-center">{roast.roastName}</h5>
         </div>
         <div className="card-body">
+          <p className="card-text text-center lead">{roast.region}</p>
           <p className="card-text text-center">{roast.name}</p>
         </div>
         {makeButtons()}

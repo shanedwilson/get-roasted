@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import SearchField from 'react-search-field';
 import AttemptCard from '../../AttemptCard/AttemptCard';
 import attemptsRequests from '../../../helpers/data/attemptsRequests';
 import authRequests from '../../../helpers/data/authRequests';
@@ -11,6 +13,7 @@ import './Attempts.scss';
 class Attempts extends React.Component {
   state = {
     attempts: [],
+    filteredAttempts: [],
     weather: [],
     roast: [],
     bean: [],
@@ -44,6 +47,7 @@ class Attempts extends React.Component {
     attemptsRequests.getAllAttempts(uid, firebaseId)
       .then((attempts) => {
         this.setState({ attempts });
+        this.setState({ filteredAttempts: attempts });
       })
       .catch((error) => {
         console.error('error with attempts GET', error);
@@ -57,6 +61,23 @@ class Attempts extends React.Component {
   addView = () => {
     const roastId = this.props.match.params.id;
     this.props.history.push(`/attempts/${roastId}/add`);
+  }
+
+  onChange = (value, event) => {
+    const { attempts } = this.state;
+    const filteredAttempts = [];
+    event.preventDefault();
+    if (!value) {
+      this.setState({ filteredInventory: attempts });
+    } else {
+      attempts.forEach((attempt) => {
+        const displayTime = moment(attempt.date).format('MMM DD YYYY hh:mm a');
+        if (displayTime.toLowerCase().includes(value.toLowerCase())) {
+          filteredAttempts.push(attempt);
+        }
+        this.setState({ filteredAttempts });
+      });
+    }
   }
 
   componentDidMount() {
@@ -77,10 +98,10 @@ class Attempts extends React.Component {
       bean,
     } = this.state;
 
-    const { attempts } = this.state;
+    const { filteredAttempts } = this.state;
     const uid = authRequests.getCurrentUid();
 
-    const attemptCards = attempts.map(attempt => (
+    const attemptCards = filteredAttempts.map(attempt => (
       <AttemptCard
         key={attempt.id}
         attempt={attempt}
@@ -93,6 +114,12 @@ class Attempts extends React.Component {
     return (
       <div className="Attempts mx-auto w-100">
         <h1 className="text-center">ATTEMPTS!!!</h1>
+          <SearchField
+            placeholder="Search Attempt By Date..."
+            onChange={ this.onChange }
+            searchText=""
+            classNames="test-class w-100"
+          />
         <div className="col-5 mx-auto">
           <div className="card col m-3 mx-auto">
             <div className="card-header">
