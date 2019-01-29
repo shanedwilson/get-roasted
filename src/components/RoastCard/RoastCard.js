@@ -102,15 +102,19 @@ class RoastCard extends React.Component {
 
     return (
       <div className="card col-3 m-3">
-        <div className="card-header">
-          <h5 className="card-title text-center">{roast.roastName}</h5>
+        <div className="card-header h-25 d-flex">
+          <h5 className="card-title text-center align-self-center m-0">{roast.roastName}</h5>
         </div>
-        <div className="card-body">
-          <p className="card-text text-center lead">{roast.region}</p>
-          <p className="card-text text-center">{roast.name}</p>
-          <p className="card-text text-center lead">Average Rating: {averageRating}</p>
+        <div className="card-body d-flex flex-column text-center justify-content-center">
+          <p className="card-text lead">{roast.region}</p>
+          <p className="card-text ">{roast.name}</p>
+          <div className="average-div">
+            <p className="card-text lead">Average Rating: {averageRating}</p>
+          </div>
         </div>
-        {makeButtons()}
+        <div className="card-footer text-center">
+          {makeButtons()}
+        </div>
       </div>
     );
   }
