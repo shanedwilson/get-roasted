@@ -44,7 +44,7 @@ class Attempts extends React.Component {
   getAttempts = () => {
     const uid = authRequests.getCurrentUid();
     const firebaseId = this.props.match.params.id;
-    attemptsRequests.getAllAttempts(uid, firebaseId)
+    attemptsRequests.getAllAttemptsByUid(uid, firebaseId)
       .then((attempts) => {
         this.setState({ attempts });
         this.setState({ filteredAttempts: attempts });

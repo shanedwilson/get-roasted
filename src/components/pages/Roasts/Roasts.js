@@ -108,6 +108,7 @@ class Roasts extends React.Component {
       isEditing,
       editId,
       beanId,
+      roasts,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -123,6 +124,7 @@ class Roasts extends React.Component {
         onSelect={this.changeView}
         deleteSingleRoast={this.deleteSingleRoast}
         passRoastToEdit={this.passRoastToEdit}
+        roasts={roasts}
       />
     ));
 

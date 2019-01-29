@@ -1,16 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import roastShape from '../../helpers/propz/roastShape';
+import attemptsRequests from '../../helpers/data/attemptsRequests';
 
 import './RoastCard.scss';
 
 class RoastCard extends React.Component {
-    static propTypes = {
-      roast: roastShape.roastShape,
-      deleteSingleRoast: PropTypes.func,
-      passRoastToEdit: PropTypes.func,
-      onSelect: PropTypes.func,
-    }
+  state = {
+    averageRating: 0,
+  }
+
+  static propTypes = {
+    roast: roastShape.roastShape,
+    deleteSingleRoast: PropTypes.func,
+    passRoastToEdit: PropTypes.func,
+    onSelect: PropTypes.func,
+    roasts: PropTypes.array,
+  }
+
+  getAttempts = () => {
+    const roastId = this.props.roast.id;
+    let totalRating = 0;
+    attemptsRequests.getAllAttemptsByRoastId(roastId)
+      .then((attempts) => {
+        (attempts.length === 0 ? this.setState({ averageRating: 0 })
+          : attempts.forEach((attempt) => {
+            totalRating += attempt.rating;
+            this.setState({ averageRating: totalRating / attempts.length });
+          }));
+      })
+      .catch((error) => {
+        console.error('error with attempts GET', error);
+      });
+  };
 
   roastClick = (e) => {
     e.stopPropagation();
@@ -30,12 +52,20 @@ class RoastCard extends React.Component {
     passRoastToEdit(roast.id, roast.beanId);
   }
 
+  componentDidMount() {
+    this.getAttempts();
+  }
+
   render() {
     const {
       roast,
       uid,
       ownerUid,
     } = this.props;
+
+    const {
+      averageRating,
+    } = this.state;
 
     const makeButtons = () => {
       if (uid === ownerUid) {
@@ -78,6 +108,7 @@ class RoastCard extends React.Component {
         <div className="card-body">
           <p className="card-text text-center lead">{roast.region}</p>
           <p className="card-text text-center">{roast.name}</p>
+          <p className="card-text text-center lead">Average Rating: {averageRating}</p>
         </div>
         {makeButtons()}
       </div>
