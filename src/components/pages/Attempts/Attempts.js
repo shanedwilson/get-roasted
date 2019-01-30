@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import SearchField from 'react-search-field';
 import AttemptCard from '../../AttemptCard/AttemptCard';
+import AttemptsGraph from '../../AttemptsGraph/AttemptsGraph';
 import attemptsRequests from '../../../helpers/data/attemptsRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import roastRequests from '../../../helpers/data/roastRequests';
@@ -17,6 +18,9 @@ class Attempts extends React.Component {
     weather: [],
     roast: [],
     bean: [],
+    firstCrack: [],
+    secondCrack: [],
+    end: [],
   }
 
   getBean = (beanId) => {
@@ -44,10 +48,31 @@ class Attempts extends React.Component {
   getAttempts = () => {
     const uid = authRequests.getCurrentUid();
     const firebaseId = this.props.match.params.id;
+    const firstCrack = [];
+    const secondCrack = [];
+    const end = [];
     attemptsRequests.getAllAttemptsByUid(uid, firebaseId)
       .then((attempts) => {
-        this.setState({ attempts });
-        this.setState({ filteredAttempts: attempts });
+        attempts.forEach((attempt) => {
+          firstCrack.push({
+            time: attempt.firstTime,
+            temp: attempt.firstTemp,
+            rating: attempt.rating,
+          });
+          secondCrack.push({
+            time: attempt.secondTime,
+            temp: attempt.secondTemp,
+            rating: attempt.rating,
+          });
+          end.push({
+            time: attempt.endTime,
+            temp: attempt.endTemp,
+            rating: attempt.rating,
+          });
+        });
+        this.setState({
+          attempts, filteredAttempts: attempts, firstCrack, secondCrack, end,
+        });
       })
       .catch((error) => {
         console.error('error with attempts GET', error);
@@ -98,7 +123,9 @@ class Attempts extends React.Component {
       bean,
     } = this.state;
 
-    const { filteredAttempts } = this.state;
+    const {
+      filteredAttempts, firstCrack, secondCrack, end,
+    } = this.state;
     const uid = authRequests.getCurrentUid();
 
     const attemptCards = filteredAttempts.map(attempt => (
@@ -139,6 +166,13 @@ class Attempts extends React.Component {
         </div>
         <div>
           <div className="justify-content-center row">{attemptCards}</div>
+        </div>
+        <div className="graph-container mt-5 mx-auto">
+          <AttemptsGraph
+          firstCrack={firstCrack}
+          secondCrack={secondCrack}
+          end={end}
+          />
         </div>
       </div>
     );

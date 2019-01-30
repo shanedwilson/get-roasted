@@ -17,7 +17,8 @@ const defaultAttempt = {
   city: '',
   state: '',
   date: '',
-  length: '',
+  endTime: '',
+  endTemp: '',
   firstTime: '',
   firstTemp: '',
   secondTime: '',
@@ -65,7 +66,9 @@ class AddAttempts extends React.Component {
 
   ratingChange = e => this.formFieldNumberState('rating', e);
 
-  lengthChange = e => this.formFieldStringState('length', e);
+  endTimeChange = e => this.formFieldStringState('endTime', e);
+
+  endTempChange = e => this.formFieldNumberState('endTemp', e);
 
   firstTimeChange = e => this.formFieldStringState('firstTime', e);
 
@@ -118,22 +121,6 @@ class AddAttempts extends React.Component {
         <h1 className="text-center mt-5">ADD ATTEMPTS!!!</h1>
         <form className="row form-container border border-dark rounded mt-5 mx-auto my-auto col-12" onSubmit={this.formSubmit}>
           <div className="form mt-2 col-11">
-            <div className="col-auto form-lines p-0">
-              <label htmlFor="name" className="sr-only">Length</label>
-              <div className="input-group mb-2">
-                <div className="input-group-prepend">
-                  <div className="input-group-text">Length</div>
-                </div>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="length"
-                  placeholder="15:30"
-                  value={newAttempt.length}
-                  onChange={this.lengthChange}
-                />
-              </div>
-            </div>
             <div className="col-auto form-lines p-0">
               <label htmlFor="link" className="sr-only">First Crack Time</label>
               <div className="input-group mb-2">
@@ -195,6 +182,38 @@ class AddAttempts extends React.Component {
                   placeholder="275"
                   value={newAttempt.SecondTemp}
                   onChange={this.secondTempChange}
+                />
+              </div>
+            </div>
+            <div className="col-auto form-lines p-0">
+              <label htmlFor="name" className="sr-only">End Time</label>
+              <div className="input-group mb-2">
+                <div className="input-group-prepend">
+                  <div className="input-group-text">End Time</div>
+                </div>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="length"
+                  placeholder="15:30"
+                  value={newAttempt.endTime}
+                  onChange={this.endTimeChange}
+                />
+              </div>
+            </div>
+            <div className="col-auto form-lines p-0">
+              <label htmlFor="name" className="sr-only">End Temp</label>
+              <div className="input-group mb-2">
+                <div className="input-group-prepend">
+                  <div className="input-group-text">End Temp</div>
+                </div>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="length"
+                  placeholder="260"
+                  value={newAttempt.endTemp}
+                  onChange={this.endTempChange}
                 />
               </div>
             </div>
