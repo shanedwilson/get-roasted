@@ -16,7 +16,7 @@ The user has the ability to add, edit and delete their inventory and roast attem
 ![Beans Screenshot](./images/get-roasted-beans-view.png)
 ![Inventory Screenshot](./images/get-roasted-inventory-view.png)
 ![Roasts Screenshot](./images/get-roasted-roasts-view.png)
-![Attempts Screenshot](./images/get-roasted-attemps-view.png)
+![Attempts Screenshot](./images/get-roasted-attemtps-view.png)
 
 ## Deployed Site Link
 [Get-Roasted!!!](https://get-roasted-228b6.firebaseapp.com/)
