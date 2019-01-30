@@ -72,12 +72,12 @@ class BeanCard extends React.Component {
 
     return (
      <div className="card col-3 m-3">
-        <div className="card-header text-center">
-          {bean.region}
+        <div className="card-header h-10 d-flex">
+          <h5 className="card-title mx-auto">{bean.region}</h5>
         </div>
         <img className="card-img-top mt-3" src={bean.imgUrl} alt={bean.name} />
-        <div className="card-body">
-          <h5 className="card-title text-center">{bean.name}</h5>
+        <div className="card-body text-center">
+          <h5 className="card-title">{bean.name}</h5>
           <p className="card-text">{bean.description}</p>
         </div>
         {makeButtons()}
