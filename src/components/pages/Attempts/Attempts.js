@@ -113,7 +113,7 @@ class Attempts extends React.Component {
 
     return (
       <div className="Attempts mx-auto w-100">
-        <h1 className="text-center">ATTEMPTS!!!</h1>
+        <h1 className="text-center mt-5">ATTEMPTS!!!</h1>
           <SearchField
             placeholder="Search Attempt By Date..."
             onChange={ this.onChange }
