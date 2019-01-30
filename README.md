@@ -27,7 +27,8 @@ The user has the ability to add, edit and delete their inventory and roast attem
   -Create a firebase project  
   -Enable 'Google Authentication'  
   -Create a Firebase Realtime Database (Not Firestore)  
-  -Create an apiKeys.js file (an example file exists in the 'helpers' folder)  
+  -Create an apiKeys.js file (an example file exists in the 'helpers' folder)
+  -Copy firebase keys from firebase web app settings into apiKeys.js
 
 * Clone or download the repo
 
