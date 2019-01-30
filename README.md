@@ -10,8 +10,11 @@ The user has the ability to add, edit and delete their inventory and roast attem
 * Planning with Github Projects
 
 ## Screenshots
-![Main Screenshot](./images/developer-plus-plus-main.png)
-![Second Screenshot](./images/developer-plus-plus-secondary.png)
+![Auth Screenshot](./images/get-roasted-auth-view.png)
+![Beans Screenshot](./images/get-roasted-beans-view.png)
+![Inventory Screenshot](./images/get-roasted-inventory-view.png)
+![Roasts Screenshot](./images/get-roasted-roasts-view.png)
+![Attempts Screenshot](./images/get-roasted-attemps-view.png)
 
 ## Deployed Site Link
 [Get-Roasted!!!](https://get-roasted-228b6.firebaseapp.com/)
