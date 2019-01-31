@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchField from 'react-search-field';
+import MyModal from '../../MyModal/MyModal';
 import BeanCard from '../../BeanCard/BeanCard';
 import AddEditBean from '../../AddEditBean/AddEditBean';
 import authRequests from '../../../helpers/data/authRequests';
@@ -14,6 +15,15 @@ class Beans extends React.Component {
     filteredBeans: [],
     uid: '',
     isEditing: false,
+    modal: false,
+    editId: '',
+  }
+
+  toggleModal = () => {
+    const { modal } = this.state;
+    this.setState({
+      modal: !modal,
+    });
   }
 
   getBeans = () => {
@@ -55,7 +65,10 @@ class Beans extends React.Component {
       });
   }
 
-  passBeanToEdit = beanId => this.setState({ isEditing: true, editId: beanId });
+  passBeanToEdit = (beanId) => {
+    const { modal } = this.state;
+    this.setState({ isEditing: true, editId: beanId, modal: !modal });
+  }
 
   formSubmitEvent = (newBean) => {
     const { isEditing, editId } = this.state;
@@ -63,7 +76,7 @@ class Beans extends React.Component {
       beanRequests.updateBean(editId, newBean)
         .then(() => {
           this.getBeans();
-          this.setState({ isEditing: false });
+          this.setState({ isEditing: false, modal: false });
         });
     } else {
       beanRequests.createBean(newBean)
@@ -74,7 +87,12 @@ class Beans extends React.Component {
   }
 
   render() {
-    const { filteredBeans, isEditing, editId } = this.state;
+    const {
+      filteredBeans,
+      isEditing,
+      editId,
+      modal,
+    } = this.state;
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
 
@@ -90,33 +108,16 @@ class Beans extends React.Component {
       />
     ));
 
-    const makeForm = () => {
-      if (uid === ownerUid) {
-        return (
-          <div className="row">
-            <div className="col mt-5">
-              <p className="text-center">Here you'll find a selection of beans from around the world.
-              Click the '+' button on any bean you'd like to add to your inventory.</p>
-            </div>
+    const makeForm = () => (
             <div className='form-container col'>
               <AddEditBean
                 isEditing={isEditing}
                 onSubmit={this.formSubmitEvent}
                 editId={editId}
+                toggleModal={this.toggleModal}
               />
             </div>
-          </div>
-        );
-      }
-      return (
-          <div className="row">
-            <div className="col mt-5">
-              <p className="text-center">Here you'll find a selection of beans from around the world.
-              Click the '+' button on any bean you'd like to add to your inventory.</p>
-            </div>
-          </div>
-      );
-    };
+    );
 
     return (
 
@@ -128,7 +129,19 @@ class Beans extends React.Component {
             searchText=""
             classNames="test-class w-50 mx-auto"
           />
-          {makeForm()}
+          <div className="col mt-5">
+            <p className="text-center">Here you'll find a selection of beans from around the world.
+              Click the '+' button on any bean you'd like to add to your inventory.
+            </p>
+          </div>
+          <div>
+            <MyModal
+            makeForm = {makeForm()}
+            isEditing={isEditing}
+            modal={modal}
+            toggleModal={this.toggleModal}
+            />
+          </div>
           <div className="row justify-content-center">
             {beanCards}
           </div>
