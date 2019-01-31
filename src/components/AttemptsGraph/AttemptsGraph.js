@@ -28,7 +28,7 @@ class AttemptsGraph extends React.Component {
             top: 20, right: 20, bottom: 10, left: 10,
           }}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" name="time" type="category" />
+        <XAxis dataKey="time" name="time" type="number" />
         <YAxis dataKey="temp" type="number" domain={['dataMin', 'dataMax']} name="temp" unit="•F" />
         <ZAxis dataKey="rating" name="rating" unit=" stars" />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />

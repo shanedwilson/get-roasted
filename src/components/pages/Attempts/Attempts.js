@@ -45,6 +45,38 @@ class Attempts extends React.Component {
       });
   }
 
+  timeConversion = (time) => {
+    const timeSplit = time.split(':');
+    let convertedTime = parseInt(timeSplit[0], 10) + (parseInt(timeSplit[1], 10) / 60);
+    convertedTime = convertedTime.toFixed(2);
+    return (convertedTime);
+  }
+
+  graphData = () => {
+    const { attempts } = this.state;
+    const firstCrack = [];
+    const secondCrack = [];
+    const end = [];
+    attempts.forEach((attempt) => {
+      firstCrack.push({
+        time: this.timeConversion(attempt.firstTime),
+        temp: attempt.firstTemp,
+        rating: attempt.rating,
+      });
+      secondCrack.push({
+        time: this.timeConversion(attempt.secondTime),
+        temp: attempt.secondTemp,
+        rating: attempt.rating,
+      });
+      end.push({
+        time: this.timeConversion(attempt.endTime),
+        temp: attempt.endTemp,
+        rating: attempt.rating,
+      });
+    });
+    this.setState({ firstCrack, secondCrack, end });
+  }
+
   getAttempts = () => {
     const uid = authRequests.getCurrentUid();
     const firebaseId = this.props.match.params.id;
@@ -53,26 +85,10 @@ class Attempts extends React.Component {
     const end = [];
     attemptsRequests.getAllAttemptsByUid(uid, firebaseId)
       .then((attempts) => {
-        attempts.forEach((attempt) => {
-          firstCrack.push({
-            time: attempt.firstTime,
-            temp: attempt.firstTemp,
-            rating: attempt.rating,
-          });
-          secondCrack.push({
-            time: attempt.secondTime,
-            temp: attempt.secondTemp,
-            rating: attempt.rating,
-          });
-          end.push({
-            time: attempt.endTime,
-            temp: attempt.endTemp,
-            rating: attempt.rating,
-          });
-        });
         this.setState({
           attempts, filteredAttempts: attempts, firstCrack, secondCrack, end,
         });
+        this.graphData();
       })
       .catch((error) => {
         console.error('error with attempts GET', error);
