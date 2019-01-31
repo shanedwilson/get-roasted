@@ -82,6 +82,7 @@ class Beans extends React.Component {
       beanRequests.createBean(newBean)
         .then(() => {
           this.getBeans();
+          this.setState({ modal: false });
         });
     }
   }
@@ -129,6 +130,11 @@ class Beans extends React.Component {
             searchText=""
             classNames="test-class w-50 mx-auto"
           />
+          <div>
+            <button type="button" className="btn add-btn btn-success my-5 mx-auto" onClick={this.toggleModal}>
+              <i className="fas fa-plus-circle" />
+            </button>
+          </div>
           <div className="col mt-5">
             <p className="text-center">Here you'll find a selection of beans from around the world.
               Click the '+' button on any bean you'd like to add to your inventory.
