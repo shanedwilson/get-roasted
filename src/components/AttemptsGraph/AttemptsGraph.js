@@ -30,7 +30,7 @@ class AttemptsGraph extends React.Component {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="time" name="time" type="number" />
         <YAxis dataKey="temp" type="number" domain={['dataMin', 'dataMax']} name="temp" unit="•F" />
-        <ZAxis dataKey="rating" name="rating" unit=" stars" />
+        <ZAxis dataKey="rating" name="rating" unit=" stars" range={[75, 350]}/>
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
         <Legend />
         <Scatter name="First Crack" data={firstCrack} fill="red" />
