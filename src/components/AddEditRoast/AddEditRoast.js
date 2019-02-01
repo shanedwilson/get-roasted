@@ -50,7 +50,7 @@ class AddEditRoast extends React.Component {
     this.setState({ newRoast: defaultRoast });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidMount(prevProps) {
     const { isEditing, editId } = this.props;
     if (prevProps !== this.props && isEditing) {
       roastRequests.getSingleRoast(editId)

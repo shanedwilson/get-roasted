@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchField from 'react-search-field';
+import MyModal from '../../MyModal/MyModal';
 import RoastCard from '../../RoastCard/RoastCard';
 import AddEditRoast from '../../AddEditRoast/AddEditRoast';
 import smashDataRequests from '../../../helpers/data/smashDataRequests';
@@ -17,6 +18,14 @@ class Roasts extends React.Component {
     isEditing: false,
     editId: '',
     beanId: '',
+    modal: false,
+  }
+
+  toggleModal = () => {
+    const { modal } = this.state;
+    this.setState({
+      modal: !modal,
+    });
   }
 
   setBeanId = () => {
@@ -76,7 +85,13 @@ class Roasts extends React.Component {
   }
 
   passRoastToEdit = (roastId, beanId) => {
-    this.setState({ isEditing: true, editId: roastId, beanId });
+    const { modal } = this.state;
+    this.setState({
+      isEditing: true,
+      editId: roastId,
+      beanId,
+      modal: !modal,
+    });
   }
 
   setSelect = (selectedBean) => {
@@ -89,14 +104,13 @@ class Roasts extends React.Component {
       roastRequests.updateRoast(editId, newRoast)
         .then(() => {
           this.getRoasts();
-          this.setState({ isEditing: false });
-          this.setState({ beanId: '' });
+          this.setState({ isEditing: false, beanId: '', modal: false });
         });
     } else {
       roastRequests.createRoast(newRoast)
         .then(() => {
           this.getRoasts();
-          this.setState({ beanId: '' });
+          this.setState({ beanId: '', modal: false });
         });
     }
   }
@@ -109,6 +123,7 @@ class Roasts extends React.Component {
       editId,
       beanId,
       roasts,
+      modal,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -128,6 +143,19 @@ class Roasts extends React.Component {
       />
     ));
 
+    const makeForm = () => (
+      <div className='form-container col'>
+        <AddEditRoast
+          beans={beans}
+          isEditing={isEditing}
+          onSubmit={this.formSubmitEvent}
+          editId={editId}
+          beanId={beanId}
+          setSelect={this.setSelect}
+        />
+      </div>
+    );
+
     return (
       <div className="Roasts mx-auto">
         <h1 className="text-center mt-5">ROASTS!!!</h1>
@@ -137,14 +165,17 @@ class Roasts extends React.Component {
             searchText=""
             classNames="test-class w-100"
           />
-        <div>
-          <AddEditRoast
-            beans={beans}
-            isEditing={isEditing}
-            onSubmit={this.formSubmitEvent}
-            editId={editId}
-            beanId={beanId}
-            setSelect={this.setSelect}
+      <div>
+        <button type="button" className="btn add-btn btn-success my-5 mx-auto" onClick={this.toggleModal}>
+          <i className="fas fa-plus-circle" />
+        </button>
+      </div>
+      <div>
+        <MyModal
+        makeForm = {makeForm()}
+        isEditing={isEditing}
+        modal={modal}
+        toggleModal={this.toggleModal}
         />
       </div>
         <div className="rst-cards row justify-content-center">
