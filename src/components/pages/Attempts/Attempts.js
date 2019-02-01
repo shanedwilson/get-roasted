@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import SearchField from 'react-search-field';
+import MyModal from '../../MyModal/MyModal';
+import AddAttempts from '../AddAttempts/AddAttempts';
 import AttemptCard from '../../AttemptCard/AttemptCard';
 import AttemptsGraph from '../../AttemptsGraph/AttemptsGraph';
 import attemptsRequests from '../../../helpers/data/attemptsRequests';
@@ -21,6 +23,22 @@ class Attempts extends React.Component {
     firstCrack: [],
     secondCrack: [],
     end: [],
+    modal: false,
+    isEditing: false,
+    editId: '',
+    roastId: '',
+  }
+
+  toggleModal = () => {
+    const { modal } = this.state;
+    this.setState({
+      modal: !modal,
+    });
+  }
+
+  getRoastId = () => {
+    const roastId = this.props.match.params.id;
+    this.setState({ roastId });
   }
 
   getBean = (beanId) => {
@@ -95,9 +113,9 @@ class Attempts extends React.Component {
       });
   };
 
-  editView = (attemptId) => {
-    this.props.history.push(`/attempts/${attemptId}/edit`);
-  }
+  // editView = (attemptId) => {
+  //   this.props.history.push(`/attempts/${attemptId}/edit`);
+  // }
 
   addView = () => {
     const roastId = this.props.match.params.id;
@@ -124,6 +142,7 @@ class Attempts extends React.Component {
   componentDidMount() {
     this.getAttempts();
     this.getRoast();
+    this.getRoastId();
   }
 
   deleteSingleAttempt = (attemptId) => {
@@ -133,15 +152,46 @@ class Attempts extends React.Component {
       });
   }
 
+  passAttemptToEdit = (attemptId) => {
+    const { modal } = this.state;
+    this.setState({
+      isEditing: true,
+      editId: attemptId,
+      modal: !modal,
+    });
+  }
+
+  formSubmitEvent = (newAttempt) => {
+    const { isEditing, editId } = this.state;
+    if (isEditing) {
+      attemptsRequests.updateAttempt(editId, newAttempt)
+        .then(() => {
+          this.getAttempts();
+          this.setState({ isEditing: false, modal: false });
+        });
+    } else {
+      attemptsRequests.createAttempt(newAttempt)
+        .then(() => {
+          this.getAttempts();
+          this.setState({ modal: false });
+        });
+    }
+  }
+
   render() {
     const {
       roast,
       bean,
+      isEditing,
+      editId,
+      modal,
+      roastId,
+      filteredAttempts,
+      firstCrack,
+      secondCrack,
+      end,
     } = this.state;
 
-    const {
-      filteredAttempts, firstCrack, secondCrack, end,
-    } = this.state;
     const uid = authRequests.getCurrentUid();
 
     const attemptCards = filteredAttempts.map(attempt => (
@@ -150,9 +200,22 @@ class Attempts extends React.Component {
         attempt={attempt}
         uid={uid}
         deleteSingleAttempt={this.deleteSingleAttempt}
-        onSelect={this.editView}
+        passAttemptToEdit={this.passAttemptToEdit}
       />
     ));
+
+    const makeForm = () => (
+      <div className='form-container col'>
+        <AddAttempts
+          isEditing={isEditing}
+          onSubmit={this.formSubmitEvent}
+          editId={editId}
+          setSelect={this.setSelect}
+          roast={roast}
+          roastId={roastId}
+        />
+      </div>
+    );
 
     return (
       <div className="Attempts mx-auto w-100">
@@ -163,6 +226,14 @@ class Attempts extends React.Component {
             searchText=""
             classNames="test-class w-100"
           />
+      <div>
+        <MyModal
+        makeForm = {makeForm()}
+        isEditing={isEditing}
+        modal={modal}
+        toggleModal={this.toggleModal}
+        />
+      </div>
         <div className="col-5 mx-auto">
           <div className="card col m-3 mx-auto">
             <div className="card-header">
@@ -174,7 +245,7 @@ class Attempts extends React.Component {
             <div className="mx-auto">
               <span className="col">
                 <button className="btn btn-default ml-3" onClick={this.deleteEvent}>
-                  Add Attempt   <i className="fas fa-plus-circle" onClick={this.addView}></i>
+                  Add Attempt   <i className="fas fa-plus-circle" onClick={this.toggleModal}></i>
                 </button>
               </span>
             </div>

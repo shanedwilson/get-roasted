@@ -24,13 +24,13 @@ class MyModal extends React.Component {
       if (isEditing === false) {
         return (
         <div className="mx-auto mt-3">
-          <h5>Add Bean</h5>
+          <h5>Add</h5>
         </div>
         );
       }
       return (
         <div className="mx-auto mt-3">
-          <h5>Edit Bean</h5>
+          <h5>Edit</h5>
         </div>
       );
     };
