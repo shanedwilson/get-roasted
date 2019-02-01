@@ -10,7 +10,6 @@ import {
 class MyModal extends React.Component {
   toggleEvent = () => {
     const { toggleModal } = this.props;
-    console.log('CLICKED ON MODAL');
     toggleModal();
   }
 

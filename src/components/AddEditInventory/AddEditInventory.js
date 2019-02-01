@@ -53,7 +53,7 @@ class AddEditInventory extends React.Component {
     this.setState({ newInventory: defaultInventory });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidMount(prevProps) {
     const { isEditing, editId } = this.props;
     if (prevProps !== this.props && isEditing) {
       inventoryRequests.getSingleInventory(editId)

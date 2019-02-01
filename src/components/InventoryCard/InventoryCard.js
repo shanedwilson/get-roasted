@@ -10,6 +10,7 @@ class InventoryCard extends React.Component {
       deleteSingleItem: PropTypes.func,
       passItemToEdit: PropTypes.func,
       onSelect: PropTypes.func,
+      onToggle: PropTypes.func,
     }
 
   deleteEvent = (e) => {
