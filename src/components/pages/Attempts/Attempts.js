@@ -28,6 +28,7 @@ class Attempts extends React.Component {
     editId: '',
     roastId: '',
     view: 'Attempts',
+    isSearching: false,
   }
 
   toggleModal = () => {
@@ -35,6 +36,21 @@ class Attempts extends React.Component {
     this.setState({
       modal: !modal,
     });
+  }
+
+  toggleSearch = () => {
+    const { isSearching } = this.state;
+    this.setState({ isSearching: !isSearching });
+  }
+
+  onEnter = () => {
+    const { attempts } = this.state;
+    this.setState({ isSearching: false, filteredAttempts: attempts });
+  }
+
+  onSearchClick = () => {
+    const { attempts } = this.state;
+    this.setState({ isSearching: false, filteredAttempts: attempts });
   }
 
   getRoastId = () => {
@@ -124,7 +140,7 @@ class Attempts extends React.Component {
     const filteredAttempts = [];
     event.preventDefault();
     if (!value) {
-      this.setState({ filteredInventory: attempts });
+      this.setState({ filteredAttempts: attempts });
     } else {
       attempts.forEach((attempt) => {
         const displayTime = moment(attempt.date).format('MMM DD YYYY hh:mm a');
@@ -188,6 +204,7 @@ class Attempts extends React.Component {
       secondCrack,
       end,
       view,
+      isSearching,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -215,15 +232,34 @@ class Attempts extends React.Component {
       </div>
     );
 
-    return (
-      <div className="Attempts mx-auto w-100">
-        <h1 className="text-center mt-5">ATTEMPTS!!!</h1>
+    const makeSearch = () => {
+      if (isSearching) {
+        return (
           <SearchField
-            placeholder="Search Attempt By Date..."
+            placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-100"
+            classNames="test-class w-50"
+            onEnter={this.onEnter}
+            onSearchClick={this.onSearchClick}
           />
+        );
+      }
+      return (<div></div>);
+    };
+
+    return (
+      <div className="Attempts mx-auto w-100">
+        <div className="btn-div col w-100">
+          <button type="button" className="btn add-btn btn-success mr-1" onClick={this.toggleModal}>
+            <i className="fas fa-plus-circle" />
+          </button>
+          <button type="button" className="btn add-btn btn-success" onClick={this.toggleSearch}>
+            <i className="fas fa-search" />
+          </button>
+        </div>
+        <h1 className="text-center mt-5">ATTEMPTS!!!</h1>
+        <div className="search-div">{makeSearch()}</div>
       <div>
         <MyModal
         makeForm = {makeForm()}

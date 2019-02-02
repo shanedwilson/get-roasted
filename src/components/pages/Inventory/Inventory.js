@@ -38,6 +38,16 @@ class Inventory extends React.Component {
     this.setState({ isSearching: !isSearching });
   }
 
+  onEnter = () => {
+    const { inventory } = this.state;
+    this.setState({ isSearching: false, filteredInventory: inventory });
+  }
+
+  onSearchClick = () => {
+    const { inventory } = this.state;
+    this.setState({ isSearching: false, filteredInventory: inventory });
+  }
+
   roastsView = (beanId) => {
     this.props.history.push(`/roasts/${beanId}`);
   }
@@ -174,12 +184,13 @@ class Inventory extends React.Component {
             onChange={ this.onChange }
             searchText=""
             classNames="test-class w-50"
+            onEnter={this.onEnter}
+            onSearchClick={this.onSearchClick}
           />
         );
       }
       return (<div></div>);
     };
-
 
     return (
       <div className="inventory mx-auto mt-5 w-100">

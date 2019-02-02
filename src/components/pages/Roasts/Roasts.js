@@ -20,6 +20,7 @@ class Roasts extends React.Component {
     beanId: '',
     modal: false,
     view: 'Roast',
+    isSearching: false,
   }
 
   toggleModal = () => {
@@ -29,6 +30,21 @@ class Roasts extends React.Component {
       isEditing: false,
       beanId: '',
     });
+  }
+
+  toggleSearch = () => {
+    const { isSearching } = this.state;
+    this.setState({ isSearching: !isSearching });
+  }
+
+  onEnter = () => {
+    const { attempts } = this.state;
+    this.setState({ isSearching: false, filteredAttempts: attempts });
+  }
+
+  onSearchClick = () => {
+    const { attempts } = this.state;
+    this.setState({ isSearching: false, filteredAttempts: attempts });
   }
 
   setBeanId = () => {
@@ -131,6 +147,7 @@ class Roasts extends React.Component {
       roasts,
       modal,
       view,
+      isSearching,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -163,20 +180,34 @@ class Roasts extends React.Component {
       </div>
     );
 
-    return (
-      <div className="Roasts mx-auto">
-        <h1 className="text-center mt-5">ROASTS!!!</h1>
+    const makeSearch = () => {
+      if (isSearching) {
+        return (
           <SearchField
-            placeholder="Search Roasts By Region, Roast Name or Bean Name..."
+            placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-100"
+            classNames="test-class w-50"
+            onEnter={this.onEnter}
+            onSearchClick={this.onSearchClick}
           />
-      <div>
-        <button type="button" className="btn add-btn btn-success my-5 mx-auto" onClick={this.toggleModal}>
-          <i className="fas fa-plus-circle" />
-        </button>
-      </div>
+        );
+      }
+      return (<div></div>);
+    };
+
+    return (
+      <div className="Roasts mx-auto mt-5 w-100">
+        <div className="btn-div col w-100">
+          <button type="button" className="btn add-btn btn-success mr-1" onClick={this.toggleModal}>
+            <i className="fas fa-plus-circle" />
+          </button>
+          <button type="button" className="btn add-btn btn-success" onClick={this.toggleSearch}>
+            <i className="fas fa-search" />
+          </button>
+        </div>
+        <h1 className="text-center mt-5">ROASTS!!!</h1>
+        <div className="search-div">{makeSearch()}</div>
       <div>
         <MyModal
         makeForm = {makeForm()}

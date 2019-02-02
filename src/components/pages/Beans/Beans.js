@@ -34,6 +34,16 @@ class Beans extends React.Component {
     this.setState({ isSearching: !isSearching });
   }
 
+  onEnter = () => {
+    const { beans } = this.state;
+    this.setState({ isSearching: false, filteredBeans: beans });
+  }
+
+  onSearchClick = () => {
+    const { beans } = this.state;
+    this.setState({ isSearching: false, filteredBeans: beans });
+  }
+
   getBeans = () => {
     beanRequests.getAllBeans()
       .then((beans) => {
@@ -138,6 +148,8 @@ class Beans extends React.Component {
             onChange={ this.onChange }
             searchText=""
             classNames="test-class w-50"
+            onEnter={this.onEnter}
+            onSearchClick={this.onSearchClick}
           />
         );
       }
