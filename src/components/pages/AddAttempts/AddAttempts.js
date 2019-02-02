@@ -30,6 +30,9 @@ class AddAttempts extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func,
     beanId: PropTypes.string,
+    editId: PropTypes.string,
+    roastId: PropTypes.string,
+    isEditing: PropTypes.bool.isRequired,
   }
 
   state = {
@@ -80,22 +83,12 @@ class AddAttempts extends React.Component {
 
   roastLevelChange = e => this.formFieldStringState('roastLevel', e);
 
-  addAttempt = (newAttempt) => {
-    const attemptId = this.props.match.params.id;
-    attemptsRequests.createAttempt(newAttempt)
-      .then(() => {
-        this.setState({ newAttempt: defaultAttempt });
-        this.props.history.push(`/attempts/${attemptId}`);
-      });
-  }
-
   formSubmit = (e) => {
     e.preventDefault();
     const { weather } = this.state;
-    const { attemptId } = this.props;
+    const { attemptId, roastId, onSubmit } = this.props;
     const myAttempt = { ...this.state.newAttempt };
     const uid = authRequests.getCurrentUid();
-    const firebaseId = this.props.match.params.id;
     myAttempt.temp = weather.temp;
     myAttempt.humidity = weather.rh;
     myAttempt.city = weather.city_name;
@@ -103,22 +96,51 @@ class AddAttempts extends React.Component {
     myAttempt.date = moment().valueOf();
     myAttempt.beanId = attemptId;
     myAttempt.uid = uid;
-    myAttempt.roastId = firebaseId;
-    this.addAttempt(myAttempt);
+    myAttempt.roastId = roastId;
+    onSubmit(myAttempt);
   }
 
-  componentDidMount() {
+  componentDidMount(prevProps) {
     navigator.geolocation.getCurrentPosition(this.getWeather);
+    const { isEditing, editId } = this.props;
+    if (prevProps !== this.props && isEditing) {
+      attemptsRequests.getSingleAttempt(editId)
+        .then((attempt) => {
+          this.setState({ newAttempt: attempt.data });
+        })
+        .catch((err) => {
+          console.error('error getting single roast', err);
+        });
+    }
   }
 
   render() {
     const {
+      isEditing,
+    } = this.props;
+
+    const {
       newAttempt,
     } = this.state;
 
+    const makeHeadline = () => {
+      if (isEditing === false) {
+        return (
+        <div className="mx-auto mt-3">
+          <h5>Add Attempt</h5>
+        </div>
+        );
+      }
+      return (
+        <div className="mx-auto mt-3">
+          <h5>Edit Attempt</h5>
+        </div>
+      );
+    };
+
     return (
       <div className="AddAttempts mx-auto mb-5 w-100">
-        <h1 className="text-center mt-5">ADD ATTEMPTS!!!</h1>
+        <h1 className="text-center mt-5">{makeHeadline()}</h1>
         <form className="row form-container border border-dark rounded mt-5 mx-auto my-auto col-12" onSubmit={this.formSubmit}>
           <div className="form mt-2 col-11">
             <div className="col-auto form-lines p-0">

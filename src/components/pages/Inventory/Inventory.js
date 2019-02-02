@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchField from 'react-search-field';
+import MyModal from '../../MyModal/MyModal';
 import InventoryCard from '../../InventoryCard/InventoryCard';
 import authRequests from '../../../helpers/data/authRequests';
 import smashDataRequests from '../../../helpers/data/smashDataRequests';
@@ -18,6 +19,14 @@ class Inventory extends React.Component {
     isEditing: false,
     editId: '',
     beanId: '',
+    modal: false,
+  }
+
+  toggleModal = () => {
+    const { modal } = this.state;
+    this.setState({
+      modal: !modal,
+    });
   }
 
   roastsView = (beanId) => {
@@ -78,7 +87,13 @@ class Inventory extends React.Component {
   }
 
   passItemToEdit = (itemId, beanId) => {
-    this.setState({ isEditing: true, editId: itemId, beanId });
+    const { modal } = this.state;
+    this.setState({
+      isEditing: true,
+      editId: itemId,
+      beanId,
+      modal: !modal,
+    });
   }
 
   setSelect = (selectedBean) => {
@@ -91,14 +106,13 @@ class Inventory extends React.Component {
       inventoryRequests.updateInventory(editId, newInventory)
         .then(() => {
           this.getInventory();
-          this.setState({ isEditing: false });
-          this.setState({ beanId: '' });
+          this.setState({ isEditing: false, beanId: '', modal: false });
         });
     } else {
       inventoryRequests.createInventory(newInventory)
         .then(() => {
           this.getInventory();
-          this.setState({ beanId: '' });
+          this.setState({ beanId: '', modal: false });
         });
     }
   }
@@ -110,6 +124,7 @@ class Inventory extends React.Component {
       isEditing,
       editId,
       beanId,
+      modal,
     } = this.state;
 
     const inventoryCards = filteredInventory.map(item => (
@@ -120,8 +135,22 @@ class Inventory extends React.Component {
         passItemToEdit={this.passItemToEdit}
         deleteSingleItem={this.deleteSingleItem}
         onSelect={this.roastsView}
+        toggleModal={this.toggleModal}
       />
     ));
+
+    const makeForm = () => (
+      <div className='form-container col'>
+        <AddEditInventory
+          beans={beans}
+          isEditing={isEditing}
+          editId={editId}
+          beanId={beanId}
+          onSubmit={this.formSubmitEvent}
+          setSelect={this.setSelect}
+        />
+      </div>
+    );
 
 
     return (
@@ -133,16 +162,19 @@ class Inventory extends React.Component {
             searchText=""
             classNames="test-class w-100"
           />
-        <div>
-          <AddEditInventory
-            beans={beans}
+          <div>
+            <button type="button" className="btn add-btn btn-success my-5 mx-auto" onClick={this.toggleModal}>
+              <i className="fas fa-plus-circle" />
+            </button>
+          </div>
+          <div>
+            <MyModal
+            makeForm = {makeForm()}
             isEditing={isEditing}
-            editId={editId}
-            beanId={beanId}
-            onSubmit={this.formSubmitEvent}
-            setSelect={this.setSelect}
-          />
-        </div>
+            modal={modal}
+            toggleModal={this.toggleModal}
+            />
+          </div>
         <div className="inv-cards row justify-content-center">
           {inventoryCards}
         </div>

@@ -21,8 +21,8 @@ class AttemptCard extends React.Component {
 
   editEvent = (e) => {
     e.stopPropagation();
-    const { attempt, onSelect } = this.props;
-    onSelect(attempt.id);
+    const { attempt, passAttemptToEdit } = this.props;
+    passAttemptToEdit(attempt.id);
   }
 
   render() {

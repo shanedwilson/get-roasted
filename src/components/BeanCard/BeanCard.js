@@ -10,6 +10,7 @@ class BeanCard extends React.Component {
       deleteSingleBean: PropTypes.func,
       passBeanToEdit: PropTypes.func,
       onSelect: PropTypes.func,
+      onToggle: PropTypes.func,
     }
 
   deleteEvent = (e) => {
@@ -47,7 +48,11 @@ class BeanCard extends React.Component {
             </button>
           </span>
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn btn-default"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={this.deleteEvent}
+            >
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>

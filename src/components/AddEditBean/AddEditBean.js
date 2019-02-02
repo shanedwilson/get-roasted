@@ -45,7 +45,7 @@ class AddEditBean extends React.Component {
     this.setState({ newBean: defaultBean });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidMount(prevProps) {
     const { isEditing, editId } = this.props;
     if (prevProps !== this.props && isEditing) {
       beanRequests.getSingleBean(editId)
@@ -60,32 +60,12 @@ class AddEditBean extends React.Component {
 
   render() {
     const {
-      isEditing,
-    } = this.props;
-
-    const {
       newBean,
     } = this.state;
-
-    const makeHeadline = () => {
-      if (isEditing === false) {
-        return (
-        <div className="mx-auto mt-3">
-          <h5>Add Bean</h5>
-        </div>
-        );
-      }
-      return (
-        <div className="mx-auto mt-3">
-          <h5>Edit Bean</h5>
-        </div>
-      );
-    };
 
     return (
       <div>
         <form className="row form-container border border-dark rounded mt-5 mx-auto" onSubmit={this.formSubmit}>
-          {makeHeadline()}
           <div className="form col-11 mt-2">
             <div className="col-auto form-lines p-0">
               <label htmlFor="link" className="sr-only">Region</label>
@@ -152,7 +132,7 @@ class AddEditBean extends React.Component {
               </div>
             </div>
           </div>
-           <button type="submit" className="btn add-btn btn-success my-5" onClick={this.formSubmit}>
+           <button type="submit" className="btn add-btn btn-success my-5 mx-auto" onClick={this.formSubmit}>
             <i className="fas fa-plus-circle" />
           </button>
         </form>
