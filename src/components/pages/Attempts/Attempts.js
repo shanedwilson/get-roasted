@@ -289,7 +289,8 @@ class Attempts extends React.Component {
         <div>
           <div className="justify-content-center row">{attemptCards}</div>
         </div>
-        <div className="graph-container mt-5 mx-auto">
+        <div className="graph-container mt-3 pt-3 mx-auto w-75">
+          <h3 className="text-center">Attempts Time vs Temp</h3>
           <AttemptsGraph
           firstCrack={firstCrack}
           secondCrack={secondCrack}
