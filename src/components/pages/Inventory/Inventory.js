@@ -21,6 +21,7 @@ class Inventory extends React.Component {
     beanId: '',
     modal: false,
     view: 'Inventory',
+    isSearching: false,
   }
 
   toggleModal = () => {
@@ -30,6 +31,11 @@ class Inventory extends React.Component {
       isEditing: false,
       beanId: '',
     });
+  }
+
+  toggleSearch = () => {
+    const { isSearching } = this.state;
+    this.setState({ isSearching: !isSearching });
   }
 
   roastsView = (beanId) => {
@@ -132,6 +138,7 @@ class Inventory extends React.Component {
       beanId,
       modal,
       view,
+      isSearching,
     } = this.state;
 
     const inventoryCards = filteredInventory.map(item => (
@@ -159,21 +166,33 @@ class Inventory extends React.Component {
       </div>
     );
 
+    const makeSearch = () => {
+      if (isSearching) {
+        return (
+          <SearchField
+            placeholder="Search Beans By Region or Name..."
+            onChange={ this.onChange }
+            searchText=""
+            classNames="test-class w-50"
+          />
+        );
+      }
+      return (<div></div>);
+    };
+
 
     return (
       <div className="inventory mx-auto mt-5 w-100">
+        <div className="btn-div col w-100">
+          <button type="button" className="btn add-btn btn-success mr-1" onClick={this.toggleModal}>
+            <i className="fas fa-plus-circle" />
+          </button>
+          <button type="button" className="btn add-btn btn-success" onClick={this.toggleSearch}>
+            <i className="fas fa-search" />
+          </button>
+        </div>
         <h1 className="text-center">INVENTORY!!!</h1>
-          <SearchField
-            placeholder="Search Inventory By Region or Name..."
-            onChange={ this.onChange }
-            searchText=""
-            classNames="test-class w-100"
-          />
-          <div>
-            <button type="button" className="btn add-btn btn-success my-5 mx-auto" onClick={this.toggleModal}>
-              <i className="fas fa-plus-circle" />
-            </button>
-          </div>
+        <div className="search-div">{makeSearch()}</div>
           <div>
             <MyModal
             makeForm = {makeForm()}
