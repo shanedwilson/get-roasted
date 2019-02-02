@@ -83,15 +83,6 @@ class AddAttempts extends React.Component {
 
   roastLevelChange = e => this.formFieldStringState('roastLevel', e);
 
-  // addAttempt = (newAttempt) => {
-  //   const attemptId = this.props.match.params.id;
-  //   attemptsRequests.createAttempt(newAttempt)
-  //     .then(() => {
-  //       this.setState({ newAttempt: defaultAttempt });
-  //       this.props.history.push(`/attempts/${attemptId}`);
-  //     });
-  // }
-
   formSubmit = (e) => {
     e.preventDefault();
     const { weather } = this.state;
@@ -115,7 +106,7 @@ class AddAttempts extends React.Component {
     if (prevProps !== this.props && isEditing) {
       attemptsRequests.getSingleAttempt(editId)
         .then((attempt) => {
-          this.setState({ newRoast: attempt.data });
+          this.setState({ newAttempt: attempt.data });
         })
         .catch((err) => {
           console.error('error getting single roast', err);
