@@ -5,8 +5,15 @@
   p, .search-field {
     font-family: 'open sans';
   }
+}
 
-  .search-field {
-    border: solid pink;
-  }
+.btn-div {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5%;
+}
+
+.search-div {
+  display: flex;
+  justify-content: center;
 }

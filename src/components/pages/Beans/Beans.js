@@ -18,6 +18,7 @@ class Beans extends React.Component {
     modal: false,
     editId: '',
     view: 'Bean',
+    isSearching: false,
   }
 
   toggleModal = () => {
@@ -26,6 +27,11 @@ class Beans extends React.Component {
       modal: !modal,
       isEditing: false,
     });
+  }
+
+  toggleSearch = () => {
+    const { isSearching } = this.state;
+    this.setState({ isSearching: !isSearching });
   }
 
   getBeans = () => {
@@ -96,6 +102,7 @@ class Beans extends React.Component {
       editId,
       modal,
       view,
+      isSearching,
     } = this.state;
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
@@ -113,31 +120,45 @@ class Beans extends React.Component {
     ));
 
     const makeForm = () => (
-            <div className='form-container col w-95'>
-              <AddEditBean
-                isEditing={isEditing}
-                onSubmit={this.formSubmitEvent}
-                editId={editId}
-                toggleModal={this.toggleModal}
-              />
-            </div>
+      <div className='form-container col w-95'>
+        <AddEditBean
+          isEditing={isEditing}
+          onSubmit={this.formSubmitEvent}
+          editId={editId}
+          toggleModal={this.toggleModal}
+        />
+      </div>
     );
 
-    return (
-
-        <div className="beans mt-5">
-          <h1 className="text-center">BEANS!!!</h1>
+    const makeSearch = () => {
+      if (isSearching) {
+        return (
           <SearchField
             placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
             classNames="test-class w-50"
           />
-          <div>
-            <button type="button" className="btn add-btn btn-success my-5 mx-auto" onClick={this.toggleModal}>
+        );
+      }
+      return (<div></div>);
+    };
+
+    return (
+
+        <div className="beans mt-5 w-100">
+          <div className="btn-div col w-100">
+            <button type="button" className="btn add-btn btn-success mr-1" onClick={this.toggleModal}>
               <i className="fas fa-plus-circle" />
             </button>
+            <button type="button" className="btn add-btn btn-success" onClick={this.toggleSearch}>
+              <i className="fas fa-search" />
+            </button>
           </div>
+          <div>
+            <h1 className="text-center">BEANS!!!</h1>
+          </div>
+          <div className="search-div">{makeSearch()}</div>
           <div className="col mt-5">
             <p className="text-center">Here you'll find a selection of beans from around the world.
               Click the '+' button on any bean you'd like to add to your inventory.
