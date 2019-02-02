@@ -18,19 +18,20 @@ class MyModal extends React.Component {
       makeForm,
       isEditing,
       modal,
+      view,
     } = this.props;
 
     const makeHeadline = () => {
       if (isEditing === false) {
         return (
         <div className="mx-auto mt-3">
-          <h5>Add</h5>
+          <h5>Add {view}</h5>
         </div>
         );
       }
       return (
         <div className="mx-auto mt-3">
-          <h5>Edit</h5>
+          <h5>Edit {view}</h5>
         </div>
       );
     };

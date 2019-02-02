@@ -20,12 +20,15 @@ class Inventory extends React.Component {
     editId: '',
     beanId: '',
     modal: false,
+    view: 'Inventory',
   }
 
   toggleModal = () => {
     const { modal } = this.state;
     this.setState({
       modal: !modal,
+      isEditing: false,
+      beanId: '',
     });
   }
 
@@ -35,6 +38,9 @@ class Inventory extends React.Component {
 
   setBeanId = () => {
     const firebaseId = this.props.match.params.id;
+    if (firebaseId) {
+      this.setState({ modal: true });
+    }
     this.setState({ beanId: firebaseId });
   }
 
@@ -125,6 +131,7 @@ class Inventory extends React.Component {
       editId,
       beanId,
       modal,
+      view,
     } = this.state;
 
     const inventoryCards = filteredInventory.map(item => (
@@ -140,7 +147,7 @@ class Inventory extends React.Component {
     ));
 
     const makeForm = () => (
-      <div className='form-container col'>
+      <div className='form-container col w-95'>
         <AddEditInventory
           beans={beans}
           isEditing={isEditing}
@@ -173,6 +180,7 @@ class Inventory extends React.Component {
             isEditing={isEditing}
             modal={modal}
             toggleModal={this.toggleModal}
+            view={view}
             />
           </div>
         <div className="inv-cards row justify-content-center">

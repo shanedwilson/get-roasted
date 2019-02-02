@@ -27,6 +27,7 @@ class Attempts extends React.Component {
     isEditing: false,
     editId: '',
     roastId: '',
+    view: 'Attempts',
   }
 
   toggleModal = () => {
@@ -113,10 +114,6 @@ class Attempts extends React.Component {
       });
   };
 
-  // editView = (attemptId) => {
-  //   this.props.history.push(`/attempts/${attemptId}/edit`);
-  // }
-
   addView = () => {
     const roastId = this.props.match.params.id;
     this.props.history.push(`/attempts/${roastId}/add`);
@@ -190,6 +187,7 @@ class Attempts extends React.Component {
       firstCrack,
       secondCrack,
       end,
+      view,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -232,6 +230,7 @@ class Attempts extends React.Component {
         isEditing={isEditing}
         modal={modal}
         toggleModal={this.toggleModal}
+        view={view}
         />
       </div>
         <div className="col-5 mx-auto">

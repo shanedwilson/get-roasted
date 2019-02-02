@@ -17,12 +17,14 @@ class Beans extends React.Component {
     isEditing: false,
     modal: false,
     editId: '',
+    view: 'Bean',
   }
 
   toggleModal = () => {
     const { modal } = this.state;
     this.setState({
       modal: !modal,
+      isEditing: false,
     });
   }
 
@@ -93,6 +95,7 @@ class Beans extends React.Component {
       isEditing,
       editId,
       modal,
+      view,
     } = this.state;
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
@@ -110,7 +113,7 @@ class Beans extends React.Component {
     ));
 
     const makeForm = () => (
-            <div className='form-container col'>
+            <div className='form-container col w-95'>
               <AddEditBean
                 isEditing={isEditing}
                 onSubmit={this.formSubmitEvent}
@@ -128,7 +131,7 @@ class Beans extends React.Component {
             placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-50 mx-auto"
+            classNames="test-class w-50"
           />
           <div>
             <button type="button" className="btn add-btn btn-success my-5 mx-auto" onClick={this.toggleModal}>
@@ -146,6 +149,7 @@ class Beans extends React.Component {
             isEditing={isEditing}
             modal={modal}
             toggleModal={this.toggleModal}
+            view={view}
             />
           </div>
           <div className="row justify-content-center">

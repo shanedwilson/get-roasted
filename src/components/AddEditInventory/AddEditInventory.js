@@ -69,7 +69,6 @@ class AddEditInventory extends React.Component {
   render() {
     const {
       beans,
-      isEditing,
       beanId,
     } = this.props;
 
@@ -77,29 +76,13 @@ class AddEditInventory extends React.Component {
       newInventory,
     } = this.state;
 
-    const makeHeadline = () => {
-      if (isEditing === false) {
-        return (
-        <div className="mx-auto mt-3">
-          <h5>Add Inventory Item</h5>
-        </div>
-        );
-      }
-      return (
-        <div className="mx-auto mt-3">
-          <h5>Edit Inventory Item</h5>
-        </div>
-      );
-    };
-
     const dropdownItems = beans.map(bean => (
     <option key={bean.id} value={bean.id}>{bean.name}</option>
     ));
 
     return (
       <div>
-        <form className="row form-container border border-dark rounded mt-5 mx-auto col-6" onSubmit={this.formSubmit}>
-          {makeHeadline()}
+        <form className="row form-container border border-dark rounded mt-5 mx-auto" onSubmit={this.formSubmit}>
           <div className="form mt-2 col-11">
             <select className="custom-select mb-2" onChange={this.beanSelect} value={beanId} >
               <option defaultValue>Select Bean</option>

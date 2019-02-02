@@ -19,17 +19,23 @@ class Roasts extends React.Component {
     editId: '',
     beanId: '',
     modal: false,
+    view: 'Roast',
   }
 
   toggleModal = () => {
     const { modal } = this.state;
     this.setState({
       modal: !modal,
+      isEditing: false,
+      beanId: '',
     });
   }
 
   setBeanId = () => {
     const firebaseId = this.props.match.params.id;
+    if (firebaseId) {
+      this.setState({ modal: true });
+    }
     this.setState({ beanId: firebaseId });
   }
 
@@ -124,6 +130,7 @@ class Roasts extends React.Component {
       beanId,
       roasts,
       modal,
+      view,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -144,7 +151,7 @@ class Roasts extends React.Component {
     ));
 
     const makeForm = () => (
-      <div className='form-container col'>
+      <div className='form-container col w-95'>
         <AddEditRoast
           beans={beans}
           isEditing={isEditing}
@@ -176,6 +183,7 @@ class Roasts extends React.Component {
         isEditing={isEditing}
         modal={modal}
         toggleModal={this.toggleModal}
+        view={view}
         />
       </div>
         <div className="rst-cards row justify-content-center">
