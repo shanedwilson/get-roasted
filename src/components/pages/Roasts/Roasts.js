@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import SearchField from 'react-search-field';
 import MyModal from '../../MyModal/MyModal';
 import RoastCard from '../../RoastCard/RoastCard';
@@ -97,6 +98,11 @@ class Roasts extends React.Component {
     this.getRoasts();
     this.getAllBeans();
     this.setBeanId();
+    $('body').addClass('roast');
+  }
+
+  componentWillUnmount() {
+    $('body').removeClass('roast');
   }
 
   deleteSingleRoast = (roastId) => {
