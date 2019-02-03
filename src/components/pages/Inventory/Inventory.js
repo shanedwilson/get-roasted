@@ -103,6 +103,10 @@ class Inventory extends React.Component {
     $('body').addClass('inventories');
   }
 
+  componentWillUnmount() {
+    $('body').removeClass('inventories');
+  }
+
   deleteSingleItem = (itemId) => {
     inventoryRequests.deleteItem(itemId)
       .then(() => {
@@ -185,7 +189,7 @@ class Inventory extends React.Component {
             placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-50"
+            classNames="test-class w-50 animated slideInRight"
             onEnter={this.onEnter}
             onSearchClick={this.onSearchClick}
           />
@@ -197,10 +201,10 @@ class Inventory extends React.Component {
     return (
       <div className="inventory mt-5">
         <div className="btn-div col w-100">
-          <button type="button" className="btn add-btn btn-success mr-1" onClick={this.toggleModal}>
+          <button type="button" className="btn inventory-add-btn mr-1" onClick={this.toggleModal}>
             <i className="fas fa-plus-circle" />
           </button>
-          <button type="button" className="btn add-btn btn-success" onClick={this.toggleSearch}>
+          <button type="button" className="btn inventory-search-btn" onClick={this.toggleSearch}>
             <i className="fas fa-search" />
           </button>
         </div>
@@ -215,7 +219,7 @@ class Inventory extends React.Component {
             view={view}
             />
           </div>
-        <div className="inv-cards row justify-content-center">
+        <div className="inv-cards row justify-content-center animated slideInLeft">
           {inventoryCards}
         </div>
       </div>

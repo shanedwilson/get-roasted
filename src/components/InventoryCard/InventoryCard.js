@@ -57,8 +57,8 @@ class InventoryCard extends React.Component {
     );
 
     return (
-      <div className="card col-3 m-3 text-center">
-        <div className="card-header h-25 d-flex">
+      <div className="card inventory-card col-3 m-3 text-center">
+        <div className="card-header inventory-card-header h-25 d-flex">
           <h5 className="card-title mx-auto">{item.name}</h5>
         </div>
         <div className="card-body  text-center">

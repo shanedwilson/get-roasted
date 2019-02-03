@@ -74,6 +74,10 @@ class Beans extends React.Component {
     $('body').addClass('bean');
   }
 
+  componentWillUnmount() {
+    $('body').removeClass('bean');
+  }
+
   inventoryView = (beanId) => {
     this.props.history.push(`/inventory/${beanId}`);
   }
@@ -149,7 +153,7 @@ class Beans extends React.Component {
             placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-50"
+            classNames="test-class w-50 animated slideInRight"
             onEnter={this.onEnter}
             onSearchClick={this.onSearchClick}
           />
@@ -172,7 +176,9 @@ class Beans extends React.Component {
           <div>
             <h1 className="text-center">A Selection Of Beans From Around The World</h1>
           </div>
-          <div className="search-div">{makeSearch()}</div>
+            <div className="search-div">
+              {makeSearch()}
+            </div>
           <div>
             <MyModal
             makeForm = {makeForm()}
@@ -182,7 +188,7 @@ class Beans extends React.Component {
             view={view}
             />
           </div>
-          <div className="row justify-content-center">
+          <div className="bean-container row justify-content-center animated slideInLeft">
             {beanCards}
           </div>
         </div>

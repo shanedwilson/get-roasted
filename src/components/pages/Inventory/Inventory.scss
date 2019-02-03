@@ -1,3 +1,5 @@
+@import "../../../styles/variables";
+
 .inventories {
   background-image: url('https://storage.googleapis.com/drhealthbenefits/2017/11/80d762d5-health-benefits-of-coffee-fruit.jpg');
   background-repeat: no-repeat;
@@ -5,5 +7,24 @@
   background-position: center;
   background-size: cover;
   height: 100%; 
+}
+
+.inventory-add-btn {
+  color: $color3 !important;
+}
+
+.inventory-search-btn {
+  color: white !important;
+}
+
+.inventory {
+  h1 {
+    color: $color4;
+	  text-shadow:
+		  -1px -1px 0 #808080,
+		  1px -1px 0 #808080,
+		  -1px 1px 0 #808080,
+		  1px 1px 0 #808080;
+      }
 }
 
