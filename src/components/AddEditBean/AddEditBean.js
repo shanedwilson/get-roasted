@@ -6,7 +6,7 @@ import './AddEditBean.scss';
 
 const defaultBean = {
   name: '',
-  region: '',
+  origin: '',
   imgUrl: '',
   description: '',
 };

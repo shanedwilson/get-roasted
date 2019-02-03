@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import SearchField from 'react-search-field';
 import MyModal from '../../MyModal/MyModal';
 import BeanCard from '../../BeanCard/BeanCard';
@@ -70,6 +71,7 @@ class Beans extends React.Component {
 
   componentDidMount() {
     this.getBeans();
+    $('body').addClass('bean');
   }
 
   inventoryView = (beanId) => {

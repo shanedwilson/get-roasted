@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import SearchField from 'react-search-field';
 import MyModal from '../../MyModal/MyModal';
 import InventoryCard from '../../InventoryCard/InventoryCard';
@@ -99,6 +100,7 @@ class Inventory extends React.Component {
     this.setBeanId();
     this.getInventory();
     this.getAllBeans();
+    $('body').addClass('inventories');
   }
 
   deleteSingleItem = (itemId) => {
@@ -193,7 +195,7 @@ class Inventory extends React.Component {
     };
 
     return (
-      <div className="inventory mx-auto mt-5 w-100">
+      <div className="inventory mt-5">
         <div className="btn-div col w-100">
           <button type="button" className="btn add-btn btn-success mr-1" onClick={this.toggleModal}>
             <i className="fas fa-plus-circle" />
@@ -202,7 +204,7 @@ class Inventory extends React.Component {
             <i className="fas fa-search" />
           </button>
         </div>
-        <h1 className="text-center">INVENTORY!!!</h1>
+        <h1 className="text-center">Your Inventory</h1>
         <div className="search-div">{makeSearch()}</div>
           <div>
             <MyModal

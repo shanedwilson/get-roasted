@@ -1,11 +1,12 @@
 @import "../../../styles/variables";
 
-.beans {
+.bean {
   background-image: url('https://c1.staticflickr.com/8/7034/6555122609_6fdcdb6a2a_b.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center; 
-  background-size:cover;
+  background-size: cover;
+  min-height: 100%; 
 
   h1{
     font-family: 'bungee';
