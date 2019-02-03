@@ -160,22 +160,17 @@ class Beans extends React.Component {
 
         <div className="beans mt-5 w-100">
           <div className="btn-div col w-100">
-            <button type="button" className="btn add-btn btn-success mr-1" onClick={this.toggleModal}>
+            <button type="button" className="btn bean-add-btn mr-1" onClick={this.toggleModal}>
               <i className="fas fa-plus-circle" />
             </button>
-            <button type="button" className="btn add-btn btn-success" onClick={this.toggleSearch}>
+            <button type="button" className="btn bean-search-btn" onClick={this.toggleSearch}>
               <i className="fas fa-search" />
             </button>
           </div>
           <div>
-            <h1 className="text-center">BEANS!!!</h1>
+            <h1 className="text-center">A Selection Of Beans From Around The World</h1>
           </div>
           <div className="search-div">{makeSearch()}</div>
-          <div className="col mt-5">
-            <p className="text-center">Here you'll find a selection of beans from around the world.
-              Click the '+' button on any bean you'd like to add to your inventory.
-            </p>
-          </div>
           <div>
             <MyModal
             makeForm = {makeForm()}

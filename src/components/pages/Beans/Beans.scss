@@ -1,4 +1,12 @@
+@import "../../../styles/variables";
+
 .beans {
+  background-image: url('https://c1.staticflickr.com/8/7034/6555122609_6fdcdb6a2a_b.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-size:cover;
+
   h1{
     font-family: 'bungee';
   }
@@ -16,4 +24,12 @@
 .search-div {
   display: flex;
   justify-content: center;
+}
+
+.bean-add-btn {
+  color: $color3 !important;
+}
+
+.bean-search-btn {
+  color: $color5 !important;
 }

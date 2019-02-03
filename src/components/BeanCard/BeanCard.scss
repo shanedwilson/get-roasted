@@ -1,3 +1,13 @@
+@import "../../styles/variables";
+
 .card-text,  {
   font-family: 'open sans';
+}
+
+.bean-card {
+  background-color: $color2 !important;
+}
+
+.bean-card-header {
+  background-color: $color4 !important;
 }

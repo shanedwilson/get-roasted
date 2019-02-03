@@ -31,7 +31,7 @@ class AddEditBean extends React.Component {
 
   nameChange = e => this.formFieldStringState('name', e);
 
-  regionChange = e => this.formFieldStringState('region', e);
+  originChange = e => this.formFieldStringState('origin', e);
 
   imageChange = e => this.formFieldStringState('imgUrl', e);
 
@@ -68,18 +68,18 @@ class AddEditBean extends React.Component {
         <form className="row form-container border border-dark rounded mt-5 mx-auto" onSubmit={this.formSubmit}>
           <div className="form col-11 mt-2">
             <div className="col-auto form-lines p-0">
-              <label htmlFor="link" className="sr-only">Region</label>
+              <label htmlFor="link" className="sr-only">Origin</label>
               <div className="input-group mb-2">
                 <div className="input-group-prepend">
-                  <div className="input-group-text">Region</div>
+                  <div className="input-group-text">Origin</div>
                 </div>
                 <input
                   type="text"
                   className="form-control"
                   id="region"
                   placeholder="Indonesia"
-                  value={newBean.region}
-                  onChange={this.regionChange}
+                  value={newBean.origin}
+                  onChange={this.originChange}
                 />
               </div>
             </div>
