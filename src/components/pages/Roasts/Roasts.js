@@ -193,7 +193,7 @@ class Roasts extends React.Component {
             placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-50"
+            classNames="test-class w-50 animated slideInRight"
             onEnter={this.onEnter}
             onSearchClick={this.onSearchClick}
           />
@@ -223,7 +223,7 @@ class Roasts extends React.Component {
         view={view}
         />
       </div>
-        <div className="rst-cards row justify-content-center">
+        <div className="rst-cards row justify-content-center animated slideInLeft">
           {roastCards}
         </div>
       </div>

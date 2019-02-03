@@ -189,7 +189,7 @@ class Inventory extends React.Component {
             placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-50 animated slideInRight"
+            classNames="test-class w-50 animated slideInLeft"
             onEnter={this.onEnter}
             onSearchClick={this.onSearchClick}
           />
@@ -219,7 +219,7 @@ class Inventory extends React.Component {
             view={view}
             />
           </div>
-        <div className="inv-cards row justify-content-center animated slideInLeft">
+        <div className="inv-cards row justify-content-center animated slideInRight">
           {inventoryCards}
         </div>
       </div>

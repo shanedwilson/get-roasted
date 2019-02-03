@@ -245,7 +245,7 @@ class Attempts extends React.Component {
             placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-50"
+            classNames="test-class w-50 animated slideInLeft"
             onEnter={this.onEnter}
             onSearchClick={this.onSearchClick}
           />
@@ -257,10 +257,10 @@ class Attempts extends React.Component {
     return (
       <div className="Attempts mx-auto w-100">
         <div className="btn-div col w-100">
-          <button type="button" className="btn add-btn btn-success mr-1" onClick={this.toggleModal}>
+          <button type="button" className="btn attempt-add-btn mr-1" onClick={this.toggleModal}>
             <i className="fas fa-plus-circle" />
           </button>
-          <button type="button" className="btn add-btn btn-success" onClick={this.toggleSearch}>
+          <button type="button" className="btn attempt-search-btn" onClick={this.toggleSearch}>
             <i className="fas fa-search" />
           </button>
         </div>
@@ -276,8 +276,8 @@ class Attempts extends React.Component {
         />
       </div>
         <div className="col-5 mx-auto">
-          <div className="card col m-3 mx-auto">
-            <div className="card-header">
+          <div className="card roast-card col m-3 mx-auto animated slideInRight">
+            <div className="card-header roast-card-header">
               <h5 className="card-title text-center">{roast.roastName}</h5>
             </div>
             <div className="card-body">
@@ -285,15 +285,15 @@ class Attempts extends React.Component {
             </div>
             <div className="mx-auto">
               <span className="col">
-                <button className="btn btn-default ml-3" onClick={this.deleteEvent}>
-                  Add Attempt   <i className="fas fa-plus-circle" onClick={this.toggleModal}></i>
+                <button className="btn card-add-btn btn-default ml-3" onClick={this.toggleModal}>
+                  Add Attempt   <i className="fas fa-plus-circle"></i>
                 </button>
               </span>
             </div>
           </div>
         </div>
         <div>
-          <div className="justify-content-center row">{attemptCards}</div>
+          <div className="justify-content-center row animated slideInLeft">{attemptCards}</div>
         </div>
         <div className="graph-container mt-3 pt-3 mx-auto w-75">
           <h3 className="text-center">Attempts Time vs Temp</h3>

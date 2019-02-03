@@ -57,7 +57,7 @@ class BeanCard extends React.Component {
             </button>
           </span>
           <div className="col">
-            <button className="btn add-btn btn-default" onClick={this.inventoryView}>
+            <button className="btn card-add-btn btn-default" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </div>
@@ -67,7 +67,7 @@ class BeanCard extends React.Component {
       return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn add-btn btn-default mr-3" onClick={this.inventoryView}>
+            <button className="btn card-add-btn btn-default mr-3" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </span>

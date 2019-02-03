@@ -72,17 +72,17 @@ class RoastCard extends React.Component {
         return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default" onClick={this.editEvent}>
+            <button className="btn edit-btn btn-default" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn delete-btn btn-default" onClick={this.deleteEvent}>
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
           <div className="col">
-            <button className="btn btn-default">
+            <button className="btn card-add-btn btn-default">
               <i className="fas fa-plus-circle" onClick={this.roastClick}>    Attempts</i>
             </button>
           </div>
@@ -92,7 +92,7 @@ class RoastCard extends React.Component {
       return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default">
+            <button className="btn card-add-btn btn-default">
               <i className="fas fa-plus-circle" onClick={this.roastClick}>    Attempts</i>
             </button>
           </span>

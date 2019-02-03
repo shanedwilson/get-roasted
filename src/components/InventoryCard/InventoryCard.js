@@ -49,7 +49,7 @@ class InventoryCard extends React.Component {
             </button>
           </span>
           <div className="col">
-            <button className="btn add-btn btn-default text-center">
+            <button className="btn card-add-btn btn-default text-center">
               <i className="fas fa-plus-circle ml-2" onClick={this.roastView}>    Roast</i>
             </button>
           </div>
