@@ -205,14 +205,14 @@ class Roasts extends React.Component {
     return (
       <div className="Roasts mx-auto mt-5 w-100">
         <div className="btn-div col w-100">
-          <button type="button" className="btn add-btn btn-success mr-1" onClick={this.toggleModal}>
+          <button type="button" className="btn roast-add-btn mr-1" onClick={this.toggleModal}>
             <i className="fas fa-plus-circle" />
           </button>
-          <button type="button" className="btn add-btn btn-success" onClick={this.toggleSearch}>
+          <button type="button" className="btn roast-add-btn" onClick={this.toggleSearch}>
             <i className="fas fa-search" />
           </button>
         </div>
-        <h1 className="text-center mt-5">ROASTS!!!</h1>
+        <h1 className="text-center mt-5">A Collection Of Roasting Profiles</h1>
         <div className="search-div">{makeSearch()}</div>
       <div>
         <MyModal

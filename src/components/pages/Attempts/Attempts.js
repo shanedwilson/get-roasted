@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import moment from 'moment';
 import SearchField from 'react-search-field';
 import MyModal from '../../MyModal/MyModal';
@@ -156,6 +157,11 @@ class Attempts extends React.Component {
     this.getAttempts();
     this.getRoast();
     this.getRoastId();
+    $('body').addClass('attempt');
+  }
+
+  componentWillUnmount() {
+    $('body').removeClass('attempt');
   }
 
   deleteSingleAttempt = (attemptId) => {
@@ -258,7 +264,7 @@ class Attempts extends React.Component {
             <i className="fas fa-search" />
           </button>
         </div>
-        <h1 className="text-center mt-5">ATTEMPTS!!!</h1>
+        <h1 className="text-center mt-5">Your Roast Attempts</h1>
         <div className="search-div">{makeSearch()}</div>
       <div>
         <MyModal

@@ -1,7 +1,9 @@
-// .average-div {
-//   position: relative;
-//   p {
-//     position: absolute;
-//     top: 0;
-//   }
-// }
+@import "/../../styles/variables";
+
+.roast-card {
+  background-color: $color2 !important;
+}
+
+.roast-card-header {
+  background-color: $color4 !important;
+}

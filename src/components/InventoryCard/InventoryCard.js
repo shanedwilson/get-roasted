@@ -25,7 +25,7 @@ class InventoryCard extends React.Component {
     passItemToEdit(item.id, item.beanId);
   }
 
-  inventoryView = (e) => {
+  roastView = (e) => {
     e.stopPropagation();
     const { item, onSelect } = this.props;
     onSelect(item.beanId);
@@ -39,18 +39,18 @@ class InventoryCard extends React.Component {
     const makeButtons = () => (
         <div className="text-center">
           <span className="col">
-            <button className="btn btn-default" onClick={this.editEvent}>
+            <button className="btn edit-btn btn-default" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn delete-btn btn-default" onClick={this.deleteEvent}>
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
           <div className="col">
-            <button className="btn btn-default text-center">
-              <i className="fas fa-plus-circle ml-2" onClick={this.inventoryView}>    Roast</i>
+            <button className="btn add-btn btn-default text-center">
+              <i className="fas fa-plus-circle ml-2" onClick={this.roastView}>    Roast</i>
             </button>
           </div>
         </div>
@@ -58,7 +58,7 @@ class InventoryCard extends React.Component {
 
     return (
       <div className="card inventory-card col-3 m-3 text-center">
-        <div className="card-header inventory-card-header h-25 d-flex">
+        <div className="card-header inventory-card-header mt-3 h-25 d-flex">
           <h5 className="card-title mx-auto">{item.name}</h5>
         </div>
         <div className="card-body  text-center">
