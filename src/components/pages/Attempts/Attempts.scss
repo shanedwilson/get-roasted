@@ -1,3 +1,39 @@
+@import "../../../styles/variables";
+
 .graph-container {
   background-color: white;
+}
+
+.attempt {
+  background-image: url('https://cdn12.picryl.com/photo/2016/12/31/coffee-cafe-coffee-bean-05231f-1024.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+
+  h1 {
+    color: $color4;
+	  text-shadow:
+		  -1px -1px 0 #808080,
+		  1px -1px 0 #808080,
+		  -1px 1px 0 #808080,
+		  1px 1px 0 #808080;
+      }
+}
+
+.roast-card {
+  background-color: rgba(255,255,255, .7) !important;
+}
+
+.roast-card-header {
+  background-color: $color7 !important;
+}
+
+.attempt-add-btn {
+  color: $color1 !important;
+}
+
+.attempt-search-btn {
+  color: $color3 !important;
 }

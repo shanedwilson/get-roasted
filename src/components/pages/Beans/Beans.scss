@@ -1,12 +1,42 @@
-.beans {
+@import "../../../styles/variables";
+
+.bean {
+  background:  linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+                url('https://c1.staticflickr.com/8/7034/6555122609_6fdcdb6a2a_b.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-size: cover;
+  min-height: 100%; 
+
   h1{
     font-family: 'bungee';
+    	text-shadow:
+        -1px -1px 0 #808080,
+        1px -1px 0 #808080,
+        -1px 1px 0 #808080,
+        1px 1px 0 #808080;
   }
   p, .search-field {
     font-family: 'open sans';
   }
+}
 
-  .search-field {
-    border: solid pink;
-  }
+.btn-div {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5%;
+}
+
+.search-div {
+  display: flex;
+  justify-content: center;
+}
+
+.bean-add-btn {
+  color: $color3 !important;
+}
+
+.bean-search-btn {
+  color: $color5 !important;
 }

@@ -43,12 +43,12 @@ class BeanCard extends React.Component {
         return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default" onClick={this.editEvent}>
+            <button className="btn edit-btn btn-default" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
           <span className="col">
-            <button className="btn btn-default"
+            <button className="btn delete-btn btn-default"
               data-toggle="modal"
               data-target="#exampleModal"
               onClick={this.deleteEvent}
@@ -57,7 +57,7 @@ class BeanCard extends React.Component {
             </button>
           </span>
           <div className="col">
-            <button className="btn btn-default" onClick={this.inventoryView}>
+            <button className="btn card-add-btn btn-default" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </div>
@@ -67,7 +67,7 @@ class BeanCard extends React.Component {
       return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default mr-3" onClick={this.inventoryView}>
+            <button className="btn card-add-btn btn-default mr-3" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </span>
@@ -76,9 +76,9 @@ class BeanCard extends React.Component {
     };
 
     return (
-     <div className="card col-3 m-3">
-        <div className="card-header h-10 d-flex">
-          <h5 className="card-title mx-auto">{bean.region}</h5>
+     <div className="card bean-card col-3 m-3">
+        <div className="card-header bean-card-header mt-3 h-10 d-flex">
+          <h5 className="card-title mx-auto">{bean.origin}</h5>
         </div>
         <img className="card-img-top mt-3" src={bean.imgUrl} alt={bean.name} />
         <div className="card-body text-center">

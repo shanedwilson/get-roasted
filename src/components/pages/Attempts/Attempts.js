@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import moment from 'moment';
 import SearchField from 'react-search-field';
 import MyModal from '../../MyModal/MyModal';
@@ -27,6 +28,8 @@ class Attempts extends React.Component {
     isEditing: false,
     editId: '',
     roastId: '',
+    view: 'Attempts',
+    isSearching: false,
   }
 
   toggleModal = () => {
@@ -34,6 +37,21 @@ class Attempts extends React.Component {
     this.setState({
       modal: !modal,
     });
+  }
+
+  toggleSearch = () => {
+    const { isSearching } = this.state;
+    this.setState({ isSearching: !isSearching });
+  }
+
+  onEnter = () => {
+    const { attempts } = this.state;
+    this.setState({ isSearching: false, filteredAttempts: attempts });
+  }
+
+  onSearchClick = () => {
+    const { attempts } = this.state;
+    this.setState({ isSearching: false, filteredAttempts: attempts });
   }
 
   getRoastId = () => {
@@ -113,10 +131,6 @@ class Attempts extends React.Component {
       });
   };
 
-  // editView = (attemptId) => {
-  //   this.props.history.push(`/attempts/${attemptId}/edit`);
-  // }
-
   addView = () => {
     const roastId = this.props.match.params.id;
     this.props.history.push(`/attempts/${roastId}/add`);
@@ -127,7 +141,7 @@ class Attempts extends React.Component {
     const filteredAttempts = [];
     event.preventDefault();
     if (!value) {
-      this.setState({ filteredInventory: attempts });
+      this.setState({ filteredAttempts: attempts });
     } else {
       attempts.forEach((attempt) => {
         const displayTime = moment(attempt.date).format('MMM DD YYYY hh:mm a');
@@ -143,6 +157,11 @@ class Attempts extends React.Component {
     this.getAttempts();
     this.getRoast();
     this.getRoastId();
+    $('body').addClass('attempt');
+  }
+
+  componentWillUnmount() {
+    $('body').removeClass('attempt');
   }
 
   deleteSingleAttempt = (attemptId) => {
@@ -190,6 +209,8 @@ class Attempts extends React.Component {
       firstCrack,
       secondCrack,
       end,
+      view,
+      isSearching,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -217,26 +238,46 @@ class Attempts extends React.Component {
       </div>
     );
 
-    return (
-      <div className="Attempts mx-auto w-100">
-        <h1 className="text-center mt-5">ATTEMPTS!!!</h1>
+    const makeSearch = () => {
+      if (isSearching) {
+        return (
           <SearchField
-            placeholder="Search Attempt By Date..."
+            placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-100"
+            classNames="test-class w-50 animated slideInLeft"
+            onEnter={this.onEnter}
+            onSearchClick={this.onSearchClick}
           />
+        );
+      }
+      return (<div></div>);
+    };
+
+    return (
+      <div className="Attempts mx-auto w-100">
+        <div className="btn-div col w-100">
+          <button type="button" className="btn attempt-add-btn mr-1" onClick={this.toggleModal}>
+            <i className="fas fa-plus-circle" />
+          </button>
+          <button type="button" className="btn attempt-search-btn" onClick={this.toggleSearch}>
+            <i className="fas fa-search" />
+          </button>
+        </div>
+        <h1 className="text-center mt-5">Your Roast Attempts</h1>
+        <div className="search-div">{makeSearch()}</div>
       <div>
         <MyModal
         makeForm = {makeForm()}
         isEditing={isEditing}
         modal={modal}
         toggleModal={this.toggleModal}
+        view={view}
         />
       </div>
         <div className="col-5 mx-auto">
-          <div className="card col m-3 mx-auto">
-            <div className="card-header">
+          <div className="card roast-card col m-3 mx-auto animated slideInRight">
+            <div className="card-header roast-card-header">
               <h5 className="card-title text-center">{roast.roastName}</h5>
             </div>
             <div className="card-body">
@@ -244,17 +285,18 @@ class Attempts extends React.Component {
             </div>
             <div className="mx-auto">
               <span className="col">
-                <button className="btn btn-default ml-3" onClick={this.deleteEvent}>
-                  Add Attempt   <i className="fas fa-plus-circle" onClick={this.toggleModal}></i>
+                <button className="btn card-add-btn btn-default ml-3" onClick={this.toggleModal}>
+                  Add Attempt   <i className="fas fa-plus-circle"></i>
                 </button>
               </span>
             </div>
           </div>
         </div>
         <div>
-          <div className="justify-content-center row">{attemptCards}</div>
+          <div className="justify-content-center row animated slideInLeft">{attemptCards}</div>
         </div>
-        <div className="graph-container mt-5 mx-auto">
+        <div className="graph-container mt-3 pt-3 mx-auto w-75">
+          <h3 className="text-center">Attempts Time vs Temp</h3>
           <AttemptsGraph
           firstCrack={firstCrack}
           secondCrack={secondCrack}

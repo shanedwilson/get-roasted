@@ -1,3 +1,13 @@
+@import "../../styles/variables";
+
 .btn {
   font-family: 'open sans';
+}
+
+.inventory-card {
+  background-color: rgba(255,255,255, .7) !important;
+}
+
+.inventory-card-header {
+  background-color: $color6 !important;
 }

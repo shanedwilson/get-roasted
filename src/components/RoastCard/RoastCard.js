@@ -72,17 +72,17 @@ class RoastCard extends React.Component {
         return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default" onClick={this.editEvent}>
+            <button className="btn edit-btn btn-default" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn delete-btn btn-default" onClick={this.deleteEvent}>
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
           <div className="col">
-            <button className="btn btn-default">
+            <button className="btn card-add-btn btn-default">
               <i className="fas fa-plus-circle" onClick={this.roastClick}>    Attempts</i>
             </button>
           </div>
@@ -92,7 +92,7 @@ class RoastCard extends React.Component {
       return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default">
+            <button className="btn card-add-btn btn-default">
               <i className="fas fa-plus-circle" onClick={this.roastClick}>    Attempts</i>
             </button>
           </span>
@@ -101,8 +101,8 @@ class RoastCard extends React.Component {
     };
 
     return (
-      <div className="card col-3 m-3">
-        <div className="card-header h-25 d-flex">
+      <div className="card roast-card col-3 m-3">
+        <div className="card-header roast-card-header mt-3 h-25 d-flex">
           <h5 className="card-title text-center align-self-center m-0">{roast.roastName}</h5>
         </div>
         <div className="card-body d-flex flex-column text-center justify-content-center">

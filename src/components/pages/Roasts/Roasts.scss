@@ -1,3 +1,34 @@
+@import "../../../styles/variables";
+
 p, .test-class {
   font-family: 'sans open';
+}
+
+.roast {
+  h1 {
+    color: $color4;
+	  text-shadow:
+		  -1px -1px 0 #808080,
+		  1px -1px 0 #808080,
+		  -1px 1px 0 #808080,
+		  1px 1px 0 #808080;
+      }
+}
+
+.roast {
+  background:  linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+                url('https://c1.staticflickr.com/6/5578/30752162452_ea30785cc3_b.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: 100%; 
+}
+
+.roast-add-btn {
+  color: $color1 !important;
+}
+
+.roast-search-btn {
+  color: $color2 !important;
 }

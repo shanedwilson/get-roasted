@@ -116,31 +116,11 @@ class AddAttempts extends React.Component {
 
   render() {
     const {
-      isEditing,
-    } = this.props;
-
-    const {
       newAttempt,
     } = this.state;
 
-    const makeHeadline = () => {
-      if (isEditing === false) {
-        return (
-        <div className="mx-auto mt-3">
-          <h5>Add Attempt</h5>
-        </div>
-        );
-      }
-      return (
-        <div className="mx-auto mt-3">
-          <h5>Edit Attempt</h5>
-        </div>
-      );
-    };
-
     return (
       <div className="AddAttempts mx-auto mb-5 w-100">
-        <h1 className="text-center mt-5">{makeHeadline()}</h1>
         <form className="row form-container border border-dark rounded mt-5 mx-auto my-auto col-12" onSubmit={this.formSubmit}>
           <div className="form mt-2 col-11">
             <div className="col-auto form-lines p-0">

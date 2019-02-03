@@ -33,12 +33,12 @@ class AttemptCard extends React.Component {
     const makeButtons = () => (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn btn-default" onClick={this.editEvent}>
+            <button className="btn edit-btn btn-default" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
           <span className="col">
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn delete-btn btn-default" onClick={this.deleteEvent}>
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
@@ -46,8 +46,8 @@ class AttemptCard extends React.Component {
     );
 
     return (
-      <div className="card col-3 m-3">
-        <div className="card-header">
+      <div className="card attempt-card col-3 m-3">
+        <div className="card-header attempt-card-header">
           <h5 className="card-title text-center">{moment(attempt.date).format('MMM DD YYYY hh:mm a')}</h5>
         </div>
         <div className="card-body">

@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import SearchField from 'react-search-field';
 import MyModal from '../../MyModal/MyModal';
 import RoastCard from '../../RoastCard/RoastCard';
@@ -19,17 +20,39 @@ class Roasts extends React.Component {
     editId: '',
     beanId: '',
     modal: false,
+    view: 'Roast',
+    isSearching: false,
   }
 
   toggleModal = () => {
     const { modal } = this.state;
     this.setState({
       modal: !modal,
+      isEditing: false,
+      beanId: '',
     });
+  }
+
+  toggleSearch = () => {
+    const { isSearching } = this.state;
+    this.setState({ isSearching: !isSearching });
+  }
+
+  onEnter = () => {
+    const { attempts } = this.state;
+    this.setState({ isSearching: false, filteredAttempts: attempts });
+  }
+
+  onSearchClick = () => {
+    const { attempts } = this.state;
+    this.setState({ isSearching: false, filteredAttempts: attempts });
   }
 
   setBeanId = () => {
     const firebaseId = this.props.match.params.id;
+    if (firebaseId) {
+      this.setState({ modal: true });
+    }
     this.setState({ beanId: firebaseId });
   }
 
@@ -75,6 +98,11 @@ class Roasts extends React.Component {
     this.getRoasts();
     this.getAllBeans();
     this.setBeanId();
+    $('body').addClass('roast');
+  }
+
+  componentWillUnmount() {
+    $('body').removeClass('roast');
   }
 
   deleteSingleRoast = (roastId) => {
@@ -124,6 +152,8 @@ class Roasts extends React.Component {
       beanId,
       roasts,
       modal,
+      view,
+      isSearching,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -144,7 +174,7 @@ class Roasts extends React.Component {
     ));
 
     const makeForm = () => (
-      <div className='form-container col'>
+      <div className='form-container col w-95'>
         <AddEditRoast
           beans={beans}
           isEditing={isEditing}
@@ -156,29 +186,44 @@ class Roasts extends React.Component {
       </div>
     );
 
-    return (
-      <div className="Roasts mx-auto">
-        <h1 className="text-center mt-5">ROASTS!!!</h1>
+    const makeSearch = () => {
+      if (isSearching) {
+        return (
           <SearchField
-            placeholder="Search Roasts By Region, Roast Name or Bean Name..."
+            placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-100"
+            classNames="test-class w-50 animated slideInRight"
+            onEnter={this.onEnter}
+            onSearchClick={this.onSearchClick}
           />
-      <div>
-        <button type="button" className="btn add-btn btn-success my-5 mx-auto" onClick={this.toggleModal}>
-          <i className="fas fa-plus-circle" />
-        </button>
-      </div>
+        );
+      }
+      return (<div></div>);
+    };
+
+    return (
+      <div className="Roasts mx-auto mt-5 w-100">
+        <div className="btn-div col w-100">
+          <button type="button" className="btn roast-add-btn mr-1" onClick={this.toggleModal}>
+            <i className="fas fa-plus-circle" />
+          </button>
+          <button type="button" className="btn roast-add-btn" onClick={this.toggleSearch}>
+            <i className="fas fa-search" />
+          </button>
+        </div>
+        <h1 className="text-center mt-5">A Collection Of Roasting Profiles</h1>
+        <div className="search-div">{makeSearch()}</div>
       <div>
         <MyModal
         makeForm = {makeForm()}
         isEditing={isEditing}
         modal={modal}
         toggleModal={this.toggleModal}
+        view={view}
         />
       </div>
-        <div className="rst-cards row justify-content-center">
+        <div className="rst-cards row justify-content-center animated slideInLeft">
           {roastCards}
         </div>
       </div>

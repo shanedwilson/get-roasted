@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import SearchField from 'react-search-field';
 import MyModal from '../../MyModal/MyModal';
 import InventoryCard from '../../InventoryCard/InventoryCard';
@@ -20,13 +21,32 @@ class Inventory extends React.Component {
     editId: '',
     beanId: '',
     modal: false,
+    view: 'Inventory',
+    isSearching: false,
   }
 
   toggleModal = () => {
     const { modal } = this.state;
     this.setState({
       modal: !modal,
+      isEditing: false,
+      beanId: '',
     });
+  }
+
+  toggleSearch = () => {
+    const { isSearching } = this.state;
+    this.setState({ isSearching: !isSearching });
+  }
+
+  onEnter = () => {
+    const { inventory } = this.state;
+    this.setState({ isSearching: false, filteredInventory: inventory });
+  }
+
+  onSearchClick = () => {
+    const { inventory } = this.state;
+    this.setState({ isSearching: false, filteredInventory: inventory });
   }
 
   roastsView = (beanId) => {
@@ -35,6 +55,9 @@ class Inventory extends React.Component {
 
   setBeanId = () => {
     const firebaseId = this.props.match.params.id;
+    if (firebaseId) {
+      this.setState({ modal: true });
+    }
     this.setState({ beanId: firebaseId });
   }
 
@@ -77,6 +100,11 @@ class Inventory extends React.Component {
     this.setBeanId();
     this.getInventory();
     this.getAllBeans();
+    $('body').addClass('inventories');
+  }
+
+  componentWillUnmount() {
+    $('body').removeClass('inventories');
   }
 
   deleteSingleItem = (itemId) => {
@@ -125,6 +153,8 @@ class Inventory extends React.Component {
       editId,
       beanId,
       modal,
+      view,
+      isSearching,
     } = this.state;
 
     const inventoryCards = filteredInventory.map(item => (
@@ -140,7 +170,7 @@ class Inventory extends React.Component {
     ));
 
     const makeForm = () => (
-      <div className='form-container col'>
+      <div className='form-container col w-95'>
         <AddEditInventory
           beans={beans}
           isEditing={isEditing}
@@ -152,30 +182,44 @@ class Inventory extends React.Component {
       </div>
     );
 
-
-    return (
-      <div className="inventory mx-auto mt-5 w-100">
-        <h1 className="text-center">INVENTORY!!!</h1>
+    const makeSearch = () => {
+      if (isSearching) {
+        return (
           <SearchField
-            placeholder="Search Inventory By Region or Name..."
+            placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-100"
+            classNames="test-class w-50 animated slideInLeft"
+            onEnter={this.onEnter}
+            onSearchClick={this.onSearchClick}
           />
-          <div>
-            <button type="button" className="btn add-btn btn-success my-5 mx-auto" onClick={this.toggleModal}>
-              <i className="fas fa-plus-circle" />
-            </button>
-          </div>
+        );
+      }
+      return (<div></div>);
+    };
+
+    return (
+      <div className="inventory mt-5">
+        <div className="btn-div col w-100">
+          <button type="button" className="btn inventory-add-btn mr-1" onClick={this.toggleModal}>
+            <i className="fas fa-plus-circle" />
+          </button>
+          <button type="button" className="btn inventory-search-btn" onClick={this.toggleSearch}>
+            <i className="fas fa-search" />
+          </button>
+        </div>
+        <h1 className="text-center">Your Inventory</h1>
+        <div className="search-div">{makeSearch()}</div>
           <div>
             <MyModal
             makeForm = {makeForm()}
             isEditing={isEditing}
             modal={modal}
             toggleModal={this.toggleModal}
+            view={view}
             />
           </div>
-        <div className="inv-cards row justify-content-center">
+        <div className="inv-cards row justify-content-center animated slideInRight">
           {inventoryCards}
         </div>
       </div>
