@@ -35,8 +35,8 @@ class Inventory extends React.Component {
   }
 
   toggleSearch = () => {
-    const { isSearching } = this.state;
-    this.setState({ isSearching: !isSearching });
+    const { isSearching, inventory } = this.state;
+    this.setState({ isSearching: !isSearching, filteredInventory: inventory });
   }
 
   onEnter = () => {

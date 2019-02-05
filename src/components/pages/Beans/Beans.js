@@ -31,8 +31,8 @@ class Beans extends React.Component {
   }
 
   toggleSearch = () => {
-    const { isSearching } = this.state;
-    this.setState({ isSearching: !isSearching });
+    const { isSearching, beans } = this.state;
+    this.setState({ isSearching: !isSearching, filteredBeans: beans });
   }
 
   onEnter = () => {

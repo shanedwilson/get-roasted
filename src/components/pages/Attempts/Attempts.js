@@ -49,8 +49,8 @@ class Attempts extends React.Component {
   }
 
   toggleSearch = () => {
-    const { isSearching } = this.state;
-    this.setState({ isSearching: !isSearching });
+    const { isSearching, attempts } = this.state;
+    this.setState({ isSearching: !isSearching, filteredAttempts: attempts });
   }
 
   onEnter = () => {
