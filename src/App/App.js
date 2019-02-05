@@ -22,7 +22,7 @@ import './App.scss';
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
-    ? (<Component { ...props } />)
+    ? (<Component { ...props } {...rest} />)
     : (<Redirect to={{ pathname: '/beans', state: { from: props.location } }}/>));
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
@@ -38,6 +38,11 @@ class App extends React.Component {
   state = {
     authed: false,
     pendingUser: true,
+    authBg: true,
+  }
+
+  setAuthBg = () => {
+    this.setState({ authBg: false });
   }
 
   componentDidMount() {
@@ -66,11 +71,12 @@ class App extends React.Component {
     const {
       authed,
       pendingUser,
+      authBg,
     } = this.state;
 
     const logoutClickEvent = () => {
       authRequests.logoutUser();
-      this.setState({ authed: false });
+      this.setState({ authed: false, authBg: true });
     };
 
     if (pendingUser) {
@@ -82,7 +88,12 @@ class App extends React.Component {
           <React.Fragment>
             <MyNavbar isAuthed={ authed } logoutClickEvent={logoutClickEvent} />
                 <Switch>
-                  <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
+                  <PublicRoute path='/auth'
+                    component={Auth}
+                    authed={this.state.authed}
+                    authBg={authBg}
+                    setAuthBg={this.setAuthBg}
+                    />
                   <PrivateRoute path='/' exact component={Beans} authed={this.state.authed} />
                   <PrivateRoute path='/beans' component={Beans} authed={this.state.authed} />
                   <PrivateRoute path='/roasts/:id' component={Roasts} authed={this.state.authed} />
