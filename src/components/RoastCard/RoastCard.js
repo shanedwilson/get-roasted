@@ -26,7 +26,7 @@ class RoastCard extends React.Component {
         (attempts.length === 0 ? this.setState({ averageRating: 0 })
           : attempts.forEach((attempt) => {
             totalRating += attempt.rating;
-            this.setState({ averageRating: totalRating / attempts.length });
+            this.setState({ averageRating: (totalRating / attempts.length).toFixed(2) });
           }));
       })
       .catch((error) => {
@@ -102,8 +102,8 @@ class RoastCard extends React.Component {
 
     return (
       <div className="card roast-card col-3 m-3 rounded">
-        <div className="card-header roast-card-header mt-3 h-25 d-flex rounded">
-          <h5 className="card-title text-center align-self-center m-0">{roast.roastName}</h5>
+        <div className="card-header roast-card-header mt-3 h-25 text-center d-flex rounded">
+          <h5 className="card-title mx-auto m-0">{roast.roastName}</h5>
         </div>
         <div className="card-body d-flex flex-column text-center justify-content-center">
           <p className="card-text lead">{roast.origin}</p>

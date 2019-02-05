@@ -303,7 +303,7 @@ class Attempts extends React.Component {
           />
         </div>
         <div className="col-5 mx-auto">
-          <div className="card roast-card col m-3 mx-auto animated slideInRight rounded">
+          <div className="card attempts-roast-card col m-3 mx-auto animated slideInRight rounded">
             <div className="card-header roast-card-header mt-3 rounded">
               <h5 className="card-title text-center">Selected Roast:</h5>
               <h5 className="card-title text-center">{roast.roastName}</h5>
