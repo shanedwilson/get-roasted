@@ -88,7 +88,7 @@ class Inventory extends React.Component {
       this.setState({ filteredInventory: inventory });
     } else {
       inventory.forEach((item) => {
-        if (item.region.toLowerCase().includes(value.toLowerCase()) || item.name.toLowerCase().includes(value.toLowerCase())) {
+        if (item.origin.toLowerCase().includes(value.toLowerCase()) || item.name.toLowerCase().includes(value.toLowerCase())) {
           filteredInventory.push(item);
         }
         this.setState({ filteredInventory });

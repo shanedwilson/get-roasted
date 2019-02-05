@@ -106,7 +106,7 @@ class RoastCard extends React.Component {
           <h5 className="card-title text-center align-self-center m-0">{roast.roastName}</h5>
         </div>
         <div className="card-body d-flex flex-column text-center justify-content-center">
-          <p className="card-text lead">{roast.region}</p>
+          <p className="card-text lead">{roast.origin}</p>
           <p className="card-text ">{roast.name}</p>
           <div className="average-div">
             <p className="card-text lead">Average Rating: {averageRating}</p>

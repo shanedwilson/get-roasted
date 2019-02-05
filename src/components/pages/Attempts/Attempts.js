@@ -310,6 +310,7 @@ class Attempts extends React.Component {
               <h5 className="card-title text-center">{roast.roastName}</h5>
             </div>
             <div className="card-body">
+            <p className="card-text text-center">{bean.origin}</p>
             <p className="card-text text-center">{bean.name}</p>
             </div>
             <div className="mx-auto">

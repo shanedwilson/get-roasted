@@ -61,7 +61,7 @@ class Beans extends React.Component {
       this.setState({ filteredBeans: beans });
     } else {
       beans.forEach((bean) => {
-        if (bean.region.toLowerCase().includes(value.toLowerCase()) || bean.name.toLowerCase().includes(value.toLowerCase())) {
+        if (bean.origin.toLowerCase().includes(value.toLowerCase()) || bean.name.toLowerCase().includes(value.toLowerCase())) {
           filteredBeans.push(bean);
         }
         this.setState({ filteredBeans });

@@ -86,7 +86,7 @@ class Roasts extends React.Component {
       roasts.forEach((roast) => {
         if (roast.name.toLowerCase().includes(value.toLowerCase())
         || roast.roastName.toLowerCase().includes(value.toLowerCase())
-        || roast.region.toLowerCase().includes(value.toLowerCase())) {
+        || roast.origin.toLowerCase().includes(value.toLowerCase())) {
           filteredRoasts.push(roast);
         }
         this.setState({ filteredRoasts });
