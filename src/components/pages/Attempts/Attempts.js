@@ -42,7 +42,6 @@ class Attempts extends React.Component {
   }
 
   toggleGraph = () => {
-    console.log('GRAPH!');
     const { graph } = this.state;
     this.setState({
       graph: !graph,
