@@ -6,13 +6,9 @@ p, .test-class {
 
 .roast {
   h1 {
-    color: $color4;
-	  text-shadow:
-		  -1px -1px 0 #808080,
-		  1px -1px 0 #808080,
-		  -1px 1px 0 #808080,
-		  1px 1px 0 #808080;
-      }
+    color:$color8;
+    text-shadow: #cccccc 2px 1px 0;
+  }
 }
 
 .roast {
@@ -23,12 +19,4 @@ p, .test-class {
   background-position: center;
   background-size: cover;
   height: 100%; 
-}
-
-.roast-add-btn {
-  color: $color1 !important;
-}
-
-.roast-search-btn {
-  color: $color2 !important;
 }

@@ -1,9 +1,8 @@
 @import "../../../styles/variables";
 
 .inventories {
-  background:  linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+  background:  linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
                 url('https://storage.googleapis.com/drhealthbenefits/2017/11/80d762d5-health-benefits-of-coffee-fruit.jpg');
-  // background-image: url('https://storage.googleapis.com/drhealthbenefits/2017/11/80d762d5-health-benefits-of-coffee-fruit.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -19,14 +18,10 @@
   color: white !important;
 }
 
-.inventory {
+.inventories {
   h1 {
-    color: $color4;
-	  text-shadow:
-		  -1px -1px 0 #808080,
-		  1px -1px 0 #808080,
-		  -1px 1px 0 #808080,
-		  1px 1px 0 #808080;
-      }
+    color: #bdb76b;
+    text-shadow: #eeeeee 2px 1px 0;
+  }
 }
 

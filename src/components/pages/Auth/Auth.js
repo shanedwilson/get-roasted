@@ -19,19 +19,19 @@ class Auth extends React.Component {
   }
 
   setBackground = () => {
-    const bgArray = ['bean', 'roast', 'inventories', 'attempt'];
+    const bgArray = ['bean', 'inventories', 'roast', 'attempt'];
     let counter = 0;
 
     const nextBackground = () => {
       if (this.props.authBg) {
         document.querySelector('body').className = '';
         $('body').addClass(bgArray[counter]);
-        setTimeout(nextBackground, 4000);
+        setTimeout(nextBackground, 3000);
         counter += 1;
         if (counter === bgArray.length) { counter = 0; }
       }
     };
-    setTimeout(nextBackground, 4000);
+    nextBackground();
     $('body').addClass(bgArray[0]);
   };
 
@@ -50,10 +50,10 @@ class Auth extends React.Component {
           <div className="roasted-logo">
             <img src={mainLogo} alt="main logo" />
           </div>
-          <div className="title">
+          {/* <div className="title">
             <h1 className="title1">Get</h1>
             <h1 className="title2">Roasted!!!</h1>
-          </div>
+          </div> */}
         </div>
         <div className="btn-container">
           <button className="btn mt-5 mb-5" onClick={this.authenticateUser}>

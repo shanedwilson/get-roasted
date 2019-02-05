@@ -174,7 +174,8 @@ class Beans extends React.Component {
             </button>
           </div>
           <div>
-            <h1 className="text-center">A Selection Of Beans From Around The World</h1>
+            <h1 className="text-center">A Selection Of Beans</h1>
+            <h1 className="text-center">From Around The World</h1>
           </div>
             <div className="search-div">
               {makeSearch()}

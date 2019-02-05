@@ -305,8 +305,8 @@ class Attempts extends React.Component {
         />
       </div>
         <div className="col-5 mx-auto">
-          <div className="card roast-card col m-3 mx-auto animated slideInRight">
-            <div className="card-header roast-card-header">
+          <div className="card roast-card col m-3 mx-auto animated slideInRight rounded">
+            <div className="card-header roast-card-header mt-3 rounded">
               <h5 className="card-title text-center">{roast.roastName}</h5>
             </div>
             <div className="card-body">
@@ -323,14 +323,6 @@ class Attempts extends React.Component {
         </div>
         <div>
           <div className="justify-content-center row animated slideInLeft">{attemptCards}</div>
-        </div>
-        <div className="graph-container mt-3 pt-3 mx-auto w-75">
-          <h3 className="text-center">Attempts Time vs Temp</h3>
-          <AttemptsGraph
-          firstCrack={firstCrack}
-          secondCrack={secondCrack}
-          end={end}
-          />
         </div>
       </div>
     );
