@@ -76,7 +76,7 @@ class AddEditBean extends React.Component {
                 <input
                   type="text"
                   className="form-control"
-                  id="region"
+                  id="origin"
                   placeholder="Indonesia"
                   value={newBean.origin}
                   onChange={this.originChange}

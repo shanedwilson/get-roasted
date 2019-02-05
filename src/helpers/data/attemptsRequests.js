@@ -33,6 +33,7 @@ const getAllAttemptsByRoastId = roastId => new Promise((resolve, reject) => {
           attemptsObject[attemptId].id = attemptId;
           attemptsArray.push(attemptsObject[attemptId]);
         });
+        attemptsArray.sort((a, b) => ((a.date - b.date) ? 1 : -1));
       }
       resolve(attemptsArray);
     })
