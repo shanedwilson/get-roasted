@@ -12,6 +12,7 @@ class Auth extends React.Component {
     e.preventDefault();
     authRequests.authenticate()
       .then(() => {
+        this.props.setAuthBg();
         this.props.history.push('/beans');
       })
       .catch(error => console.error('there was a problem with auth', error));
@@ -22,14 +23,15 @@ class Auth extends React.Component {
     let counter = 0;
 
     const nextBackground = () => {
-      document.querySelector('body').className = '';
-      $('body').addClass(bgArray[counter]);
-      setTimeout(nextBackground, 3000);
-      counter += 1;
-      if (counter === bgArray.length) { counter = 0; }
-      console.log(counter);
+      if (this.props.authBg) {
+        document.querySelector('body').className = '';
+        $('body').addClass(bgArray[counter]);
+        setTimeout(nextBackground, 4000);
+        counter += 1;
+        if (counter === bgArray.length) { counter = 0; }
+      }
     };
-    setTimeout(nextBackground, 3000);
+    setTimeout(nextBackground, 4000);
     $('body').addClass(bgArray[0]);
   };
 
@@ -37,10 +39,14 @@ class Auth extends React.Component {
     this.setBackground();
   }
 
+  componentWillUnmount() {
+    document.querySelector('body').className = '';
+  }
+
   render() {
     return (
       <div className="Auth mx-auto">
-        <div className="text-center logo-container mt-5">
+        <div className="text-center logo-container">
           <div className="roasted-logo">
             <img src={mainLogo} alt="main logo" />
           </div>
@@ -50,7 +56,7 @@ class Auth extends React.Component {
           </div>
         </div>
         <div className="btn-container">
-          <button className="btn mt-5 mb-5 mx-auto" onClick={this.authenticateUser}>
+          <button className="btn mt-5 mb-5" onClick={this.authenticateUser}>
             <img src={googleButton} alt="google login button" />
           </button>
         </div>
