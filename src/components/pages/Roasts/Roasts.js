@@ -34,18 +34,18 @@ class Roasts extends React.Component {
   }
 
   toggleSearch = () => {
-    const { isSearching } = this.state;
-    this.setState({ isSearching: !isSearching });
+    const { isSearching, roasts } = this.state;
+    this.setState({ isSearching: !isSearching, filteredRoasts: roasts });
   }
 
   onEnter = () => {
-    const { attempts } = this.state;
-    this.setState({ isSearching: false, filteredAttempts: attempts });
+    const { roasts } = this.state;
+    this.setState({ isSearching: false, filteredRoasts: roasts });
   }
 
   onSearchClick = () => {
-    const { attempts } = this.state;
-    this.setState({ isSearching: false, filteredAttempts: attempts });
+    const { roasts } = this.state;
+    this.setState({ isSearching: false, filteredAttempts: roasts });
   }
 
   setBeanId = () => {
