@@ -13,6 +13,11 @@ const getAllBeans = () => new Promise((resolve, reject) => {
           beansObject[beanId].id = beanId;
           beansArray.push(beansObject[beanId]);
         });
+        beansArray.sort((a, b) => {
+          if (a.origin < b.origin) { return -1; }
+          if (a.origin > b.origin) { return 1; }
+          return 0;
+        });
       }
       resolve(beansArray);
     })

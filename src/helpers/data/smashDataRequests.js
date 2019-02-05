@@ -16,6 +16,11 @@ const getAllInventoryWithBeanInfo = uid => new Promise((resolve, reject) => {
               beanInventory.push(bean);
             }
           });
+          beanInventory.sort((a, b) => {
+            if (a.origin < b.origin) { return -1; }
+            if (a.origin > b.origin) { return 1; }
+            return 0;
+          });
           resolve(beanInventory);
         });
     })
@@ -35,6 +40,11 @@ const getRoastsWithBeanInfo = () => new Promise((resolve, reject) => {
             if ('roastName' in roastBean) {
               roastsSmash.push(roastBean);
             }
+            roastsSmash.sort((a, b) => {
+              if (a.origin < b.origin) { return -1; }
+              if (a.origin > b.origin) { return 1; }
+              return 0;
+            });
           });
           resolve(roastsSmash);
         });
