@@ -287,25 +287,25 @@ class Attempts extends React.Component {
             <i className="fas fa-search" />
           </button>
         </div>
-        <h1 className="text-center mt-5">Your Roast Attempts</h1>
         <div className="search-div">{makeSearch()}</div>
-      <div>
-        <MyModal
-        makeForm = {makeForm()}
-        isEditing={isEditing}
-        modal={modal}
-        toggleModal={this.toggleModal}
-        view={view}
-        />
-        <MyGraphModal
-          makeGraph={makeGraph()}
-          graph={graph}
-          toggleGraph={this.toggleGraph}
-        />
-      </div>
+        <div>
+          <MyModal
+          makeForm = {makeForm()}
+          isEditing={isEditing}
+          modal={modal}
+          toggleModal={this.toggleModal}
+          view={view}
+          />
+          <MyGraphModal
+            makeGraph={makeGraph()}
+            graph={graph}
+            toggleGraph={this.toggleGraph}
+          />
+        </div>
         <div className="col-5 mx-auto">
           <div className="card roast-card col m-3 mx-auto animated slideInRight rounded">
             <div className="card-header roast-card-header mt-3 rounded">
+              <h5 className="card-title text-center">Selected Roast:</h5>
               <h5 className="card-title text-center">{roast.roastName}</h5>
             </div>
             <div className="card-body">
