@@ -22,7 +22,7 @@ class AttemptsGraph extends React.Component {
     const { firstCrack, secondCrack, end } = this.props;
 
     return (
-      <ScatterChart className="mx-auto mt-5" width={1000} height={250}
+      <ScatterChart className="mx-auto mt-5" width={750} height={300}
         margin={
           {
             top: 20, right: 20, bottom: 10, left: 10,

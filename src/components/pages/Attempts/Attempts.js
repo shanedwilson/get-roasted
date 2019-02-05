@@ -3,6 +3,7 @@ import $ from 'jquery';
 import moment from 'moment';
 import SearchField from 'react-search-field';
 import MyModal from '../../MyModal/MyModal';
+import MyGraphModal from '../../../MyGraphModal/MyGraphModal';
 import AddAttempts from '../AddAttempts/AddAttempts';
 import AttemptCard from '../../AttemptCard/AttemptCard';
 import AttemptsGraph from '../../AttemptsGraph/AttemptsGraph';
@@ -30,12 +31,21 @@ class Attempts extends React.Component {
     roastId: '',
     view: 'Attempts',
     isSearching: false,
+    graph: false,
   }
 
   toggleModal = () => {
     const { modal } = this.state;
     this.setState({
       modal: !modal,
+    });
+  }
+
+  toggleGraph = () => {
+    console.log('GRAPH!');
+    const { graph } = this.state;
+    this.setState({
+      graph: !graph,
     });
   }
 
@@ -211,6 +221,7 @@ class Attempts extends React.Component {
       end,
       view,
       isSearching,
+      graph,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -254,9 +265,22 @@ class Attempts extends React.Component {
       return (<div></div>);
     };
 
+    const makeGraph = () => (
+      <div className="graph-container mt-3 pt-3 text-center w-75">
+        <AttemptsGraph
+        firstCrack={firstCrack}
+        secondCrack={secondCrack}
+        end={end}
+        />
+      </div>
+    );
+
     return (
       <div className="Attempts mx-auto w-100">
         <div className="btn-div col w-100">
+          <button type="button" className="btn attempt-graph-btn mr-1" onClick={this.toggleGraph}>
+            <i className="fas fa-chart-line" />
+          </button>
           <button type="button" className="btn attempt-add-btn mr-1" onClick={this.toggleModal}>
             <i className="fas fa-plus-circle" />
           </button>
@@ -273,6 +297,11 @@ class Attempts extends React.Component {
         modal={modal}
         toggleModal={this.toggleModal}
         view={view}
+        />
+        <MyGraphModal
+          makeGraph={makeGraph()}
+          graph={graph}
+          toggleGraph={this.toggleGraph}
         />
       </div>
         <div className="col-5 mx-auto">
