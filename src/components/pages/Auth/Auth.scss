@@ -1,5 +1,9 @@
+@import "../../../styles/variables";
+
 .title1, .title2 {
   font-family: 'bungee';
+  color:$color8 !important;
+  text-shadow: #cccccc 2px 1px 0 !important;
 }
 
 .btn-container {
