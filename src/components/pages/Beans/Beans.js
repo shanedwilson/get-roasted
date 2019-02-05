@@ -173,13 +173,9 @@ class Beans extends React.Component {
               <i className="fas fa-search" />
             </button>
           </div>
-          <div>
-            <h1 className="text-center">A Selection Of Beans</h1>
-            <h1 className="text-center">From Around The World</h1>
+          <div className="search-div">
+            {makeSearch()}
           </div>
-            <div className="search-div">
-              {makeSearch()}
-            </div>
           <div>
             <MyModal
             makeForm = {makeForm()}

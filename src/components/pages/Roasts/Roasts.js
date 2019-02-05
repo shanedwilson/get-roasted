@@ -193,7 +193,7 @@ class Roasts extends React.Component {
             placeholder="Search Beans By Region or Name..."
             onChange={ this.onChange }
             searchText=""
-            classNames="test-class w-50 animated slideInRight"
+            classNames="test-class search w-50 animated slideInRight"
             onEnter={this.onEnter}
             onSearchClick={this.onSearchClick}
           />
@@ -212,17 +212,16 @@ class Roasts extends React.Component {
             <i className="fas fa-search" />
           </button>
         </div>
-        <h1 className="text-center mt-5">A Collection Of Roasting Profiles</h1>
         <div className="search-div">{makeSearch()}</div>
-      <div>
-        <MyModal
-        makeForm = {makeForm()}
-        isEditing={isEditing}
-        modal={modal}
-        toggleModal={this.toggleModal}
-        view={view}
-        />
-      </div>
+        <div>
+          <MyModal
+          makeForm = {makeForm()}
+          isEditing={isEditing}
+          modal={modal}
+          toggleModal={this.toggleModal}
+          view={view}
+          />
+        </div>
         <div className="rst-cards row justify-content-center animated slideInLeft">
           {roastCards}
         </div>

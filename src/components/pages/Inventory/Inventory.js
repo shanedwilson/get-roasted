@@ -208,17 +208,16 @@ class Inventory extends React.Component {
             <i className="fas fa-search" />
           </button>
         </div>
-        <h1 className="text-center">Your Inventory</h1>
         <div className="search-div">{makeSearch()}</div>
-          <div>
-            <MyModal
-            makeForm = {makeForm()}
-            isEditing={isEditing}
-            modal={modal}
-            toggleModal={this.toggleModal}
-            view={view}
-            />
-          </div>
+        <div>
+          <MyModal
+          makeForm = {makeForm()}
+          isEditing={isEditing}
+          modal={modal}
+          toggleModal={this.toggleModal}
+          view={view}
+          />
+        </div>
         <div className="inv-cards row justify-content-center animated slideInRight">
           {inventoryCards}
         </div>
