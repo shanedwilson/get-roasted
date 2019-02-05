@@ -20,16 +20,16 @@ class Auth extends React.Component {
   setBackground = () => {
     const bgArray = ['bean', 'roast', 'inventories', 'attempt'];
     let counter = 0;
-    // if (counter === bgArray.length) { counter = 0; }
 
     const nextBackground = () => {
+      document.querySelector('body').className = '';
       $('body').addClass(bgArray[counter]);
-      setTimeout(nextBackground, 1000);
+      setTimeout(nextBackground, 3000);
       counter += 1;
       if (counter === bgArray.length) { counter = 0; }
       console.log(counter);
     };
-    setTimeout(nextBackground, 1000);
+    setTimeout(nextBackground, 3000);
     $('body').addClass(bgArray[0]);
   };
 
