@@ -47,9 +47,9 @@ The attempts page has graphing for all of the attempts of a roast with time vs t
 * ```npm start``` will run the project at http://localhost:3000
 
 ## Thank Yous
-* Zoe Ames
-* Callan Morrison
-* Lauren Rouse
-* Adam Wieckert
-* Bryon Larrance
-* Kaldi, the 9th century Ethiopian goatherd who noticed his animated goats and discovered coffee
+* Zoe Ames (NSS E8 Frontend Chief Badass)
+* Callan Morrison (NSS E8 Frontend Assistant Badass)
+* Lauren Rouse (NSS E8 Frontend Assistant Badass)
+* Adam Wieckert (NSS E8 Frontend Assistant To The Assistant Badass)
+* Bryon Larrance (Badass Mentor)
+* Kaldi (9th Century Ethiopian Goatherd Badass)
