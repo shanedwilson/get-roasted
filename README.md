@@ -9,7 +9,7 @@ Each page provides search functionality by bean region or name or, on the attemp
 
 The attempts page has graphing for all of the attempts of a roast with time vs temperature on first crack, second crack and the end of the roast.
 
-## Tech Requirements
+## Tech Used
 * React.js
 * Use Firebase CRUD to easily read, add, edit and delete coffee beans, inventory, roasts and attempts
 * Boostrap
