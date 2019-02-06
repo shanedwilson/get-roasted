@@ -41,14 +41,14 @@ class BeanCard extends React.Component {
     const makeButtons = () => {
       if (uid === ownerUid) {
         return (
-        <div className="mx-auto">
+        <div className="text-center">
           <span className="col">
-            <button className="btn edit-btn btn-default" onClick={this.editEvent}>
+            <button className="bttn-material-circle bttn-sm bttn-warning" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
           <span className="col">
-            <button className="btn delete-btn btn-default"
+            <button className="bttn-material-circle bttn-sm bttn-danger"
               data-toggle="modal"
               data-target="#exampleModal"
               onClick={this.deleteEvent}
@@ -57,7 +57,7 @@ class BeanCard extends React.Component {
             </button>
           </span>
           <div className="col">
-            <button className="btn card-add-btn btn-default" onClick={this.inventoryView}>
+            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-3" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </div>
@@ -67,7 +67,7 @@ class BeanCard extends React.Component {
       return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn card-add-btn btn-default mr-3" onClick={this.inventoryView}>
+            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-3" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </span>

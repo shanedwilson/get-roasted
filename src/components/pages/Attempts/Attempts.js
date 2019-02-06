@@ -252,7 +252,7 @@ class Attempts extends React.Component {
       if (isSearching) {
         return (
           <SearchField
-            placeholder="Search Beans By Region or Name..."
+            placeholder="Search By Attempt Date..."
             onChange={ this.onChange }
             searchText=""
             classNames="test-class w-50 animated slideInLeft"
@@ -277,13 +277,22 @@ class Attempts extends React.Component {
     return (
       <div className="Attempts mx-auto w-100">
         <div className="btn-div col w-100">
-          <button type="button" className="btn attempt-graph-btn mr-1" onClick={this.toggleGraph}>
+          <button
+            type="button"
+            className="bttn-material-circle bttn-sm bttn-royal"
+            onClick={this.toggleGraph}>
             <i className="fas fa-chart-line" />
           </button>
-          <button type="button" className="btn attempt-add-btn mr-1" onClick={this.toggleModal}>
+          <button
+            type="button"
+            className="bttn-material-circle bttn-sm bttn-success ml-2"
+            onClick={this.toggleModal}>
             <i className="fas fa-plus-circle" />
           </button>
-          <button type="button" className="btn attempt-search-btn" onClick={this.toggleSearch}>
+          <button
+            type="button"
+            className="bttn-material-circle bttn-sm bttn-primary ml-2"
+            onClick={this.toggleSearch}>
             <i className="fas fa-search" />
           </button>
         </div>
@@ -314,9 +323,9 @@ class Attempts extends React.Component {
             </div>
             <div className="mx-auto">
               <span className="col">
-                <button className="btn card-add-btn btn-default ml-3" onClick={this.toggleModal}>
-                  Add Attempt   <i className="fas fa-plus-circle"></i>
-                </button>
+            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-3" onClick={this.toggleModal}>
+              <i className="fas fa-plus-circle">    Add Attempt</i>
+            </button>
               </span>
             </div>
           </div>

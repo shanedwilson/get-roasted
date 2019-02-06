@@ -39,18 +39,22 @@ class InventoryCard extends React.Component {
     const makeButtons = () => (
         <div className="text-center">
           <span className="col">
-            <button className="btn edit-btn btn-default" onClick={this.editEvent}>
+            <button className="bttn-material-circle bttn-sm bttn-warning" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
           <span className="col">
-            <button className="btn delete-btn btn-default" onClick={this.deleteEvent}>
+            <button className="bttn-material-circle bttn-sm bttn-danger"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={this.deleteEvent}
+            >
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
           <div className="col">
-            <button className="btn card-add-btn btn-default text-center">
-              <i className="fas fa-plus-circle ml-2" onClick={this.roastView}>    Roast</i>
+            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-3" onClick={this.roastView}>
+              <i className="fas fa-plus-circle">    Roast</i>
             </button>
           </div>
         </div>

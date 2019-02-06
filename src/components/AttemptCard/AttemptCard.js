@@ -31,14 +31,18 @@ class AttemptCard extends React.Component {
     } = this.props;
 
     const makeButtons = () => (
-        <div className="mx-auto">
+        <div className="mx-auto mb-3">
           <span className="col">
-            <button className="btn edit-btn btn-default" onClick={this.editEvent}>
+           <button className="bttn-material-circle bttn-sm bttn-warning" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
           <span className="col">
-            <button className="btn delete-btn btn-default" onClick={this.deleteEvent}>
+            <button className="bttn-material-circle bttn-sm bttn-danger"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={this.deleteEvent}
+            >
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
