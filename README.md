@@ -5,18 +5,26 @@ The app provides the user with a selection of coffee beans. The user may then ad
 
 The user has the ability to add, edit and delete their inventory and roast attempts. Add, edit and delete functionality of the beans and roasts is reserved for the app owner.
 
+Each page provides search functionality by bean region or name or, on the attempts page, by attempt date.
+
+The attempts page has graphing for all of the attempts of a roast with time vs temperature on first crack, second crack and the end of the roast.
+
 ## Tech Requirements
 * React.js
 * Use Firebase CRUD to easily read, add, edit and delete coffee beans, inventory, roasts and attempts
 * Boostrap
+* Reactstrap
+* React libraries including React Search Field and React Animated CSS
 * Planning with Github Projects
 
 ## Screenshots
 ![Auth Screenshot](./images/get-roasted-auth-view.png)
 ![Beans Screenshot](./images/get-roasted-beans-view.png)
+![Beans Modal Screenshot](./images/get-roasted-beans-modal-view.png)
 ![Inventory Screenshot](./images/get-roasted-inventory-view.png)
 ![Roasts Screenshot](./images/get-roasted-roasts-view.png)
 ![Attempts Screenshot](./images/get-roasted-attemtps-view.png)
+![Attempts Graph Screenshot](./images/get-roasted-attemtps-graph-view.png)
 
 ## Deployed Site Link
 [Get-Roasted!!!](https://get-roasted-228b6.firebaseapp.com/)
@@ -37,3 +45,11 @@ The user has the ability to add, edit and delete their inventory and roast attem
 * In the root of the project run ```npm install``` to install necessary dependencies
 
 * ```npm start``` will run the project at http://localhost:3000
+
+## Thank Yous
+* Zoe Ames (NSS E8 Frontend Chief Badass)
+* Callan Morrison (NSS E8 Frontend Assistant Badass)
+* Lauren Rouse (NSS E8 Frontend Assistant Badass)
+* Adam Wieckert (NSS E8 Frontend Assistant To The Assistant Badass)
+* Bryon Larrance (Badass Mentor)
+* Kaldi (9th Century Ethiopian Goatherd Badass)
