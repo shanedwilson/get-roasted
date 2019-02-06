@@ -72,18 +72,22 @@ class RoastCard extends React.Component {
         return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn edit-btn btn-default" onClick={this.editEvent}>
+            <button className="bttn-material-circle bttn-sm bttn-warning" onClick={this.editEvent}>
               <i className="fas fa-pencil-alt"></i>
             </button>
           </span>
           <span className="col">
-            <button className="btn delete-btn btn-default" onClick={this.deleteEvent}>
+            <button className="bttn-material-circle bttn-sm bttn-danger"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={this.deleteEvent}
+            >
               <i className="fas fa-trash-alt"></i>
             </button>
           </span>
           <div className="col">
-            <button className="btn card-add-btn btn-default">
-              <i className="fas fa-plus-circle" onClick={this.roastClick}>    Attempts</i>
+            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-1" onClick={this.roastClick}>
+              <i className="fas fa-plus-circle">    Attempt</i>
             </button>
           </div>
         </div>
