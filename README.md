@@ -45,3 +45,11 @@ The attempts page has graphing for all of the attempts of a roast with time vs t
 * In the root of the project run ```npm install``` to install necessary dependencies
 
 * ```npm start``` will run the project at http://localhost:3000
+
+## Thank Yous
+* Zoe Ames
+* Callan Morrison
+* Lauren Rouse
+* Adam Wieckert
+* Bryon Larrance
+* Kaldi, the 9th century Ethiopian goatherd who noticed his animated goats and discovered coffee
