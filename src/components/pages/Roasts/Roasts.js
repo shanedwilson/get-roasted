@@ -190,7 +190,7 @@ class Roasts extends React.Component {
       if (isSearching) {
         return (
           <SearchField
-            placeholder="Search Beans By Region or Name..."
+            placeholder="Search Beans By Origin or Name..."
             onChange={ this.onChange }
             searchText=""
             classNames="test-class search w-50 animated slideInRight"
