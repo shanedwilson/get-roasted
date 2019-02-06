@@ -3,7 +3,6 @@ import $ from 'jquery';
 import authRequests from '../../../helpers/data/authRequests';
 import './Auth.scss';
 
-import googleButton from './images/googlebutton.png';
 import mainLogo from './images/get-roasted-logo1.png';
 
 
@@ -50,14 +49,10 @@ class Auth extends React.Component {
           <div className="roasted-logo">
             <img src={mainLogo} alt="main logo" />
           </div>
-          {/* <div className="title">
-            <h1 className="title1">Get</h1>
-            <h1 className="title2">Roasted!!!</h1>
-          </div> */}
         </div>
-        <div className="btn-container">
-          <button className="btn mt-5 mb-5" onClick={this.authenticateUser}>
-            <img src={googleButton} alt="google login button" />
+        <div className="btn-container mt-5">
+          <button className="bttn-pill bttn-lg bttn-danger" onClick={this.authenticateUser}>
+            <i className="fab fa-google"></i> Sign In w/Google
           </button>
         </div>
       </div>
