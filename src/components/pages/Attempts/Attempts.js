@@ -323,7 +323,7 @@ class Attempts extends React.Component {
             </div>
             <div className="mx-auto">
               <span className="col">
-            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-3" onClick={this.roastView}>
+            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-3" onClick={this.toggleModal}>
               <i className="fas fa-plus-circle">    Add Attempt</i>
             </button>
               </span>
