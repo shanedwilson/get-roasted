@@ -121,6 +121,7 @@ class RoastCard extends React.Component {
               editing={false}
               starCount={10}
               value={Number(averageRating)}
+              renderStarIcon={() => <span><i class="fas fa-coffee"></i></span>}
             />
           </div>
         </div>
