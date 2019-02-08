@@ -59,11 +59,9 @@ class AttemptCard extends React.Component {
           <p className="card-text text-center">
             {attempt.temp} °F, {attempt.humidity}% relative humidity
           </p>
-          <p className="card-text text-center">1st Crack:
-             {attempt.firstTime}, {attempt.firstTemp} °F
+          <p className="card-text text-center">1st Crack:  {attempt.firstTime}, {attempt.firstTemp} °F
           </p>
-          <p className="card-text text-center">2nd Crack:
-             {attempt.secondTime}, {attempt.secondTemp} °F
+          <p className="card-text text-center">2nd Crack:  {attempt.secondTime}, {attempt.secondTemp} °F
           </p>
           <p className="card-text text-center">Notes: {attempt.notes}</p>
           <p className="card-text text-center lead">Rating: {attempt.rating}</p>

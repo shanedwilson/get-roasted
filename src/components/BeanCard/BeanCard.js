@@ -11,6 +11,8 @@ class BeanCard extends React.Component {
       passBeanToEdit: PropTypes.func,
       onSelect: PropTypes.func,
       onToggle: PropTypes.func,
+      uid: PropTypes.string,
+      ownerUid: PropTypes.string,
     }
 
   deleteEvent = (e) => {

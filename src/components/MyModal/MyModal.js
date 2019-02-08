@@ -6,8 +6,17 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 class MyModal extends React.Component {
+  static propTypes = {
+    toggleModal: PropTypes.func,
+    makeForm: PropTypes.object,
+    modal: PropTypes.bool,
+    isEditing: PropTypes.bool,
+    view: PropTypes.string,
+  }
+
   toggleEvent = () => {
     const { toggleModal } = this.props;
     toggleModal();

@@ -16,6 +16,8 @@ class RoastCard extends React.Component {
     passRoastToEdit: PropTypes.func,
     onSelect: PropTypes.func,
     roasts: PropTypes.array,
+    uid: PropTypes.string,
+    ownerUid: PropTypes.string,
   }
 
   getAttempts = () => {

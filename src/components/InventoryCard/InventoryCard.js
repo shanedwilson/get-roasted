@@ -6,7 +6,7 @@ import './InventoryCard.scss';
 
 class InventoryCard extends React.Component {
     static propTypes = {
-      inventoryItem: inventoryShape.inventoryShape,
+      item: inventoryShape.inventoryShape,
       deleteSingleItem: PropTypes.func,
       passItemToEdit: PropTypes.func,
       onSelect: PropTypes.func,

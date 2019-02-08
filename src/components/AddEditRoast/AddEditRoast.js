@@ -18,6 +18,7 @@ class AddEditRoast extends React.Component {
     isEditing: PropTypes.bool.isRequired,
     setSelect: PropTypes.func,
     beanId: PropTypes.string,
+    beans: PropTypes.array,
   }
 
   state = {
