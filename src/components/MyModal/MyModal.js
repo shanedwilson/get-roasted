@@ -11,10 +11,10 @@ import PropTypes from 'prop-types';
 class MyModal extends React.Component {
   static propTypes = {
     toggleModal: PropTypes.func,
-    makeForm: PropTypes.func,
+    makeForm: PropTypes.object,
     modal: PropTypes.bool,
     isEditing: PropTypes.bool,
-    view: PropTypes.bool,
+    view: PropTypes.string,
   }
 
   toggleEvent = () => {
