@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const inventoryShape = PropTypes.shape({
   beanId: PropTypes.string.isRequired,
   uid: PropTypes.string.isRequired,
-  pound: PropTypes.number.isRequired,
+  pounds: PropTypes.number.isRequired,
   ounces: PropTypes.number.isRequired,
 });
 
@@ -15,4 +15,3 @@ const inventoryOptionalShape = PropTypes.oneOfType([
 ]);
 
 export default { inventoryShape, inventoryOptionalShape };
-  

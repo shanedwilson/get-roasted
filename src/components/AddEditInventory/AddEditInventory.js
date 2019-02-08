@@ -19,22 +19,22 @@ class AddEditInventory extends React.Component {
     isEditing: PropTypes.bool.isRequired,
     setSelect: PropTypes.func,
     beanId: PropTypes.string,
+    beans: PropTypes.array,
   }
 
   state = {
     newInventory: defaultInventory,
   }
 
-  formFieldStringState = (name, e) => {
-    e.preventDefault();
+  formFieldNumberState = (name, e) => {
     const tempInventory = { ...this.state.newInventory };
-    tempInventory[name] = e.target.value;
+    tempInventory[name] = e.target.value * 1;
     this.setState({ newInventory: tempInventory });
   }
 
-  poundsChange = e => this.formFieldStringState('pounds', e);
+  poundsChange = e => this.formFieldNumberState('pounds', e);
 
-  ouncesChange = e => this.formFieldStringState('ounces', e);
+  ouncesChange = e => this.formFieldNumberState('ounces', e);
 
   beanSelect = (e) => {
     const { setSelect } = this.props;
