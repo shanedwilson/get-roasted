@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import StarRatingComponent from 'react-star-rating-component';
 import attemptShape from '../../helpers/propz/atttemptShape';
+
 
 import './AttemptCard.scss';
 
@@ -64,7 +66,14 @@ class AttemptCard extends React.Component {
           <p className="card-text text-center">2nd Crack:  {attempt.secondTime}, {attempt.secondTemp} °F
           </p>
           <p className="card-text text-center">Notes: {attempt.notes}</p>
-          <p className="card-text text-center lead">Rating: {attempt.rating}</p>
+          <div className="text-center">
+            <StarRatingComponent
+              name="attempt-rating"
+              editing={false}
+              starCount={10}
+              value={attempt.rating}
+            />
+          </div>
       </div>
         {makeButtons()}
       </div>

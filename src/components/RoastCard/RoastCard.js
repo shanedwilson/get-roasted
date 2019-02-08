@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StarRatingComponent from 'react-star-rating-component';
 import roastShape from '../../helpers/propz/roastShape';
 import attemptsRequests from '../../helpers/data/attemptsRequests';
 
@@ -115,7 +116,12 @@ class RoastCard extends React.Component {
           <p className="card-text lead">{roast.origin}</p>
           <p className="card-text ">{roast.name}</p>
           <div className="average-div">
-            <p className="card-text lead">Average Rating: {averageRating}</p>
+            <StarRatingComponent
+              name="roast-rating"
+              editing={false}
+              starCount={10}
+              value={Number(averageRating)}
+            />
           </div>
         </div>
         <div className="card-footer text-center">
