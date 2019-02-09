@@ -11,3 +11,24 @@
 .inventory-card-header {
   background-color: $color9 !important;
 }
+
+.amt-div {
+  background-color: $color1;
+}
+
+.warning-div {
+  animation-name: flashAmt;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flashAmt {
+  0% {background-color: $color1}
+  50% {background-color: $color2}
+  100% {background-color: $color1}
+
+}
+@keyframes flashAmt2 {
+  from {background-color: $color2}
+  to {background-color: $color1}
+}

@@ -90,7 +90,7 @@ class RoastCard extends React.Component {
           </span>
           <div className="col">
             <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-1" onClick={this.roastClick}>
-              <i className="fas fa-plus-circle">    Attempt</i>
+              See Attempts
             </button>
           </div>
         </div>
@@ -99,8 +99,8 @@ class RoastCard extends React.Component {
       return (
         <div className="mx-auto">
           <span className="col">
-            <button className="btn card-add-btn btn-default">
-              <i className="fas fa-plus-circle" onClick={this.roastClick}>    Attempts</i>
+            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-1" onClick={this.roastClick}>
+              See Attempts
             </button>
           </span>
         </div>

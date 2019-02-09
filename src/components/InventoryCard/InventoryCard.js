@@ -60,6 +60,23 @@ class InventoryCard extends React.Component {
         </div>
     );
 
+    const makeAmount = () => {
+      if (item.pounds < 2) {
+        return (
+          <div className="warning-div text-danger">
+            <p className="card-text font-weight-bold lead">Amount Available:</p>
+            <p className="card-text font-weight-bold lead">{item.pounds} lbs {item.ounces} oz</p>
+          </div>
+        );
+      }
+      return (
+          <div className="amt-div">
+            <p className="card-text font-weight-bold lead">Amount Available:</p>
+            <p className="card-text font-weight-bold lead">{item.pounds} lbs {item.ounces} oz</p>
+          </div>
+      );
+    };
+
     return (
       <div className="card inventory-card col-3 m-3 text-center rounded">
         <div className="card-header inventory-card-header mt-3 h-25 d-flex rounded">
@@ -68,10 +85,11 @@ class InventoryCard extends React.Component {
         <div className="card-body  text-center">
           <p className="font-weight-bold lead">{item.origin}</p>
           <p className="card-text">{item.description}</p>
-          <div>
+          {/* <div className="amt-div">
             <p className="card-text font-weight-bold lead">Amount Available:</p>
             <p className="card-text font-weight-bold lead">{item.pounds} lbs {item.ounces} oz</p>
-          </div>
+          </div> */}
+          {makeAmount()}
         </div>
         {makeButtons()}
       </div>
