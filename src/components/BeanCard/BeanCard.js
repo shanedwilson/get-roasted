@@ -5,15 +5,19 @@ import beanShape from '../../helpers/propz/beanShape';
 import './BeanCard.scss';
 
 class BeanCard extends React.Component {
-    static propTypes = {
-      bean: beanShape.beanShape,
-      deleteSingleBean: PropTypes.func,
-      passBeanToEdit: PropTypes.func,
-      onSelect: PropTypes.func,
-      onToggle: PropTypes.func,
-      uid: PropTypes.string,
-      ownerUid: PropTypes.string,
-    }
+  static propTypes = {
+    bean: beanShape.beanShape,
+    deleteSingleBean: PropTypes.func,
+    passBeanToEdit: PropTypes.func,
+    onSelect: PropTypes.func,
+    onToggle: PropTypes.func,
+    uid: PropTypes.string,
+    ownerUid: PropTypes.string,
+  }
+
+  addDefaultSrc(e) {
+    e.target.src = 'https://c1.staticflickr.com/9/8481/8278570234_4a4c864e4d_b.jpg';
+  }
 
   deleteEvent = (e) => {
     e.preventDefault();
@@ -82,7 +86,12 @@ class BeanCard extends React.Component {
         <div className="card-header bean-card-header mt-3 h-10 d-flex rounded">
           <h5 className="card-title mx-auto">{bean.origin}</h5>
         </div>
-        <img className="card-img-top mt-3 rounded" src={bean.imgUrl} alt={bean.name} />
+        <img
+          className="card-img-top mt-3 rounded"
+          onError={this.addDefaultSrc}
+          src={bean.imgUrl}
+          alt={bean.name}
+        />
         <div className="card-body text-center">
           <h5 className="card-title">{bean.name}</h5>
           <p className="card-text">{bean.description}</p>
