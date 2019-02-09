@@ -14,7 +14,6 @@ const getAllFacts = () => new Promise((resolve, reject) => {
           factsArray.push(factsObject[factId]);
         });
       }
-      console.log(factsArray);
       resolve(factsArray);
     })
     .catch((error) => {

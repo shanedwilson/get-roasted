@@ -1,5 +1,12 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap';
 import factsRequests from '../../helpers/data/factsRequests';
 
 import './Facts.scss';
@@ -7,6 +14,11 @@ import './Facts.scss';
 class Facts extends React.Component {
   state = {
     fact: [],
+  }
+
+  toggleFactEvent = () => {
+    const { toggleFactModal } = this.props;
+    toggleFactModal();
   }
 
   getRandomNumber(min, max) {
@@ -23,12 +35,11 @@ class Facts extends React.Component {
       });
   }
 
-  getFacts = () => {
-    factsRequests.getAllFacts()
-      .then((facts) => {
-        this.setState({ facts });
-      });
-  };
+  toggleFactEvent = () => {
+    const { toggleFactModal } = this.props;
+    toggleFactModal();
+    this.getFact();
+  }
 
   componentDidMount() {
     this.getFact();
@@ -36,21 +47,20 @@ class Facts extends React.Component {
 
   render() {
     const { fact } = this.state;
-
-    const factCards = (
-       <div className="card roast-card col-3 m-3 rounded">
-          <div className="card-header roast-card-header mt-3 h-25 text-center d-flex rounded">
-            <h5 className="card-title mx-auto m-0">{fact.title}</h5>
-          </div>
-          <div className="card-body d-flex flex-column text-center justify-content-center">
-            <p className="card-text lead">{fact.text}</p>
-          </div>
-        </div>
-    );
+    const { factModal } = this.props;
 
     return (
       <div>
-        {factCards}
+        <Modal isOpen={factModal} toggle={this.toggleFactEvent} className="modal-lg">
+          <ModalHeader toggle={this.toggleFactEvent}>{fact.title}</ModalHeader>
+          <ModalBody>
+          <div className="text-center">
+            <p>{fact.text}</p>
+          </div>          </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={this.toggleFactEvent}>Close</Button>
+          </ModalFooter>
+        </Modal>
       </div>
     );
   }
