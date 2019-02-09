@@ -1,0 +1,10 @@
+{
+  "fact1" : {
+    "title" : "Shepherds discovered coffee in Ethiopia circa 800 A.D.",
+    "text" : "Legend has it that 9th=century goat herders noticed the effect caffeine had on their goats, who appeared to dance after eating coffee berries. A local monk then made a drink with coffee berries and found that it kept him awake at night, thus the original cup of coffee was born."
+  },
+  "fact2" : {
+    "title" : "Espresso means 'pressed out' in Italian",
+    "text" : "This refers to the way espresso is made - forcing boiling water through pressed coffee grounds. And although espresso has more caffeine per volume than coffee, it would take three shots to equal the amount in a regular cup of joe."
+  }
+}

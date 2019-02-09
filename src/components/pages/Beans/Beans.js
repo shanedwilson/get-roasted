@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import SearchField from 'react-search-field';
+import Facts from '../../Facts/Facts';
 import MyModal from '../../MyModal/MyModal';
 import BeanCard from '../../BeanCard/BeanCard';
 import AddEditBean from '../../AddEditBean/AddEditBean';
@@ -165,6 +166,7 @@ class Beans extends React.Component {
     return (
 
         <div className="beans mt-5 w-100">
+          <Facts />
           <div className="btn-div col w-100">
             <button
               type="button"
