@@ -63,7 +63,7 @@ class InventoryCard extends React.Component {
     const makeAmount = () => {
       if (item.pounds < 2) {
         return (
-          <div className="amt-div text-danger">
+          <div className="warning-div text-danger">
             <p className="card-text font-weight-bold lead">Amount Available:</p>
             <p className="card-text font-weight-bold lead">{item.pounds} lbs {item.ounces} oz</p>
           </div>
