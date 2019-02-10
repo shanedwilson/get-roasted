@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import SearchField from 'react-search-field';
+import Facts from '../../Facts/Facts';
 import MyModal from '../../MyModal/MyModal';
 import BeanCard from '../../BeanCard/BeanCard';
 import AddEditBean from '../../AddEditBean/AddEditBean';
@@ -20,6 +21,7 @@ class Beans extends React.Component {
     editId: '',
     view: 'Bean',
     isSearching: false,
+    factModal: false,
   }
 
   toggleModal = () => {
@@ -33,6 +35,13 @@ class Beans extends React.Component {
   toggleSearch = () => {
     const { isSearching, beans } = this.state;
     this.setState({ isSearching: !isSearching, filteredBeans: beans });
+  }
+
+  toggleFactModal = () => {
+    const { factModal } = this.state;
+    this.setState({
+      factModal: !factModal,
+    });
   }
 
   onEnter = () => {
@@ -119,6 +128,7 @@ class Beans extends React.Component {
       modal,
       view,
       isSearching,
+      factModal,
     } = this.state;
     const uid = authRequests.getCurrentUid();
     const ownerUid = 'EYSoFrK8TzeUwtPdw7UwAP9KjVb2';
@@ -165,6 +175,10 @@ class Beans extends React.Component {
     return (
 
         <div className="beans mt-5 w-100">
+          <Facts
+          factModal={factModal}
+          toggleFactModal={this.toggleFactModal}
+          />
           <div className="btn-div col w-100">
             <button
               type="button"
@@ -177,6 +191,12 @@ class Beans extends React.Component {
               className="bttn-material-circle bttn-sm bttn-primary ml-2"
               onClick={this.toggleSearch}>
               <i className="fas fa-search" />
+            </button>
+            <button
+              type="button"
+              className="bttn-material-circle bttn-sm bttn-danger ml-2"
+              onClick={this.toggleFactModal}>
+              ?
             </button>
           </div>
           <div className="search-div">

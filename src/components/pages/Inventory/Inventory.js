@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import SearchField from 'react-search-field';
+import Facts from '../../Facts/Facts';
 import MyModal from '../../MyModal/MyModal';
 import InventoryCard from '../../InventoryCard/InventoryCard';
 import authRequests from '../../../helpers/data/authRequests';
@@ -23,6 +24,7 @@ class Inventory extends React.Component {
     modal: false,
     view: 'Inventory',
     isSearching: false,
+    factModal: false,
   }
 
   toggleModal = () => {
@@ -37,6 +39,13 @@ class Inventory extends React.Component {
   toggleSearch = () => {
     const { isSearching, inventory } = this.state;
     this.setState({ isSearching: !isSearching, filteredInventory: inventory });
+  }
+
+  toggleFactModal = () => {
+    const { factModal } = this.state;
+    this.setState({
+      factModal: !factModal,
+    });
   }
 
   onEnter = () => {
@@ -155,6 +164,7 @@ class Inventory extends React.Component {
       modal,
       view,
       isSearching,
+      factModal,
     } = this.state;
 
     const inventoryCards = filteredInventory.map(item => (
@@ -200,6 +210,10 @@ class Inventory extends React.Component {
 
     return (
       <div className="inventory mt-5">
+        <Facts
+        factModal={factModal}
+        toggleFactModal={this.toggleFactModal}
+        />
         <div className="btn-div col w-100">
           <button
             type="button"
@@ -212,6 +226,12 @@ class Inventory extends React.Component {
             className="bttn-material-circle bttn-sm bttn-primary ml-2"
             onClick={this.toggleSearch}>
             <i className="fas fa-search" />
+          </button>
+          <button
+            type="button"
+            className="bttn-material-circle bttn-sm bttn-danger ml-2"
+            onClick={this.toggleFactModal}>
+            ?
           </button>
         </div>
         <div className="search-div">{makeSearch()}</div>

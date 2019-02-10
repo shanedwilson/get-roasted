@@ -10,5 +10,8 @@
   },
   "attempts" : {
     "number" : "one"
-  }  
-}
+  },
+  "facts" : {
+    "fact1" : "one"
+  }
+  }

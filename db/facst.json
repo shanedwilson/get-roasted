@@ -1,0 +1,66 @@
+{
+  "fact1" : {
+    "title" : "Shepherds discovered coffee in Ethiopia circa 800 A.D.",
+    "text" : "Legend has it that 9th=century goat herders noticed the effect caffeine had on their goats, who appeared to dance after eating coffee berries. A local monk then made a drink with coffee berries and found that it kept him awake at night, thus the original cup of coffee was born."
+  },
+  "fact2" : {
+    "title" : "Espresso means 'pressed out' in Italian",
+    "text" : "This refers to the way espresso is made - forcing boiling water through pressed coffee grounds. And although espresso has more caffeine per volume than coffee, it would take three shots to equal the amount in a regular cup of joe."
+  },
+  "fact3" : {
+    "title" : "There are two main types of beans: Arabica and Robusta",
+    "text" : "Growers predominantly plant the Arabica species. Although less popular, Robusta tastes slightly more bitter and has twice as much caffeine."
+  },
+  "fact4" : {
+    "title" : "Brazil grows the most coffee in the world",
+    "text" : "Brazil produces about third of the world's supply, according to the International Coffee Organization, about twice as much as the second place holder, Vietnam."
+  },
+  "fact5" : {
+    "title" : "Only two U.S. states grow coffee",
+    "text" : "Kona coffee is the United States' gift to the coffee world. Because coffee traditionally grows best in climates along the equator, Hawaii's weather is optimal for harvesting coffee beans. Recently, California also got into the coffee game with dozens of farms now churning out pricey bags of the stuff."
+  },
+  "fact6" : {
+    "title" : "Coffee beans are technically seeds",
+    "text" : "They're the pits of a cherry-like berry found on Coffea plants, but we call them 'beans' because of the resemblance to legumes."
+  },
+  "fact7" : {
+    "title" : "You can eat coffee cherries as a food",
+    "text" : "Early on, people mixed coffee berries with fat to create an energy-rich snack ball, according to PBS. They would also ferment the pulp to make a wine-like drink (yum!?)."
+  },
+  "fact8" : {
+    "title" : "The world's most expensive coffee can cost more than $600 a pound",
+    "text" : "One of the most coveted varieties comes from the feces of a Asian palm civet. The cat-like creature eats fruit such as coffee cherries, but is unable to digest coffee beans. The excreted seeds produce a smooth, less acidic brew, but the means of production has drawn criticism from animal welfare activists."
+  },
+  "fact9" : {
+    "title" : "There have been multiple attempts to ban coffee throughout history",
+    "text" : "Back in 1511, leaders in Mecca believed it stimulated radical thinking and banned the drink. Some 16th-century Italian clergymen also tried to ban coffee because they believed it to be 'satanic.' However, Pope Clement VII loved coffee so much that he lifted the ban and had coffee baptized in 1600.Ottoman leader Murad IV took it even further when he ascended the throne in 1623 by creating the first punishments for drinking coffee, which included beatings and being thrown into the sea.In 1746, the Swedish government made it illegal to even have coffee paraphernalia, including cups and dishes. Several decades later, Frederick the Great of Prussia issued a manifesto declaring beer's superiority over coffee because he believed it interfered with the country's beer consumption."
+  },
+  "fact10" : {
+    "title" : "You can overdose on coffee",
+    "text" : "Don't worry, you would need to drink about 30 cups in a short period time to get close to a lethal dose, Vox reports."
+  },
+  "fact11" : {
+    "title" : "Finland is the world's most caffeinated country",
+    "text" : "The average adult Finn goes through 27.5 pounds each year, according to the International Coffee Organization. Compare that to a measly 11 pounds per American."
+  },
+  "fact12" : {
+    "title" : "Coffee drinkers tend to live longer",
+    "text" : "Research has linking moderate consumption (about three to four cups per day) with living longer, plus a reduced risk of cardiovascular disease, type 2 diabetes and Parkinson's, according to Harvard Health Publishing."
+  },
+  "fact13" : {
+    "title" : "The largest cup of coffee ever filled a 9-foot tall cup",
+    "text" : "The 3,487-gallon serving earned a Guiness World Record in 2012."
+  },
+  "fact14" : {
+    "title" : "The Boston Tea Party helped popularize coffee in America",
+    "text" : "In the lead up to the Revolutionary War, it became patriotic to sip java instead of tea, PBS reveals. The Civil War also made the drink more pervasive because it helped energize the troops."
+  },
+  "fact15" : {
+    "title" : "Decaf does not mean caffeine-free",
+    "text" : "An eight-ounce brewed cup of decaf coffee actually contains two to 12 milligrams of caffeine. In comparison, a regular cup of coffee supplies between 95 to 200 milligrams, while one can of cola only has 23 to 35 milligrams of caffeine."
+  },
+  "fact16" : {
+    "title" : "The word 'coffee' comes from the Arabic word for 'wine'",
+    "text" : "'Qahwah' later became 'kahveh' in Turkish, and then 'koffie' in Dutch, which is where we got the English word 'coffee.'"
+  }
+}
