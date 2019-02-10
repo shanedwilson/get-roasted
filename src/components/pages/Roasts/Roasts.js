@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import SearchField from 'react-search-field';
+import Facts from '../../Facts/Facts';
 import MyModal from '../../MyModal/MyModal';
 import RoastCard from '../../RoastCard/RoastCard';
 import AddEditRoast from '../../AddEditRoast/AddEditRoast';
@@ -22,6 +23,7 @@ class Roasts extends React.Component {
     modal: false,
     view: 'Roast',
     isSearching: false,
+    factModal: false,
   }
 
   toggleModal = () => {
@@ -36,6 +38,13 @@ class Roasts extends React.Component {
   toggleSearch = () => {
     const { isSearching, roasts } = this.state;
     this.setState({ isSearching: !isSearching, filteredRoasts: roasts });
+  }
+
+  toggleFactModal = () => {
+    const { factModal } = this.state;
+    this.setState({
+      factModal: !factModal,
+    });
   }
 
   onEnter = () => {
@@ -154,6 +163,7 @@ class Roasts extends React.Component {
       modal,
       view,
       isSearching,
+      factModal,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -204,6 +214,10 @@ class Roasts extends React.Component {
 
     return (
       <div className="Roasts mx-auto mt-5 w-100">
+        <Facts
+        factModal={factModal}
+        toggleFactModal={this.toggleFactModal}
+        />
         <div className="btn-div col w-100">
           <button
             type="button"
@@ -216,6 +230,12 @@ class Roasts extends React.Component {
             className="bttn-material-circle bttn-sm bttn-primary ml-2"
             onClick={this.toggleSearch}>
             <i className="fas fa-search" />
+          </button>
+          <button
+            type="button"
+            className="bttn-material-circle bttn-sm bttn-danger ml-2"
+            onClick={this.toggleFactModal}>
+            ?
           </button>
         </div>
         <div className="search-div">{makeSearch()}</div>

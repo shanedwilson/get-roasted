@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 import SearchField from 'react-search-field';
+import Facts from '../../Facts/Facts';
 import MyModal from '../../MyModal/MyModal';
 import MyGraphModal from '../../../MyGraphModal/MyGraphModal';
 import AddAttempts from '../AddAttempts/AddAttempts';
@@ -32,6 +33,7 @@ class Attempts extends React.Component {
     view: 'Attempts',
     isSearching: false,
     graph: false,
+    factModal: false,
   }
 
   toggleModal = () => {
@@ -51,6 +53,13 @@ class Attempts extends React.Component {
   toggleSearch = () => {
     const { isSearching, attempts } = this.state;
     this.setState({ isSearching: !isSearching, filteredAttempts: attempts });
+  }
+
+  toggleFactModal = () => {
+    const { factModal } = this.state;
+    this.setState({
+      factModal: !factModal,
+    });
   }
 
   onEnter = () => {
@@ -221,6 +230,7 @@ class Attempts extends React.Component {
       view,
       isSearching,
       graph,
+      factModal,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -276,6 +286,10 @@ class Attempts extends React.Component {
 
     return (
       <div className="Attempts mx-auto w-100">
+        <Facts
+        factModal={factModal}
+        toggleFactModal={this.toggleFactModal}
+        />
         <div className="btn-div col w-100">
           <button
             type="button"
@@ -294,6 +308,12 @@ class Attempts extends React.Component {
             className="bttn-material-circle bttn-sm bttn-primary ml-2"
             onClick={this.toggleSearch}>
             <i className="fas fa-search" />
+          </button>
+          <button
+            type="button"
+            className="bttn-material-circle bttn-sm bttn-danger ml-2"
+            onClick={this.toggleFactModal}>
+            ?
           </button>
         </div>
         <div className="search-div">{makeSearch()}</div>
