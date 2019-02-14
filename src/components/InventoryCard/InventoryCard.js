@@ -53,7 +53,7 @@ class InventoryCard extends React.Component {
             </button>
           </span>
           <div className="col">
-            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-3" onClick={this.roastView}>
+            <button className="bttn-stretch bttn-sm add-btn mt-3 mb-3" onClick={this.roastView}>
               <i className="fas fa-plus-circle">    Roast</i>
             </button>
           </div>

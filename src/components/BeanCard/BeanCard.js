@@ -63,7 +63,7 @@ class BeanCard extends React.Component {
             </button>
           </span>
           <div className="col">
-            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-3" onClick={this.inventoryView}>
+            <button className="bttn-stretch bttn-sm add-btn mt-3 mb-3" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </div>
