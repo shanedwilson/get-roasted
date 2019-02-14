@@ -80,15 +80,11 @@ class InventoryCard extends React.Component {
     return (
       <div className="card inventory-card col-3 m-3 text-center rounded">
         <div className="card-header inventory-card-header mt-3 h-25 d-flex rounded">
-          <h5 className="card-title mx-auto">{item.name}</h5>
+          <h5 className= "mx-auto font-weight-bold lead">{item.name}</h5>
         </div>
         <div className="card-body  text-center">
-          <p className="font-weight-bold lead">{item.origin}</p>
+          <h5 className="card-title lead font-weight-bold">{item.origin}</h5>
           <p className="card-text">{item.description}</p>
-          {/* <div className="amt-div">
-            <p className="card-text font-weight-bold lead">Amount Available:</p>
-            <p className="card-text font-weight-bold lead">{item.pounds} lbs {item.ounces} oz</p>
-          </div> */}
           {makeAmount()}
         </div>
         {makeButtons()}

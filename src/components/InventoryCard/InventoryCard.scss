@@ -9,11 +9,12 @@
 }
 
 .inventory-card-header {
-  background-color: $color9 !important;
+  background-color: darkolivegreen !important;
+  color: white !important;
 }
 
-.amt-div {
-  background-color: $color1;
+.card-text, .card-title  {
+  font-family: 'open sans';
 }
 
 .warning-div {
