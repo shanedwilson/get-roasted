@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-.card-text,  {
+.card-text, .card-title  {
   font-family: 'open sans';
 }
 
@@ -9,9 +9,14 @@
 }
 
 .bean-card-header {
-  background-color: $color9 !important;
+  background-color: darkolivegreen !important;
+  color: white !important;
 }
 
-.card-add-btn {
-  color: maroon !important;
+.card {
+    box-shadow: 3px 3px grey;
+}
+
+.add-btn {
+  color: darkolivegreen;
 }

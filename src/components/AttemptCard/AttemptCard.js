@@ -72,6 +72,7 @@ class AttemptCard extends React.Component {
               editing={false}
               starCount={10}
               value={attempt.rating}
+              renderStarIcon={() => <span><i className="fas fa-coffee"></i></span>}
             />
           </div>
       </div>

@@ -63,7 +63,7 @@ class BeanCard extends React.Component {
             </button>
           </span>
           <div className="col">
-            <button className="bttn-stretch bttn-sm bttn-success mt-3 mb-3" onClick={this.inventoryView}>
+            <button className="bttn-stretch bttn-sm add-btn mt-3 mb-3" onClick={this.inventoryView}>
               <i className="fas fa-plus-circle">    Inventory</i>
             </button>
           </div>
@@ -84,7 +84,7 @@ class BeanCard extends React.Component {
     return (
      <div className="card bean-card col-3 m-3 rounded">
         <div className="card-header bean-card-header mt-3 h-10 d-flex rounded">
-          <h5 className="card-title mx-auto">{bean.origin}</h5>
+          <h5 className= "mx-auto">{bean.origin}</h5>
         </div>
         <img
           className="card-img-top mt-3 rounded"
@@ -93,7 +93,7 @@ class BeanCard extends React.Component {
           alt={bean.name}
         />
         <div className="card-body text-center">
-          <h5 className="card-title">{bean.name}</h5>
+          <h5 className="card-title lead font-weight-bold">{bean.name}</h5>
           <p className="card-text">{bean.description}</p>
         </div>
         {makeButtons()}
