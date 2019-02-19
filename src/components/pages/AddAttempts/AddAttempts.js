@@ -86,18 +86,26 @@ class AddAttempts extends React.Component {
   formSubmit = (e) => {
     e.preventDefault();
     const { weather } = this.state;
-    const { attemptId, roastId, onSubmit } = this.props;
+    const {
+      attemptId,
+      roastId,
+      onSubmit,
+      isEditing,
+    } = this.props;
     const myAttempt = { ...this.state.newAttempt };
     const uid = authRequests.getCurrentUid();
-    myAttempt.temp = weather.temp;
-    myAttempt.humidity = weather.rh;
-    myAttempt.city = weather.city_name;
-    myAttempt.state = weather.state_code;
-    myAttempt.date = moment().valueOf();
-    myAttempt.beanId = attemptId;
-    myAttempt.uid = uid;
-    myAttempt.roastId = roastId;
+    if (!isEditing) {
+      myAttempt.temp = weather.temp;
+      myAttempt.humidity = weather.rh;
+      myAttempt.city = weather.city_name;
+      myAttempt.state = weather.state_code;
+      myAttempt.date = moment().valueOf();
+      myAttempt.beanId = attemptId;
+      myAttempt.uid = uid;
+      myAttempt.roastId = roastId;
+    }
     onSubmit(myAttempt);
+    this.setState({ newAttempt: defaultAttempt });
   }
 
   componentDidMount(prevProps) {
