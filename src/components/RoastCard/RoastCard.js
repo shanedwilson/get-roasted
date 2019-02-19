@@ -108,7 +108,7 @@ class RoastCard extends React.Component {
     };
 
     return (
-      <div className="card roast-card col-3 m-3 rounded">
+      <div className="card roast-card col-10 col-lg-3 m-3 rounded">
         <div className="card-header roast-card-header mt-3 h-25 text-center d-flex rounded">
           <h5 className="card-title mx-auto m-0">{roast.roastName}</h5>
         </div>

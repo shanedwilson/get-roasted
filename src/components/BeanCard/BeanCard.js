@@ -82,7 +82,7 @@ class BeanCard extends React.Component {
     };
 
     return (
-     <div className="card bean-card col-3 m-3 rounded">
+     <div className="card bean-card col-10 col-lg-3 m-3 rounded">
         <div className="card-header bean-card-header mt-3 h-10 d-flex rounded">
           <h5 className= "mx-auto">{bean.origin}</h5>
         </div>
