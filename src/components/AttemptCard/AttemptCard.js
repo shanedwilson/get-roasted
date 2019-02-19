@@ -65,6 +65,8 @@ class AttemptCard extends React.Component {
           </p>
           <p className="card-text text-center">2nd Crack:  {attempt.secondTime}, {attempt.secondTemp} °F
           </p>
+          <p className="card-text text-center">End:  {attempt.endTime}, {attempt.endTemp} °F
+          </p>
           <p className="card-text text-center">Notes: {attempt.notes}</p>
           <div className="text-center">
             <StarRatingComponent
