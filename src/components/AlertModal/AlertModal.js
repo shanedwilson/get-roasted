@@ -6,7 +6,6 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
-// import PropTypes from 'prop-types';
 
 class MyModal extends React.Component {
   toggleAlertEvent = () => {
