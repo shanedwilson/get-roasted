@@ -3,6 +3,7 @@ import $ from 'jquery';
 import SearchField from 'react-search-field';
 import Facts from '../../Facts/Facts';
 import MyModal from '../../MyModal/MyModal';
+import AlertModal from '../../AlertModal/AlertModal';
 import InventoryCard from '../../InventoryCard/InventoryCard';
 import authRequests from '../../../helpers/data/authRequests';
 import smashDataRequests from '../../../helpers/data/smashDataRequests';
@@ -25,6 +26,7 @@ class Inventory extends React.Component {
     view: 'Inventory',
     isSearching: false,
     factModal: false,
+    alertModal: false,
   }
 
   toggleModal = () => {
@@ -45,6 +47,14 @@ class Inventory extends React.Component {
     const { factModal } = this.state;
     this.setState({
       factModal: !factModal,
+    });
+  }
+
+  toggleAlertModal = () => {
+    const { alertModal } = this.state;
+    this.setState({
+      alertModal: !alertModal,
+      modal: false,
     });
   }
 
@@ -138,7 +148,7 @@ class Inventory extends React.Component {
   }
 
   formSubmitEvent = (newInventory) => {
-    const { isEditing, editId } = this.state;
+    const { isEditing, editId, inventory } = this.state;
     if (isEditing) {
       inventoryRequests.updateInventory(editId, newInventory)
         .then(() => {
@@ -146,11 +156,17 @@ class Inventory extends React.Component {
           this.setState({ isEditing: false, beanId: '', modal: false });
         });
     } else {
-      inventoryRequests.createInventory(newInventory)
-        .then(() => {
-          this.getInventory();
-          this.setState({ beanId: '', modal: false });
-        });
+      inventory.forEach((item) => {
+        if (item.beanId === newInventory.beanId) {
+          this.setState({ alertModal: true });
+        } else {
+          inventoryRequests.createInventory(newInventory)
+            .then(() => {
+              this.getInventory();
+              this.setState({ beanId: '', modal: false });
+            });
+        }
+      });
     }
   }
 
@@ -165,6 +181,7 @@ class Inventory extends React.Component {
       view,
       isSearching,
       factModal,
+      alertModal,
     } = this.state;
 
     const inventoryCards = filteredInventory.map(item => (
@@ -210,6 +227,10 @@ class Inventory extends React.Component {
 
     return (
       <div className="inventory mt-5">
+        <AlertModal
+          alertModal={alertModal}
+          toggleAlertModal={this.toggleAlertModal}
+        />
         <Facts
         factModal={factModal}
         toggleFactModal={this.toggleFactModal}
