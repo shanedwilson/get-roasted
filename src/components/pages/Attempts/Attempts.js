@@ -162,7 +162,7 @@ class Attempts extends React.Component {
       this.setState({ filteredAttempts: attempts });
     } else {
       attempts.forEach((attempt) => {
-        const displayTime = moment(attempt.date).format('MMM DD YYYY hh:mm a');
+        const displayTime = moment(attempt.date).format('MMDDYYYY');
         if (displayTime.toLowerCase().includes(value.toLowerCase())) {
           filteredAttempts.push(attempt);
         }
@@ -262,7 +262,7 @@ class Attempts extends React.Component {
       if (isSearching) {
         return (
           <SearchField
-            placeholder="Search By Attempt Date..."
+            placeholder="Search By Attempt Date MMDDYYYY..."
             onChange={ this.onChange }
             searchText=""
             classNames="test-class w-50 animated slideInLeft"
