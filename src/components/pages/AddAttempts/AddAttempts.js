@@ -174,7 +174,7 @@ class AddAttempts extends React.Component {
                   className="form-control"
                   id="secondTime"
                   placeholder="12:00"
-                  value={newAttempt.SecondTime}
+                  value={newAttempt.secondTime}
                   onChange={this.secondTimeChange}
                 />
               </div>
@@ -190,7 +190,7 @@ class AddAttempts extends React.Component {
                   className="form-control"
                   id="secondTemp"
                   placeholder="275"
-                  value={newAttempt.SecondTemp}
+                  value={newAttempt.secondTemp}
                   onChange={this.secondTempChange}
                 />
               </div>
