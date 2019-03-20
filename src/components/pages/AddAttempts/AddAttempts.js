@@ -91,9 +91,14 @@ class AddAttempts extends React.Component {
       roastId,
       onSubmit,
       isEditing,
+      toggleAlertModal,
     } = this.props;
     const myAttempt = { ...this.state.newAttempt };
     const uid = authRequests.getCurrentUid();
+    if (myAttempt.firstTime.includes(':') === false || myAttempt.secondTime.includes(':')) {
+      toggleAlertModal();
+      return;
+    }
     if (!isEditing) {
       myAttempt.temp = weather.temp;
       myAttempt.humidity = weather.rh;

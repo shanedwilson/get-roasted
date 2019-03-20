@@ -7,24 +7,38 @@ import {
   ModalFooter,
 } from 'reactstrap';
 
-class MyModal extends React.Component {
+class AlertModal extends React.Component {
   toggleAlertEvent = () => {
     const { toggleAlertModal } = this.props;
     toggleAlertModal();
   };
 
   render() {
-    const { alertModal } = this.props;
+    const { alertModal, alertId } = this.props;
+
+    const makeAlert = () => {
+      if (alertId === 'attempts') {
+        return (
+          <div className="text-center">
+            <p>Please enter times in MM:SS format.</p>
+          </div>
+        );
+      }
+      return (
+        <div className="text-center">
+          <p>You already have this bean in your inventory.</p>
+          <p>Please edit your existing stash.</p>
+        </div>
+      );
+    };
 
     return (
       <div>
         <Modal isOpen={alertModal} toggle={this.toggleAlertEvent} className="modal-lg text-center">
-          <ModalHeader toggle={this.toggleFactEvent}>Yo!</ModalHeader>
+          <ModalHeader toggle={this.toggleAlertEvent}>Yo!</ModalHeader>
           <ModalBody>
-          <div className="text-center">
-            <p>You already have this bean in your inventory.</p>
-            <p>Please edit your existing stash.</p>
-          </div>          </ModalBody>
+            {makeAlert()}
+          </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.toggleAlertEvent}>Close</Button>
           </ModalFooter>
@@ -34,4 +48,4 @@ class MyModal extends React.Component {
   }
 }
 
-export default MyModal;
+export default AlertModal;

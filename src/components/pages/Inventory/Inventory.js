@@ -31,6 +31,7 @@ class Inventory extends React.Component {
     addTipOpen: false,
     searchTipOpen: false,
     factTipOpen: false,
+    alertId: '',
   }
 
   toggleModal = () => {

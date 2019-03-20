@@ -6,6 +6,7 @@ import { Tooltip } from 'reactstrap';
 import Facts from '../../Facts/Facts';
 import MyModal from '../../MyModal/MyModal';
 import MyGraphModal from '../../../MyGraphModal/MyGraphModal';
+import AlertModal from '../../AlertModal/AlertModal';
 import AddAttempts from '../AddAttempts/AddAttempts';
 import AttemptCard from '../../AttemptCard/AttemptCard';
 import AttemptsGraph from '../../AttemptsGraph/AttemptsGraph';
@@ -39,6 +40,8 @@ class Attempts extends React.Component {
     searchTipOpen: false,
     factTipOpen: false,
     graphTipOpen: false,
+    alertModal: false,
+    alertId: '',
   }
 
   toggleModal = () => {
@@ -64,6 +67,14 @@ class Attempts extends React.Component {
     const { factModal } = this.state;
     this.setState({
       factModal: !factModal,
+    });
+  }
+
+  toggleAlertModal = () => {
+    const { alertModal } = this.state;
+    this.setState({
+      alertModal: !alertModal,
+      alertId: 'attempts',
     });
   }
 
@@ -264,6 +275,8 @@ class Attempts extends React.Component {
       isSearching,
       graph,
       factModal,
+      alertModal,
+      alertId,
     } = this.state;
 
     const uid = authRequests.getCurrentUid();
@@ -287,6 +300,7 @@ class Attempts extends React.Component {
           setSelect={this.setSelect}
           roast={roast}
           roastId={roastId}
+          toggleAlertModal={this.toggleAlertModal}
         />
       </div>
     );
@@ -319,6 +333,11 @@ class Attempts extends React.Component {
 
     return (
       <div className="Attempts mx-auto w-100">
+        <AlertModal
+          alertId={alertId}
+          alertModal={alertModal}
+          toggleAlertModal={this.toggleAlertModal}
+        />
         <Facts
         factModal={factModal}
         toggleFactModal={this.toggleFactModal}
