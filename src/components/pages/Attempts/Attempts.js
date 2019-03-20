@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 import SearchField from 'react-search-field';
+import { Tooltip } from 'reactstrap';
 import Facts from '../../Facts/Facts';
 import MyModal from '../../MyModal/MyModal';
 import MyGraphModal from '../../../MyGraphModal/MyGraphModal';
@@ -34,6 +35,10 @@ class Attempts extends React.Component {
     isSearching: false,
     graph: false,
     factModal: false,
+    addTipOpen: false,
+    searchTipOpen: false,
+    factTipOpen: false,
+    graphTipOpen: false,
   }
 
   toggleModal = () => {
@@ -59,6 +64,34 @@ class Attempts extends React.Component {
     const { factModal } = this.state;
     this.setState({
       factModal: !factModal,
+    });
+  }
+
+  toggleGraphTip = () => {
+    const { graphTipOpen } = this.state;
+    this.setState({
+      graphTipOpen: !graphTipOpen,
+    });
+  }
+
+  toggleAddTip = () => {
+    const { addTipOpen } = this.state;
+    this.setState({
+      addTipOpen: !addTipOpen,
+    });
+  }
+
+  toggleSearchTip = () => {
+    const { searchTipOpen } = this.state;
+    this.setState({
+      searchTipOpen: !searchTipOpen,
+    });
+  }
+
+  toggleFactTip = () => {
+    const { factTipOpen } = this.state;
+    this.setState({
+      factTipOpen: !factTipOpen,
     });
   }
 
@@ -292,29 +325,45 @@ class Attempts extends React.Component {
         />
         <div className="btn-div col w-100">
           <button
+            id="graph-btn"
             type="button"
             className="bttn-material-circle bttn-sm bttn-royal"
             onClick={this.toggleGraph}>
             <i className="fas fa-chart-line" />
           </button>
+            <Tooltip placement="right" isOpen={this.state.graphTipOpen} target="graph-btn" toggle={this.toggleGraphTip}>
+              See Graph
+            </Tooltip>
           <button
+            id="add-btn"
             type="button"
             className="bttn-material-circle bttn-sm bttn-success ml-2"
             onClick={this.toggleModal}>
             <i className="fas fa-plus-circle" />
           </button>
+            <Tooltip placement="right" isOpen={this.state.addTipOpen} target="add-btn" toggle={this.toggleAddTip}>
+              Add Attempts
+            </Tooltip>
           <button
+            id="search-btn"
             type="button"
             className="bttn-material-circle bttn-sm bttn-primary ml-2"
             onClick={this.toggleSearch}>
             <i className="fas fa-search" />
           </button>
+            <Tooltip placement="right" isOpen={this.state.searchTipOpen} target="search-btn" toggle={this.toggleSearchTip}>
+              Search Attempts
+            </Tooltip>
           <button
+            id="fact-btn"
             type="button"
             className="bttn-material-circle bttn-sm bttn-danger ml-2"
             onClick={this.toggleFactModal}>
             ?
           </button>
+            <Tooltip placement="right" isOpen={this.state.factTipOpen} target="fact-btn" toggle={this.toggleFactTip}>
+              Random Fact
+            </Tooltip>
         </div>
         <div className="search-div">{makeSearch()}</div>
         <div>

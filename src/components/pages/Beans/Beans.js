@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import SearchField from 'react-search-field';
+import { Tooltip } from 'reactstrap';
 import Facts from '../../Facts/Facts';
 import MyModal from '../../MyModal/MyModal';
 import BeanCard from '../../BeanCard/BeanCard';
@@ -22,6 +23,9 @@ class Beans extends React.Component {
     view: 'Bean',
     isSearching: false,
     factModal: false,
+    addTipOpen: false,
+    searchTipOpen: false,
+    factTipOpen: false,
   }
 
   toggleModal = () => {
@@ -41,6 +45,27 @@ class Beans extends React.Component {
     const { factModal } = this.state;
     this.setState({
       factModal: !factModal,
+    });
+  }
+
+  toggleAddTip = () => {
+    const { addTipOpen } = this.state;
+    this.setState({
+      addTipOpen: !addTipOpen,
+    });
+  }
+
+  toggleSearchTip = () => {
+    const { searchTipOpen } = this.state;
+    this.setState({
+      searchTipOpen: !searchTipOpen,
+    });
+  }
+
+  toggleFactTip = () => {
+    const { factTipOpen } = this.state;
+    this.setState({
+      factTipOpen: !factTipOpen,
     });
   }
 
@@ -180,24 +205,36 @@ class Beans extends React.Component {
           toggleFactModal={this.toggleFactModal}
           />
           <div className="btn-div col w-100">
+              <button
+                id="add-bean-btn"
+                type="button"
+                className="bttn-material-circle bttn-sm bttn-success mr-1"
+                onClick={this.toggleModal}>
+                <i className="fas fa-plus-circle" />
+              </button>
+              <Tooltip placement="right" isOpen={this.state.addTipOpen} target="add-bean-btn" toggle={this.toggleAddTip}>
+                Add Beans
+              </Tooltip>
             <button
-              type="button"
-              className="bttn-material-circle bttn-sm bttn-success mr-1"
-              onClick={this.toggleModal}>
-              <i className="fas fa-plus-circle" />
-            </button>
-            <button
+              id="search-btn"
               type="button"
               className="bttn-material-circle bttn-sm bttn-primary ml-2"
               onClick={this.toggleSearch}>
               <i className="fas fa-search" />
             </button>
+            <Tooltip placement="right" isOpen={this.state.searchTipOpen} target="search-btn" toggle={this.toggleSearchTip}>
+              Search Beans
+            </Tooltip>
             <button
+              id="fact-btn"
               type="button"
               className="bttn-material-circle bttn-sm bttn-danger ml-2"
               onClick={this.toggleFactModal}>
               ?
             </button>
+            <Tooltip placement="right" isOpen={this.state.factTipOpen} target="fact-btn" toggle={this.toggleFactTip}>
+              Random Fact
+            </Tooltip>
           </div>
           <div className="search-div">
             {makeSearch()}
