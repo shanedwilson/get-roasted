@@ -205,7 +205,6 @@ class Beans extends React.Component {
           toggleFactModal={this.toggleFactModal}
           />
           <div className="btn-div col w-100">
-          <div>
               <button
                 id="add-bean-btn"
                 type="button"
@@ -216,7 +215,6 @@ class Beans extends React.Component {
               <Tooltip placement="right" isOpen={this.state.addTipOpen} target="add-bean-btn" toggle={this.toggleAddTip}>
                 Add Beans
               </Tooltip>
-            </div>
             <button
               id="search-btn"
               type="button"
