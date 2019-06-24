@@ -14,6 +14,7 @@ const getAllAttemptsByUid = (uid, firebaseId) => new Promise((resolve, reject) =
           if (attemptsObject[attemptId].roastId === `${firebaseId}`) {
             attemptsArray.push(attemptsObject[attemptId]);
           }
+          attemptsArray.sort((a, b) => ((a.date - b.date)));
         });
       }
       resolve(attemptsArray);
@@ -33,7 +34,7 @@ const getAllAttemptsByRoastId = roastId => new Promise((resolve, reject) => {
           attemptsObject[attemptId].id = attemptId;
           attemptsArray.push(attemptsObject[attemptId]);
         });
-        attemptsArray.sort((a, b) => ((a.date - b.date) ? 1 : -1));
+        attemptsArray.sort((a, b) => ((a.date - b.date)));
       }
       resolve(attemptsArray);
     })
