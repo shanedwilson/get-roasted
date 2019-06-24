@@ -180,6 +180,12 @@ class Inventory extends React.Component {
           this.getInventory();
           this.setState({ isEditing: false, beanId: '', modal: false });
         });
+    } else if (this.state.inventory.length === 0) {
+      inventoryRequests.createInventory(newInventory)
+        .then(() => {
+          this.getInventory();
+          this.setState({ beanId: '', modal: false });
+        });
     } else {
       inventory.forEach((item) => {
         if (item.beanId === newInventory.beanId) {
